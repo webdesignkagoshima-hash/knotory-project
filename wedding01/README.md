@@ -17,12 +17,6 @@ package.jsonからライブラリをローカルにインストールする
 npm ci
 ```
 
-huskyのインストールから初期化まで
-```
-npm run prepare
-npx husky set .husky/pre-commit "npx lint-staged"
-```
-
 ## 開発時のコマンド
 npm run dev
 
