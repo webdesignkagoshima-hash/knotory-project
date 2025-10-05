@@ -1,0 +1,264 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-ourStory {
+  margin-top: calc(107 / $fz-base * 1rem);
+  padding: calc(79 / $fz-base * 1rem) 0 calc(108 / $fz-base * 1rem);
+  overflow-x: hidden;
+  
+  @include mq(tab) {
+    margin-top: calc(192 / $fz-base * 1rem);
+    padding: calc(240 / $fz-base * 1rem) 0 calc(229 / $fz-base * 1rem);
+  }
+}
+
+.p-ourStory__container {
+  position: relative;
+  margin-top: calc(67 / $fz-base * 1rem);
+  
+  @include mq(tab) {
+    margin-top: calc(80 / $fz-base * 1rem);
+  }
+}
+
+.p-ourStory__content {
+  position: relative;
+  z-index: 1;
+}
+
+.p-ourStory__contentItem {
+  margin-bottom: calc(50 / $fz-base * 1rem);
+  padding: calc(30 / $fz-base * 1rem) 0 0; // bottom paddingを削除
+  // SP時（デフォルト）は相対配置
+  position: relative;
+  height: 100svh; // 全体を100svhに設定
+
+  @include mq(tab) {
+    margin-bottom: calc(148 / $fz-base * 1rem);
+    padding: calc(40 / $fz-base * 1rem) 0 0; // PC時もbottom paddingを削除
+    height: auto; // PCでは高さ自動
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &--even {
+    & .c-ourStoryTitle {
+      @include mq(tab) {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.p-ourStory__contentItemInner {
+  // SP時（デフォルト）は相対配置コンテナとして機能
+  position: relative;
+  height: calc(100% - calc(80 / $fz-base * 1rem)); // 親の高さからmargin-topとタイトル高さ（80px）を引く
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mq(tab) {
+    margin-top: calc(50 / $fz-base * 1rem);
+    position: static;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 0; // 余白を削除してカード同士をくっつける
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+}
+
+.p-ourStory__justMarriedImageContainer {
+  @include mq(tab) {
+    max-width: calc(960 / $fz-base * 1rem);
+    margin: 0 auto;
+    margin-top: calc(148 / $fz-base * 1rem);
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.p-ourStory__justMarriedImage {
+  @include mq(tab) {
+    width: fit-content;
+    max-height: 80svh;
+    margin: 0 auto;
+  }
+}
+
+.p-ourStory__justMarriedCaption {
+  font-family: $font-family-en;
+  font-weight: 300;
+  font-size: min(calc(36 / $fz-base * 1rem), calc(36 / $viewport-width-sp * 100svw));
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C4A361;
+  text-align: center;
+  transform: translateY(calc(8 / $fz-base * 1rem));
+  white-space: nowrap;
+
+  @include mq(tab) {
+    font-size: min(calc(56 / $fz-base * 1rem), calc(56 / $viewport-width * 100vsw));
+    transform: unset;
+    margin-bottom: calc(24 / $fz-base * 1rem);
+  }
+}
+
+.js {
+  .p-ourStory__justMarriedImageWrapper {
+    opacity: 0;
+  }
+}
+
+
+/* pin-spacerのpadding-bottomを制御（SPのみ） */
+.pin-spacer {
+  padding-bottom: 0 !important;
+  
+  @include mq(tab) {
+    padding-bottom: initial !important;
+  }
+}
+
+/* ScrollTriggerのpin-spacer要素の高さを制御（SPのみ） */
+.pin-spacer .p-ourStory__contentItem {
+  height: 100svh !important;
+  
+  @include mq(tab) {
+    height: auto !important;
+  }
+}
+
+/* pin-spacer内の奇数番目要素の背景位置調整（SPのみ） */
+.pin-spacer .p-ourStory__contentItem--odd {
+  &::after {
+    left: calc(16 / $fz-base * 1rem) ;
+    border-top-left-radius: calc(100 / $fz-base * 1rem) ;
+    border-bottom-left-radius: calc(100 / $fz-base * 1rem) ;
+    border-top-right-radius: unset ;
+    border-bottom-right-radius: unset ;
+  }
+  
+  @include mq(tab) {
+    &::after {
+      left: calc(16 / $fz-base * 1rem) ;
+    }
+  }
+}
+
+/* pin-spacer内の偶数番目要素の背景位置調整（SPのみ） */
+.pin-spacer .p-ourStory__contentItem--even {
+  &::after {
+    left: calc(100% - 100svw - 16 / $fz-base * 1rem) ;
+    border-top-right-radius: calc(100 / $fz-base * 1rem) ;
+    border-bottom-right-radius: calc(100 / $fz-base * 1rem) ;
+    border-top-left-radius: unset ;
+    border-bottom-left-radius: unset ;
+  }
+}
+
+/* Our Story SPのsplideによる影響を排除 */
+.splide__track {
+  height: inherit;
+}
+
+/* Our Story スライダーの矢印設定（PCのみ） */
+@include mq(tab) {
+  .js-ourStoryContentSlide {
+    position: relative; /* スライダーコンテナに相対配置を追加 */
+    
+    .splide__slide {
+      border-radius: 0;
+    }
+
+    .splide__arrows {
+      position: static;
+    }
+
+    .splide__arrow {
+      &:disabled {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+    
+    /* 左矢印のスタイル設定 */
+    .splide__arrow--prev {
+      position: absolute;
+      top: 50%;
+      left: calc(20 / $fz-base * 1rem); /* スライダーコンテナの左端から内側に配置 */
+      transform: translateY(-50%);
+      z-index: 10;
+      width: calc(56 / $fz-base * 1rem);
+      height: calc(56 / $fz-base * 1rem);
+      background-color: $white;
+      border-radius: 50%;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 1;
+      
+      &:hover {
+        opacity: 0.8;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+        svg {
+          fill: #808889;
+        }
+      }
+      
+      svg {
+        width: calc(56 / $fz-base * 1rem);
+        height: calc(56 / $fz-base * 1rem);
+        fill: #808889;
+        transform: rotate(180deg); /* 左矢印は右矢印を180度回転 */
+      }
+    }
+    
+    /* 右矢印をスライダーコンテナに対して配置 */
+    .splide__arrow--next {
+      position: absolute;
+      top: 50%;
+      right: calc(20 / $fz-base * 1rem); /* スライダーコンテナの右端から内側に配置 */
+      transform: translateY(-50%);
+      z-index: 10;
+      width: calc(56 / $fz-base * 1rem);
+      height: calc(56 / $fz-base * 1rem);
+      background-color: $white;
+      border-radius: 50%;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 1;
+      
+      &:hover {
+        opacity: 0.8;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+        svg {
+          fill: #808889;
+        }
+      }
+      
+      svg {
+        width: calc(56 / $fz-base * 1rem);
+        height: calc(56 / $fz-base * 1rem);
+        fill: #808889;
+      }
+    }
+  }
+}

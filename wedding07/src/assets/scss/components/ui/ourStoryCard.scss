@@ -1,0 +1,103 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-ourStoryCard {
+  width: 100%;
+  max-width: calc(692 / $fz-base * 1rem);
+  
+  // SP時（デフォルト）は絶対配置で中央重ね
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 1; // まず表示状態にしてJSで制御
+  visibility: visible;
+
+  & + .c-ourStoryCard {
+    margin-top: 0; // SP時はmargin-top削除
+    
+    @include mq(tab) {
+      margin-top: 0; 
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -7px;
+    width: calc(100% + 14px);
+    height: calc(100% + 12px);
+    background-color: $ourStoryCardBgBox;
+    pointer-events: none; // 枠線がクリックを邪魔しないようにする
+    z-index: -1;
+    box-shadow: 0 2px 5px rgba(135, 135, 135, 0.25);
+
+    @include mq(tab) {
+      left: -3px;
+      width: calc(100% + 6px);
+      height: calc(100% + 6px);
+    }
+  }
+}
+
+.c-ourStoryCard__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(23 / $fz-base * 1rem);
+  padding: calc(27 / $fz-base * 1rem);
+  background-color: $white;
+  border: 1px solid $primary;
+  box-shadow: 0 2px 5px rgba(135, 135, 135, 0.25);
+
+  @include mq(tab) {
+    gap: calc(45 / $fz-base * 1rem);
+    padding: calc(46 / $fz-base * 1rem) calc(40 / $fz-base * 1rem);
+  }
+}
+
+.c-ourStoryCard__year {
+  font-family: $font-family-our-story-card-year;
+  font-weight: 300;
+  font-size: calc(30 / $fz-base * 1rem);
+  line-height: 1;
+  letter-spacing: calc(140 / 1000 * 1em);
+  color: $primary;
+  align-self: flex-end;
+  order: -1;
+
+  @include mq(tab) {
+    font-size: calc(44 / $fz-base * 1rem);
+  }
+}
+
+.c-ourStoryCard__image {
+  width: 100%;
+  aspect-ratio: 613.64 / 384.87;
+  overflow: hidden;
+  margin: 0;
+  position: relative; // ::beforeの基準となる位置指定を追加
+
+  & img {
+    // デフォルトで表示状態
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.c-ourStoryCard__textWrapper {
+  width: 100%;
+  // デフォルトで表示状態
+  opacity: 1;
+}
+
+.c-ourStoryCard__text {
+  font-family: $font-family-our-story-card;
+  font-weight: 400;
+  font-size: calc(16 / $fz-base * 1rem);
+  line-height: calc(32 / 16);
+  text-align: center;
+}

@@ -1,0 +1,28 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-ourStoryTitle {
+  display: grid;
+  grid-template-columns: 1fr;
+  place-content: center;
+  width: calc(100 / $fz-base * 1rem);
+  aspect-ratio: 1 /1;
+  border-radius: 100%;
+  background-color: $secondary;
+  font-family: $font-family-en;
+  font-weight: 700;
+  font-size: calc(14 / $fz-base * 1rem);
+  line-height: calc(18 / 14);
+  letter-spacing: calc(200 / 1000 * 1rem);
+  color: $fc-white;
+  text-align: center;
+  margin: 0 auto;
+  padding: calc(14 / $fz-base * 1rem) calc(10 / $fz-base * 1rem) calc(10 / $fz-base * 1rem) calc(12 / $fz-base * 1rem);
+}
+
+.c-ourStoryTitle__numbering {
+  font-size: calc(20 / $fz-base * 1rem);
+  line-height: calc(24 / 20);
+  letter-spacing: calc(200 / 1000 * 1rem);
+  font-weight: 400;
+}

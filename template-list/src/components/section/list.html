@@ -1,0 +1,79 @@
+<section class="p-list-section">
+  <h2 class="p-list-section__title">選べるデザインテンプレート</h2>
+  <div class="p-list-section__container">
+    <!-- 
+      splideを使ってスライダーを作成
+      要素：画像、タイトル、説明文、テンプレートへのリンクボタン
+      aタグ（リンク）は画像とタイトル、ボタンにそれぞれつける。コンテンツのテキストにはつけない
+    -->
+    <div class="p-list splide">
+      <div class="p-list__container splide__track">
+        <ul class="splide__list">
+          <li class="p-list__item splide__slide">
+            {{> ui/templateListCard
+              imgSrc="/assets/images/figure-template-design01.png"
+              imgSrcSp="/assets/images/figure-template-design01-sp.png"
+              title="<span class=p-list__itemNumber>01</span>｜モダン・ミニマル"
+              description="シンプルで洗練されたデザイン<br class=u-onlyPc>無駄のないレイアウトで情報を整理し<br class=u-onlyPc>ユーザビリティを重視したテンプレート"
+              link="/templates/design01/index.html"
+            }}
+          </li>
+          <li class="p-list__item splide__slide">
+            {{> ui/templateListCard
+              imgSrc="/assets/images/figure-template-design02.png"
+              imgSrcSp="/assets/images/figure-template-design02-sp.png"
+              title="<span class=p-list__itemNumber>02</span>｜コーポレート・スタンダード"
+              description="信頼感のあるビジネス向けデザイン<br class=u-onlyPc>企業サイトに最適な構成で<br class=u-onlyPc>プロフェッショナルな印象を演出"
+              link="/templates/design02/index.html"
+            }}
+          </li>
+          <li class="p-list__item splide__slide">
+            {{> ui/templateListCard
+              imgSrc="/assets/images/figure-template-design03.png"
+              imgSrcSp="/assets/images/figure-template-design03-sp.png"
+              title="<span class=p-list__itemNumber>03</span>｜クリエイティブ・ポートフォリオ"
+              description="個性的でアーティスティックなデザイン<br class=u-onlyPc>作品やサービスを魅力的に見せる<br class=u-onlyPc>クリエイター向けのテンプレート"
+              link="/templates/design03/index.html"
+            }}
+          </li>
+          <li class="p-list__item splide__slide">
+            {{> ui/templateListCard
+              imgSrc="/assets/images/figure-template-design04.png"
+              imgSrcSp="/assets/images/figure-template-design04-sp.png"
+              title="<span class=p-list__itemNumber>04</span>｜カジュアル・フレンドリー"
+              description="親しみやすく温かみのあるデザイン<br class=u-onlyPc>カフェやサロンなどのサービス業に<br class=u-onlyPc>最適な居心地の良い印象を与える"
+              link="/templates/design04/index.html"
+            }}
+          </li>
+          <li class="p-list__item splide__slide">
+            {{> ui/templateListCard
+              imgSrc="/assets/images/figure-template-design05.png"
+              imgSrcSp="/assets/images/figure-template-design05-sp.png"
+              title="<span class=p-list__itemNumber>05</span>｜エレガント・ラグジュアリー"
+              description="高級感と上質さを表現したデザイン<br class=u-onlyPc>ブランドや高級サービスに適した<br class=u-onlyPc>洗練された美しいレイアウト"
+              link="/templates/design05/index.html"
+            }}
+          </li>
+          <li class="p-list__item splide__slide">
+            {{> ui/templateListCard
+              imgSrc="/assets/images/figure-template-design06.png"
+              imgSrcSp="/assets/images/figure-template-design06-sp.png"
+              title="<span class=p-list__itemNumber>06</span>｜テック・イノベーション"
+              description="先進的でテクノロジー感のあるデザイン<br class=u-onlyPc>IT企業やスタートアップに最適な<br class=u-onlyPc>未来的で革新的な印象を演出"
+              link="/templates/design06/index.html"
+            }}
+          </li>
+          <li class="p-list__item splide__slide">
+            {{> ui/templateListCard
+              imgSrc="/assets/images/figure-template-design07.png"
+              imgSrcSp="/assets/images/figure-template-design07-sp.png"
+              title="<span class=p-list__itemNumber>07</span>｜ナチュラル・オーガニック"
+              description="自然と調和したやわらかなデザイン<br class=u-onlyPc>オーガニック商品や健康サービスに<br class=u-onlyPc>ぴったりの温もりあるテンプレート"
+              link="/templates/design07/index.html"
+            }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

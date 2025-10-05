@@ -1,0 +1,136 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-ourStoryCard {
+  overflow: hidden;
+  background-color: $white;
+  
+  // 背景画像の設定
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  // フィルター用の疑似要素を追加
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(74.99deg, rgba(144, 158, 126, 0.5) -0.08%, rgba(159, 178, 136, 0) 92.67%),
+    #D9D9D9;
+    mix-blend-mode: multiply;
+    pointer-events: none; // クリックイベントを透過
+    z-index: 1; // 背景画像の上、コンテンツの下に表示
+  }
+  
+  // SP時（デフォルト）は親コンテナ内で絶対配置
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(100svh - 5em);
+  opacity: 1; // まず表示状態にしてJSで制御
+  visibility: visible;
+
+  // PC時は通常の配置
+  @include mq(tab) {
+    position: relative;
+    width: calc(480 / $fz-base * 1rem);
+    height: calc(796 / $fz-base * 1rem);
+    opacity: 1;
+    top: auto;
+    left: auto;
+    flex-shrink: 0;
+  }
+
+  & + .c-ourStoryCard {
+    margin-top: 0; // SP時はmargin-top削除
+    
+    @include mq(tab) {
+      margin-top: 0; 
+    }
+  }
+}
+
+.c-ourStoryCard__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(20 / $fz-base * 1rem) calc(16.34 / $fz-base * 1rem);
+  position: relative;
+  z-index: 2; // フィルターより前面に表示
+  height: 100%;
+  
+  // SP時は中央配置
+  @include mq(sp) {
+    justify-content: center;
+  }
+}
+
+.c-ourStoryCard__year {
+  font-family: $font-family-en;
+  font-weight: 400;
+  font-size: calc(27 / $fz-base * 1rem);
+  line-height: calc(63 / 80);
+  color: $white;
+  z-index: 10;
+
+  @include mq(tab) {
+    font-family: $font-family-ja;
+    font-weight: 400;
+    font-size: calc(16 / $fz-base * 1rem);
+    line-height: 1;
+  }
+}
+
+.c-ourStoryCard__textWrapper {
+  width: 100%;
+  color: $fc-white;
+  padding: 0 calc(3.66 / $fz-base * 1rem);
+  text-align: center;
+  // デフォルトで表示状態
+  opacity: 1;
+  margin-top: auto; // テキストを下部に配置
+  
+  // flexレイアウトでテキストと矢印を縦に配置
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(12 / $fz-base * 1rem);
+  
+  // SP時はより大きなpadding
+  @include mq(sp) {
+    padding: calc(20 / $fz-base * 1rem);
+    margin: 0 calc(20 / $fz-base * 1rem);
+    margin-top: auto;
+    border-radius: calc(8 / $fz-base * 1rem);
+  }
+}
+
+.c-ourStoryCard__text {
+  font-family: $font-family-ja;
+  font-weight: 300;
+  font-size: calc(16 / $fz-base * 1rem);
+  line-height: 2.1;
+  
+  @include mq(tab) {
+    font-weight: 500;
+  }
+}
+
+.c-ourStoryCard__arrow {
+  width: calc(27 / $fz-base * 1rem);
+  height: calc(27 / $fz-base * 1rem);
+  
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @include mq(tab) {
+    display: none;
+  }
+
+}

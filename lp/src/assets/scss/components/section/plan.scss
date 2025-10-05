@@ -1,0 +1,511 @@
+@use '../../global/variables' as *;
+
+$bg-tbody-th: #EEF8FF;
+$bg-tbody-tr-even: #F6FBFE;
+$border-tbody-th: #D1E0EB;
+$border-plan-standard: #F995A3;
+$table-plan-standard-color: #F995A3;
+$table-plan-light-color: #6BD2CF;
+
+.p-plan {
+  position: relative;
+  background-color: $bg-plan;
+  margin-top: calc(108 / $fz-base * 1rem);
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: calc(115 / $fz-base * 1rem);
+    background-image: url('/assets/images/decoration-recommend-area-before.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -8px 0;
+    position: absolute;
+    top: calc(-58 / $fz-base * 1rem);
+    left: 0;
+    z-index: -1;
+  }
+}
+
+.p-planManagement {
+  background-color: $bg-plan;
+}
+
+.p-plan__container {
+  padding: 0 calc(20 / $fz-base * 1rem);
+}
+
+.p-plan__heading {
+  font-family: $font-family-ja;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(24 / 20);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  text-align: center;
+}
+
+.p-plan__tableWrap {
+  margin-top: calc(54 / $fz-base * 1rem);
+  position: relative;
+  max-width: calc(390 / $fz-base * 1rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p-plan__tableRecommend {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-family: $font-family-ja;
+  font-size: calc(18 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(20 / 18);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $alert;
+  width: calc(142 / $fz-base * 1rem);
+  text-align: center;
+  position: absolute;
+  top: calc(-23 / $fz-base * 1rem);
+  left: calc(67 / $fz-base * 1rem);
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: calc(15.72 / $fz-base * 1rem);
+    height: calc(17 / $fz-base * 1rem);
+    background-image: url('/assets/images/decoration-recommend-text-before.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: calc(2 / $fz-base * 1rem);
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: calc(15.72 / $fz-base * 1rem);
+    height: calc(17 / $fz-base * 1rem);
+    background-image: url('/assets/images/decoration-recommend-text-after.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: calc(2 / $fz-base * 1rem);
+  }
+}
+
+.p-plan__table {
+  text-align: center;
+  border-collapse: separate;
+}
+
+.p-plan__tableHead {
+  & .p-plan__tableHeaderCell {
+    font-family: $font-family-ja;
+    font-size: calc(16 / $fz-base * 1rem);
+    font-weight: 700;
+    line-height: calc(20 / 16);
+    letter-spacing: calc(25 / 1000 * 1rem);
+    color: $white;
+    border-top-right-radius: calc(10 / $fz-base * 1rem);
+    border-top-left-radius: calc(10 / $fz-base * 1rem);
+
+    &--standard {
+      background-color: $table-plan-standard-color;
+    }
+    &--light {
+      background-color: $table-plan-light-color;
+    }
+  }
+}
+
+.p-plan__tableBody {
+  & .p-plan__tableHeaderCell {
+    width: calc(67 / $fz-base * 1rem);
+    background-color: $bg-tbody-th;
+    border-top: 1px solid $border-tbody-th;
+    border-left: 2px solid $border-tbody-th;
+    border-right: 2px solid $border-tbody-th;
+    border-bottom: 1px solid $border-tbody-th;
+
+    font-family: $font-family-ja;
+    font-size: calc(12 / $fz-base * 1rem);
+    font-weight: 700;
+    line-height: calc(20 / 12);
+    letter-spacing: calc(25 / 1000 * 1rem);
+  }
+  
+  & .p-plan__tableRow {
+    & .p-plan__tableDataCell:first-of-type {
+      border-left: 3px solid $border-plan-standard;
+      border-right: 3px solid $border-plan-standard;
+    }
+
+    & .p-plan__tableDataCell:last-of-type {
+      border-right: 2px solid $border-tbody-th;
+      border-left: 2px solid $border-tbody-th;
+    }
+
+    &:last-of-type {
+      & .p-plan__tableDataCell:first-of-type {
+        border-bottom: 3px solid $border-plan-standard;
+      }
+
+      & .p-plan__tableDataCell:last-of-type {
+        border-bottom: 2px solid $border-tbody-th;
+      }
+    }
+  }
+  
+  & .p-plan__tableRow:first-of-type {
+    & .p-plan__tableHeaderCell {
+      border-top-left-radius: 10px;
+      border-top: 2px solid $border-tbody-th;
+    }
+  }
+
+  & .p-plan__tableRow:last-of-type {
+    & .p-plan__tableHeaderCell {
+      border-bottom-left-radius: 10px;
+      border-bottom: 2px solid $border-tbody-th;
+    }
+  }
+}
+
+.p-plan__tableRow {
+  height: calc(55 / $fz-base * 1rem);
+
+  &:nth-child(even) {
+    & .p-plan__tableDataCell {
+      background-color: $bg-tbody-tr-even;
+    }
+  }
+
+  &:last-of-type {
+    & .p-plan__tableDataCell:last-child {
+      border-bottom-right-radius: calc(10 / $fz-base * 1rem);
+    }
+  }
+}
+
+.p-plan__tableDataCell {
+  width: calc(142 / $fz-base * 1rem);
+  background-color: $white;
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: calc(25 / 1000 * 1rem);
+
+  &--price {
+    font-family: $font-family-en;
+    font-weight: 500;
+    font-size: calc(25 / $fz-base * 1rem);
+    line-height: calc(56 / 25);
+    letter-spacing: calc(25 / 1000 * 1rem);
+  }
+}
+
+.p-plan__tableIcon {
+  width: calc(20 / $fz-base * 1rem);
+}
+
+.p-plan__priceUnit {
+  font-family: $font-family-ja;
+  font-size: calc(15 / $fz-base * 1rem);
+  line-height: calc(31 / 15);
+  margin-left: calc(1 / $fz-base * 1rem);
+}
+
+.p-plan__priceTax {
+  font-family: $font-family-ja;
+  font-size: calc(10 / $fz-base * 1rem);
+  line-height: calc(20 / 10);
+  margin-left: calc(-4 / $fz-base * 1rem);
+}
+
+.p-plan__tableNote {
+  margin-top: calc(19 / $fz-base * 1rem);
+}
+
+.p-plan__tableNoteText {
+  font-family: $font-family-en;
+  font-weight: 400;
+  font-size: calc(12 / $fz-base * 1rem);
+  line-height: calc(17 / 12);
+  letter-spacing: calc(25 / 1000 * 1rem);
+}
+
+.p-plan__optionSection {
+  margin-top: calc(33 / $fz-base * 1rem);
+  max-width: calc(390 / $fz-base * 1rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p-plan__optionTerm {
+  text-align: center;
+  font-family: $font-family-ja;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(25 / 20);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $white;
+  background-color: #2F93D5;
+  padding: calc(14 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) calc(16 / $fz-base * 1rem);
+  border-top-right-radius: calc(10 / $fz-base * 1rem);
+  border-top-left-radius: calc(10 / $fz-base * 1rem);
+}
+
+.p-plan__optionDescription {
+  background-color: $white;
+  border-bottom-left-radius: calc(10 / $fz-base * 1rem);
+  border-bottom-right-radius: calc(10 / $fz-base * 1rem);
+}
+
+.p-plan__optionContent {
+  padding: calc(27 / $fz-base * 1rem) calc(12 / $fz-base * 1rem) calc(31 / $fz-base * 1rem);
+}
+
+.p-plan__optionItems {
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(40 / 14);
+  letter-spacing: calc(20 / 1000 * 1rem);
+  color: $base;
+}
+
+.p-plan__optionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.p-plan__optionItemDescription {
+  display: flex;
+  align-items: center;
+}
+
+.p-plan__optionPrice {
+  font-family: $font-family-en;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: calc(25 / 1000 * 1rem);
+}
+
+.p-plan__optionPriceUnit {
+  font-family: $font-family-ja;
+  font-weight: 700;
+  font-size: calc(12 / $fz-base * 1rem);
+  line-height: calc(31 / 12);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  margin-left: calc(1 / $fz-base * 1rem);
+}
+
+.p-plan__optionPriceTax {
+  font-family: $font-family-ja;
+  font-weight: 700;
+  font-size: calc(10 / $fz-base * 1rem);
+  line-height: calc(20 / 10);
+  margin-left: calc(-4 / $fz-base * 1rem);
+}
+
+.p-plan__optionNote {
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(25 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+}
+
+.p-plan__management {
+  padding-top: calc(32 / $fz-base * 1rem);
+  padding-bottom: calc(50 / $fz-base * 1rem);
+  background-color: $bg-plan;
+}
+
+.p-plan__managementContent {
+  margin-top: calc(21 / $fz-base * 1rem);
+  max-width: calc(390 / $fz-base * 1rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p-plan__managementTerm {
+  text-align: center;
+  font-family: $font-family-ja;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(25 / 20);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $white;
+  background-color: #B6D3E6;
+  padding: calc(14 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) calc(16 / $fz-base * 1rem);
+  border-top-right-radius: calc(10 / $fz-base * 1rem);
+  border-top-left-radius: calc(10 / $fz-base * 1rem);
+}
+
+.p-plan__managementDescription {
+  background-color: $white;
+  padding: calc(15 / $fz-base * 1rem) calc(15 / $fz-base * 1rem) calc(32 / $fz-base * 1rem);
+}
+
+.p-plan__managementText {
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(20 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+
+  &--accent {
+    color: $alert;
+    font-weight: 700;
+  }
+}
+
+.p-plan__managementButton {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(20 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+  margin: calc(30 / $fz-base * 1rem) auto 0;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: calc(10 / $fz-base * 1rem);
+    height: calc(5.72 / $fz-base * 1rem);
+    background-image: url('/assets/images/icon-arrow-down.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: calc(6.9 / $fz-base * 1rem);
+    transition: transform 0.3s ease;
+  }
+
+  &[aria-hidden='true'] {
+    display: none;
+  }
+
+  &[aria-expanded='true'] {
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.p-plan__managementDetail {
+  &[aria-expanded='false'] {
+    display: none;
+  }
+
+  &[aria-expanded='true'] {
+    display: block;
+  }
+}
+
+.p-plan__managementDetailTerm {
+  display: block;
+  width: fit-content;
+  margin: calc(20 / $fz-base * 1rem) auto 0;
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(20 / 16);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+  padding: calc(7 / $fz-base * 1rem) calc(16 / $fz-base * 1rem) calc(6 / $fz-base * 1rem);
+  background-color: #F4F4F4;
+  border-radius: calc(16 / $fz-base * 1rem);
+}
+
+.p-plan__managementDetailDescription {
+  margin-top: calc(15 / $fz-base * 1rem);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.p-plan__managementPrice {
+  font-family: $font-family-en;
+  font-size: calc(40 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: calc(56 / 40);
+  letter-spacing: calc(25 / 1000 * 1rem);
+}
+
+.p-plan__managementPriceUnit {
+  font-family: $font-family-ja;
+  font-weight: 700;
+  font-size: calc(22 / $fz-base * 1rem);
+  line-height: calc(31 / 22);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  margin-left: calc(2 / $fz-base * 1rem);
+}
+
+.p-plan__managementPriceTax {
+  font-family: $font-family-ja;
+  font-weight: 700;
+  font-size: calc(12 / $fz-base * 1rem);
+  line-height: calc(20 / 12);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  margin-left: calc(-4 / $fz-base * 1rem);
+}
+
+.p-plan__managementPriceSeparator {
+  font-family: $font-family-ja;
+  font-weight: 700;
+  font-size: calc(18 / $fz-base * 1rem);
+  line-height: calc(20 / 18);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  margin-left: calc(-2 / $fz-base * 1rem);
+}
+
+.p-plan__managementPricePeriod {
+  font-family: $font-family-ja;
+  font-weight: 700;
+  font-size: calc(12 / $fz-base * 1rem);
+  line-height: calc(20 / 12);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  margin-left: calc(3 / $fz-base * 1rem);
+  
+}
+
+.p-plan__managementDetailText {
+  width: 100%;
+  font-family: $font-family-ja;
+  font-weight: 500;
+  font-size: calc(12 / $fz-base * 1rem);
+  line-height: calc(20 / 12);
+  letter-spacing: calc(25 / 1000 * 1rem);
+}
+
+.p-plan__managementFigure {
+  margin-top: calc(22 / $fz-base * 1rem);
+  width: calc(290 / $fz-base * 1rem);
+}
+
+.p-plan__managementDetailNote {
+  margin-top: calc(22 / $fz-base * 1rem);
+}
+
+.p-plan__managementDetailNoteText {
+  font-family: $font-family-ja;
+  font-weight: 400;
+  font-size: calc(12 / $fz-base * 1rem);
+  line-height: calc(20 / 12);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  text-align: center;
+}

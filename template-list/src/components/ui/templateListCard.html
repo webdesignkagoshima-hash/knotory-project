@@ -1,0 +1,19 @@
+<article class="c-templateListCard">
+  <a href="{{link}}" class="c-templateListCard__imgLink">
+    <picture class="c-templateListCard__imgBox">
+      <source srcset="{{imgSrc}}" media="(min-width: 768px)" width="600" height="337">
+      <img src="{{imgSrcSp}}" alt="" width="220" height="350" class="c-templateListCard__img">
+    </picture>
+  </a>
+  <div class="c-templateListCard__body">
+    <a href="{{link}}" class="c-templateListCard__titleLink">
+      <h1 class="c-templateListCard__title">{{#html title}}{{/html}}</h1>
+    </a>
+    <p class="c-templateListCard__desc">
+      {{#html description}}{{/html}}
+    </p>
+    <a href="{{link}}" class="c-templateListCard__linkBtn">
+      このデザインを見る
+    </a>
+  </div>
+</article>

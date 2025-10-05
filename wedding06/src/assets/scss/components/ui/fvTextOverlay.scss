@@ -1,0 +1,53 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+// ==========================================================================
+// FV Text Overlay Component
+// ==========================================================================
+
+.c-fvTextOverlay {
+  position: absolute;
+  top: calc(-60 / $fz-base * 1rem);
+  left: calc(10 / $fz-base * 1rem);
+  width: calc(297.83 / $fz-base * 1rem);
+  height: calc(148.62 / $fz-base * 1rem);
+  z-index: 1;
+  
+  @include mq(tab) {
+    top: calc(-3 / $fz-base * 1rem);
+    left: calc(31 / $fz-base * 1rem);
+    width: calc(466.93 / $fz-base * 1rem);
+    height: calc(227.96 / $fz-base * 1rem);
+  }
+
+  &__svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  &__svg .mask-path {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 12;
+    stroke-dasharray: var(--path-length);
+    stroke-dashoffset: var(--path-length);
+  }
+
+  &__svg .mask0 {
+    --path-length: 3590;
+  }
+
+  &__svg .filtered-text {
+    --shadow-x: 0;
+    --shadow-y: 0;
+    --shadow-blur: 0;
+    --shadow-opacity: 0;
+    filter: drop-shadow(
+      calc(var(--shadow-x) * 1px) 
+      calc(var(--shadow-y) * 1px) 
+      calc(var(--shadow-blur) * 1px) 
+      rgba(238, 238, 238, var(--shadow-opacity))
+    );
+  }
+}

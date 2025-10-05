@@ -1,0 +1,34 @@
+@use './global/normalize';
+@use './global/variables' as *;
+@use './global/mixin' as *;
+@use './global/common';
+@use './global/utility';
+@use './global/animation';
+@use './global/layout';
+
+// splide
+@use '@splidejs/splide/dist/css/splide.min.css';
+
+// components
+@use './components/ui/button';
+@use './components/ui/buttonLine';
+@use './components/ui/buttonLineSmall';
+@use './components/ui/buttonCTA';
+@use './components/ui/floatingCTA';
+@use './components/ui/campaignDescription';
+@use './components/ui/floatingScroll';
+
+// sections
+@use './components/section/header';
+@use './components/section/footer';
+@use './components/section/fv';
+@use './components/section/cta';
+@use './components/section/campaign';
+@use './components/section/worries';
+@use './components/section/recommend';
+@use './components/section/example';
+@use './components/section/plan';
+@use './components/section/flow';
+@use './components/section/reviews';
+@use './components/section/faq';
+@use './components/section/contact';

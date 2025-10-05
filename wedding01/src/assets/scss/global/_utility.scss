@@ -1,0 +1,41 @@
+@use './mixin' as *;
+@use './variables' as *;
+
+.u-onlyPc {
+  display: none;
+  
+  @include mq(tab) {
+    .u-onlyPc {
+      display: block;
+    }
+  }
+}
+
+.u-onlySp {
+  display: block;
+  
+  @include mq(tab) {
+    .u-onlySp {
+      display: none;
+    }
+  }
+}
+
+.u-visuallyHidden {
+  position: fixed !important;
+  inset: 0 !important;
+  contain: strict !important;
+  visibility: initial !important;
+  inline-size: 4px !important;
+  block-size: 4px !important;
+  margin: unset !important;
+  padding: unset !important;
+  border: unset !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.u-fontFamilyEn {
+  font-family: $font-family-en;
+  font-weight: 300;
+}

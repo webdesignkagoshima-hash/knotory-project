@@ -1,0 +1,66 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-ourStoryTitle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: $font-family-en;
+  font-weight: 400;
+  font-size: calc(24 / $fz-base * 1rem);
+  line-height: calc(48 / 42);
+  letter-spacing: 0.18em;
+  text-transform: capitalize;
+  color: $fc-sub;
+  text-align: center;
+  height: calc(80 / $fz-base * 1rem);
+  z-index: 2; // カードより前面に表示
+  margin-bottom: calc(-40 / $fz-base * 1rem); // 下のマージンを調整してレイアウトの崩れを防ぐ
+  visibility: visible;
+
+  @include mq(tab) {
+    text-align: left;
+    height: calc(100 / $fz-base * 1rem);
+    transform: translateY(25%);
+    margin-bottom: calc(-50 / $fz-base * 1rem);
+  }
+}
+
+// SVG背景
+.c-ourStoryTitle__background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(280 / $fz-base * 1rem);
+  height: calc(120 / $fz-base * 1rem);
+  z-index: -1;
+  
+  @include mq(tab) {
+    width: calc(320 / $fz-base * 1rem);
+    height: calc(140 / $fz-base * 1rem);
+  }
+
+}
+
+// テキスト部分
+.c-ourStoryTitle__text {
+  position: relative;
+  z-index: 1;
+  color: $white; // SVG背景の青色に対して白文字
+}
+
+// 連番表示
+.c-ourStoryTitle__numbering {
+  position: relative;
+  z-index: 1;
+  color: $white;
+}
+
+.js {
+  .c-ourStoryTitle {
+    opacity: 0;
+  }
+}

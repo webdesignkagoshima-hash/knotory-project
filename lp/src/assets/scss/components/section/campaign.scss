@@ -1,0 +1,185 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-campaign {
+  width: 100%;
+  aspect-ratio: 390 / 260;
+  background-image: url('/assets/images/bg-campaign.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  border-top: 1px solid transparent;
+  top: -2px;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: calc(2 / $fz-base * 1rem);
+    background-color: $bg-campaign;
+    position: absolute;
+    bottom: calc(-2 / $fz-base * 1rem);
+  }
+}
+
+.p-campaign__deadline {
+  position: absolute;
+  top: 0;
+  right: calc(34 / $fz-base * 1rem);
+}
+
+.p-campaign__deadlineList {
+  background-image: url('/assets/images/bg-rebon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: calc(69 / $fz-base * 1rem);
+  height: calc(82 / $fz-base * 1rem);
+}
+
+.p-campaign__deadlineTitle {
+  font-size: calc(11 / $fz-base * 1rem);
+  font-weight: 600;
+  line-height: calc(15 / 11);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: $white;
+  text-align: center;
+  padding-top: calc(7 / $fz-base * 1rem);
+  padding-bottom: calc(1 / $fz-base * 1rem);
+  border-bottom: 1px solid $white;
+  width: calc(50 / $fz-base * 1rem);
+  margin: 0 auto;
+}
+
+.p-campaign__deadlineContent {
+  text-align: center;
+  color: $white;
+  margin-top: calc(5 / $fz-base * 1rem);
+  font-size: calc(10 / $fz-base * 1rem);
+  line-height: 1;
+}
+
+.p-campaign__deadlineDate {
+  display: block;
+  font-size: calc(18 / $fz-base * 1rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: calc(25 / 1000 * 1rem);
+  margin-bottom: calc(3 / $fz-base * 1rem);
+}
+
+.p-campaign__inner {
+  position: absolute;
+  top: calc(134 / $fz-base * 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  background-color: rgba($color: #fff, $alpha: 0.88);
+  border-radius: calc(10 / $fz-base * 1rem);
+  padding: calc(8 / $fz-base * 1rem) calc(16.5 / $fz-base * 1rem) calc(3 / $fz-base * 1rem) calc(19 / $fz-base * 1rem);
+}
+
+.p-campaign__title {
+  font-family: $font-family-ja;
+  font-weight: 700;
+  font-size: calc(20 / $fz-base * 1rem);
+  line-height: calc(24 / 20);
+  text-align: center;
+  color: $alert;
+}
+
+.p-campaign__container {
+  display: grid;
+  grid-template-columns: auto calc((7.5 + 6.35 + 9.6) * 1px) auto;
+  align-items: end;
+  margin-top: calc(4 / $fz-base * 1rem);
+}
+
+.p-campaign__text {
+  font-family: $font-family-ja;
+  font-weight: 400;
+  font-size: calc(14 / $fz-base * 1rem);
+  line-height: calc(23 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: calc(8 / $fz-base * 1rem);
+}
+
+.p-campaign__textPrice {
+  font-size: calc(20 / $fz-base * 1rem);
+  line-height: calc(25 / 20);
+  margin-left: calc(4 / $fz-base * 1rem);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2.62px;
+    transform: translateY(-50%);
+    border-top: 1px solid #707070;
+    border-bottom: 1px solid #707070;
+  }
+}
+
+.p-campaign__arrow {
+  display: block;
+  width: calc(6.35 / $fz-base * 1rem);
+  height: calc(12.7 / $fz-base * 1rem);
+  margin-bottom: calc(20.6 / $fz-base * 1rem);
+  margin-left: calc(7.5 / $fz-base * 1rem);
+  margin-right: calc(9.6 / $fz-base * 1rem);
+}
+
+.p-campaign__text--highlight {
+  display: grid;
+  grid-template-columns: calc(84 / $fz-base * 1rem) auto;
+  grid-template-rows: auto auto;
+  column-gap: calc(3 / $fz-base * 1rem);
+}
+
+.p-campaign__highlightText {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  font-size: calc(12 / $fz-base * 1rem);
+  font-weight: 700;
+  color: $sub;
+}
+
+.p-campaign__highlightLabel {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  color: $white;
+  background-color: $sub;
+  width: 100%;
+  font-family: $font-family-ja;
+  font-size: calc(13 / $fz-base * 1rem);
+  line-height: 1;
+  font-weight: 400;
+  padding: calc(4 / $fz-base * 1rem) 0 calc(3 / $fz-base * 1rem);
+  border-radius: calc(2 / $fz-base * 1rem);
+  margin-bottom: calc(10 / $fz-base * 1rem);
+}
+
+.p-campaign__highlightPrice {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  display: inline-flex;
+  align-items: center;
+  font-size: calc(50 / $fz-base * 1rem);
+  font-weight: 600;
+  height: calc(50 / $fz-base * 1rem);
+  
+  &Unit {
+    font-size: calc(34 / $fz-base * 1rem);
+    font-weight: 500;
+  }
+}

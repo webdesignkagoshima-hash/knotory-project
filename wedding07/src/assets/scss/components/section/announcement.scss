@@ -1,0 +1,78 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-announcement {
+  overflow: hidden;
+  background-color: $white;
+  
+  @include mq(tab) {
+    background-color: $white;
+  }
+}
+
+.p-announcement__container {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: calc(186 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) 0;
+  position: relative;
+  
+  @include mq(tab) {
+    max-width: calc(1050 / $fz-base * 1rem);
+    padding: calc(218 / $fz-base * 1rem) auto 0;
+  }
+
+  &::after {
+    content: none;
+    
+    @include mq(tab) {
+      content: '';
+      display: block;
+      position: absolute;
+      right: calc(-173 / $fz-base * 1rem);
+      bottom: calc(-296 / $fz-base * 1rem);
+      width: calc(636 / $fz-base * 1rem);
+      height: calc(656 / $fz-base * 1rem);
+      background-image: url('/assets/images/bg-gold-powder-announcement-pc.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+
+  }
+}
+
+.p-announcement__content {
+  margin-top: calc(40 / $fz-base * 1rem);
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 300;
+  line-height: calc(28 / 14);
+  letter-spacing: 0.07em;
+  
+  @include mq(tab) {
+    font-size: calc(17 / $fz-base * 1rem);
+    font-weight: 500;
+    line-height: calc(32 / 17);
+    letter-spacing: 0;
+    margin-top: calc(61 / $fz-base * 1rem);
+  }
+}
+
+.p-announcement__ringWrapper {
+  margin-top: calc(68 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    margin-top: calc(209 / $fz-base * 1rem);
+  }
+}
+
+.js {
+  & .p-announcement__content {
+    opacity: 0;
+  }
+
+  & .p-announcement__ringWrapper {
+    opacity: 0;
+  }
+}

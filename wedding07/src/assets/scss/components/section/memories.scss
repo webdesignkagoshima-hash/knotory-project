@@ -1,0 +1,283 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-memories {
+  background-color: $bg-memories;
+  padding-top: calc(64 / $fz-base * 1rem);
+  padding-bottom: calc(100 / $fz-base * 1rem);
+  margin-top: calc(200 / $viewport-weight-sp * 100svw); // 上部背景画像の高さ分だけ余白を確保
+  position: relative; // 追加: 疑似要素の基準位置として
+
+  @include mq(tab) {
+    padding-top: unset;
+    padding-bottom: calc(100 / $fz-base * 1rem);
+    margin-top: calc(200 / $viewport-weight-pc * 100svw); // 上部背景画像の高さ分だけ余白を確保
+  }
+
+  // 上部の背景画像
+  &::before {
+    content: '';
+    position: absolute;
+    top: calc(-200 / $viewport-weight-sp * 100svw);
+    left: 0;
+    width: 100%;
+    height: calc(200 / $viewport-weight-sp * 100svw); // 高さは調整してください
+    background-image: url('/assets/images/bg-memories-sp.png');
+    background-size: 100% auto;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-color: $bg-q-a-with-us;
+    z-index: 1;
+    
+    @include mq(tab) {
+      top: calc(-200 / $viewport-weight-pc * 100svw);
+      height: calc(200 / $viewport-weight-pc * 100svw); // 高さは調整してください
+      background-image: url('/assets/images/bg-memories.png');
+    }
+  }
+
+  // 下部の背景画像
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: calc(-100 / $fz-base * 1rem);
+    left: 0;
+    width: 100%;
+    height: calc(100 / $fz-base * 1rem); // 高さは調整してください
+    background-image: url('/assets/images/bg-memories-2-sp.png');
+    background-size: 100% auto;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    z-index: 1;
+    
+    @include mq(tab) {
+      bottom: calc(-142 / $fz-base * 1rem);
+      height: calc(142 / $fz-base * 1rem); // 高さは調整してください
+      background-image: url('/assets/images/bg-memories-2.png');
+    }
+  }
+
+  &__container {
+    padding: 0 calc(20 / $fz-base * 1rem);
+
+    @include mq(tab) {
+      max-width: calc(1050 / $fz-base * 1rem);
+      margin: 0 auto;
+      padding: 0;
+    }
+  }
+
+  &__content {
+    margin-top: calc(36 / $fz-base * 1rem);
+
+    @include mq(tab) {
+      margin-top: calc(41 / $fz-base * 1rem);
+    }
+  }
+
+  &__slideCaption {
+    font-family: $font-family-ja;
+    font-size: calc(14 / $fz-base * 1rem);
+    line-height: calc(25 / 14);
+    letter-spacing: calc(50 / 1000 * 1rem);
+    color: $base;
+    text-align: center;
+    margin: calc(12 / $fz-base * 1rem) auto 0;
+    display: grid;
+    grid-template-columns: calc(52 / $fz-base * 1rem) 1fr calc(52 / $fz-base * 1rem);
+    gap: calc(16 / $fz-base * 1rem);
+    align-items: center;
+    width: fit-content;
+    
+    @include mq(tab) {
+      font-size: calc(20 / $fz-base * 1rem);
+      line-height: calc(36 / 20);
+      margin-top: calc(24 / $fz-base * 1rem);
+    }
+
+    // 左側の横線
+    &::before {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: $base;
+    }
+
+    // 右側の横線
+    &::after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: $base;
+    }
+  }
+
+  // 追加: figureのスタイルも確認
+  &__slideFigure {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+  
+  &__slideImage {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 964 / 600;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  & .splide__slide {
+    &.is-active {
+      & .p-memories__slideImage {
+        position: relative;
+        z-index: 10;
+      }
+    }
+
+    &:not(.is-active) {
+      & .p-memories__slideFigure {
+        @include mq(tab) {
+          scale: 0.8;
+        }
+      }
+
+      & .p-memories__slideCaption {
+        opacity: 0;
+      }
+    }
+  }
+  
+  & .splide {
+    padding: 0;
+  }
+
+  & .splide__list {
+    width: 100%;
+  }
+
+  & .splide__arrow {
+    background-color: transparent;
+    opacity: 1;
+    width: calc(50 / $fz-base * 1rem);
+    height: calc(50 / $fz-base * 1rem);
+    border: 2px solid $white;
+    
+    & svg {
+      fill: $white;
+      width: calc(50 / $fz-base * 1rem);
+      height: calc(50 / $fz-base * 1rem);
+    }
+  }
+
+  & .splide__pagination {
+    bottom: 1em;
+  }
+
+  & .splide__pagination__page {
+    background-color: #b5b5b5;
+    opacity: 1;
+  
+    &.is-active {
+      background-color: #a88807;
+      transform: scale(1);
+    }
+  }
+
+  &__video {
+    margin-top: calc(60 / $fz-base * 1rem);
+
+    @include mq(tab) {
+      margin-top: calc(138 / $fz-base * 1rem);
+    }
+  }
+
+  &__videoWrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: $sub;
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.7; // デフォルト状態では透過
+      transition: opacity 0.3s ease;
+    }
+
+    // 動画再生中は不透明に
+    &.is-playing video {
+      opacity: 1;
+    }
+  }
+
+  &__playButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      svg {
+        transform: scale(1.1);
+      }
+    }
+
+    svg {
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
+      transition: transform 0.3s ease;
+      pointer-events: none; // SVG自体のクリックイベントを無効化
+    }
+
+    // 動画再生中は非表示
+    &.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    // トランジション中のスタイル
+    &.is-transitioning {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+
+  &__videoCaption {
+    display: none;
+    
+    @include mq(tab) {
+      display: inherit;
+      font-family: $font-family-ja;
+      font-weight: 500;
+      font-size: calc(20 / $fz-base * 1rem);
+      line-height: calc(36 / 20);
+      color: $base;
+      text-align: center;
+      margin-top: calc(32 / $fz-base * 1rem);
+    }
+  }
+}
+
+.js {
+  & .p-memories__slider.js-fadeIn {
+    opacity: 0;
+  }
+
+  & .p-memories__video.js-fadeIn {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,276 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+// ヘッダー全体のスタイル
+.l-header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent; // 背景を透過に変更
+  z-index: 1000;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; // 右寄せに変更
+    padding: calc(27 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) calc(26.5 / $fz-base * 1rem);
+    margin: 0 auto;
+
+    @include mq(tab) {
+      padding: calc(24 / $fz-base * 1rem) calc(29 / $fz-base * 1rem) calc(23 / $fz-base * 1rem);
+    }
+  }
+}
+
+// PC版デスクトップナビゲーション
+.p-desktop-nav {
+  display: none; // SP版では非表示
+
+  @include mq(tab) {
+    display: block; // PC版では表示
+    margin-left: auto; // 右寄せ
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; // メニュー項目を右寄せ
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: calc(40 / $fz-base * 1rem);
+  }
+
+  &__item {
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    font-family: $font-family-en;
+    font-size: calc(20 / $fz-base * 1rem);
+    font-weight: 400;
+    line-height: calc(23 / 20);
+    text-transform: capitalize;
+    color: $base;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+      color: #d4a574;
+    }
+  }
+}
+
+// ハンバーガーメニューボタン
+.p-hamburger {
+  position: relative;
+  width: 44px; // 線の長さと同じ
+  height: 20.5px; // 3本の線 + 間隔を考慮
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  transition: all 0.3s ease;
+
+  @include mq(tab) {
+    display: none; // PC版では非表示
+  }
+
+  &__line {
+    position: absolute;
+    left: 0;
+    width: 44px; // 線の長さを44pxに設定
+    height: 2px;
+    background-color: $secondary;
+    border-radius: 1px; // 線の太さ2pxに合わせて調整
+    transition: all 0.3s ease;
+    transform-origin: center;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 9.25px; // 中央に配置（計算値：2px + 7.25px）
+    }
+
+    &:nth-child(3) {
+      top: 18.5px; // 下部に配置（計算値：20.5px - 2px）
+    }
+  }
+
+  // メニューが開いている時のアニメーション
+  &.is-active {
+    .p-hamburger__line {
+      &:nth-child(1) {
+        top: 9.25px; // 中央に移動（計算値：(20.5px - 2px) ÷ 2）
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0; // 中央の線を非表示
+      }
+
+      &:nth-child(3) {
+        top: 9.25px; // 中央に移動（計算値：(20.5px - 2px) ÷ 2）
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+// グローバルナビゲーション（スマホ版）
+.p-global-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100svh;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+
+  @include mq(tab) {
+    display: none; // PC版では非表示
+  }
+
+  &.is-open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__overlay {
+    display: none; // オーバーレイは不要
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    padding-top: calc(113 / $fz-base * 1rem); // タイトルの高さを考慮
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: calc(372.86 / $fz-base * 1rem);
+      height: calc(174.06 / $fz-base * 1rem);
+      background-image: url('/assets/images/text-marriage-report.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      z-index: -1;
+    }
+  }
+
+  &.is-open &__content {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &__menu {
+    width: 100%;
+    max-width: 600px;
+    padding: 0 calc(20 / $fz-base * 1rem);
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: calc(30 / $fz-base * 1rem) 1fr;
+    align-items: center;
+    gap: calc(10 / $fz-base * 1rem);
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(.25,.25,.75,.75);
+    padding-bottom: calc(35 / $fz-base * 1rem);
+    counter-increment: nav-counter;
+
+    &::before {
+      content: counter(nav-counter, decimal-leading-zero) ".";
+      font-family: $font-family-en;
+      font-size: calc(25 / $fz-base * 1rem);
+      line-height: calc(29 / 25);
+      font-weight: 400;
+      color: $sub;
+    }
+
+    &:last-child {
+      padding-bottom: calc(113 / $fz-base * 1rem);
+    }
+
+    // 各アイテムのアニメーション遅延
+    &:nth-child(1) {
+      transition-delay: 0.15s;
+    }
+
+    &:nth-child(2) {
+      transition-delay: 0.3s;
+    }
+
+    &:nth-child(3) {
+      transition-delay: 0.45s;
+    }
+
+    &:nth-child(4) {
+      transition-delay: 0.6s;
+    }
+
+    &:nth-child(5) {
+      transition-delay: 0.75s;
+    }
+
+    &:nth-child(6) {
+      transition-delay: 0.9s;
+    }
+  }
+
+  &__title {
+    font-family: $font-family-heading;
+    font-size: calc(14 / $fz-base * 1rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.07em;
+    color: $sub;
+  }
+
+  &__subTitle {
+    font-family: $font-family-en;
+    font-size: calc(34 / $fz-base * 1rem);
+    font-weight: 400;
+    line-height: calc(39 / 34);
+    text-transform: capitalize;
+    color: $base;
+  }
+
+  &.is-open &__item {
+    opacity: 1;
+  }
+}
+
+// ナビゲーションリンク（グローバルスコープ）
+.global-nav__link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: start;
+  gap: calc(5 / $fz-base * 1rem);
+
+  &:hover {
+    color: #d4a574;
+  }
+}

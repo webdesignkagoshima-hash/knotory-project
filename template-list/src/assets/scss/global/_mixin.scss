@@ -1,0 +1,36 @@
+@use "sass:map";
+@use './variables' as *;
+
+// vw
+$pc: 1366;
+$tab: 768;
+$sp: 390;
+
+@function vw($px, $width: $sp) {
+  @return calc(100vw * $px / $width);
+}
+
+// breakpoint
+$breakpoint: (
+  tab: '768',
+  pc: '1200',
+);
+
+@mixin mq($size) {
+  @media screen and (min-width :#{map.get($breakpoint, $size)}px) {
+    @content;
+  }
+}
+
+// Container mixins
+@mixin container {
+  width: 100%;
+  padding: 0 calc($wd-content-padding-sp / $fz-base * 1rem);
+  
+  @include mq(tab) {
+    width: 85%;
+    max-width: $wd-content-max-pc;
+    margin: 0 auto;
+    padding: 0;
+  }
+}

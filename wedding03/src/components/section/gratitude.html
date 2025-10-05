@@ -1,0 +1,46 @@
+<!-- 
+# 更新マニュアル
+
+このファイルは、結婚式のウェブサイトの「心からのメッセージ」セクションを定義しています。
+このセクションでは、ゲストへの感謝のメッセージを表示しています。
+
+## 更新対象
+・感謝のメッセージ本文
+
+## 注意事項
+・改行は<br>タグを使用してください
+-->
+<section class="p-gratitude js-anime js-gratitude">
+  <div class="p-gratitude__container">
+    {{> ui/heading
+      heading="心からのメッセージ"
+      subHeading="Gratitude"
+      id="gratitude"
+    }}
+    <div class="p-gratitude__content">
+      <!-- 感謝のメッセージを入力してください（改行は<br>を記入してください） -->
+      <p class="p-gratitude__message">
+        本日はお忙しい中、<br>
+        私たちの門出にお立ち会いいただき、<br>
+        誠にありがとうございます。<br>
+        これまでの人生の中で、<br>
+        数えきれないほどの支えや励ましをいただき、<br>
+        今日という日を迎えることができました。<br>
+        <br>
+        どんな時も寄り添い、導いてくださったご家族、<br>
+        笑い合い、背中を押してくれた友人、<br>
+        ともに時間を過ごしてきたすべての方へ<br>
+        心より感謝申し上げます。<br>
+        <br>
+        これからは夫婦として、<br>
+        皆さまへの感謝を忘れず、<br>
+        日々を大切に歩んでまいります。<br>
+        今後とも温かく見守って<br>
+        いただけましたら幸いです。
+      </p>
+      <p class="p-gratitude__thankYou js-gratitude__thankYou">
+        <span class="p-gratitude__thankYouChar" style="--delay: 50ms">T</span><span class="p-gratitude__thankYouChar" style="--delay: 100ms">h</span><span class="p-gratitude__thankYouChar" style="--delay: 150ms">a</span><span class="p-gratitude__thankYouChar" style="--delay: 200ms">n</span><span class="p-gratitude__thankYouChar" style="--delay: 250ms">k</span><span class="p-gratitude__thankYouChar" style="--delay: 300ms">&nbsp;</span><span class="p-gratitude__thankYouChar" style="--delay: 350ms">y</span><span class="p-gratitude__thankYouChar" style="--delay: 400ms">o</span><span class="p-gratitude__thankYouChar" style="--delay: 450ms">u</span><span class="p-gratitude__thankYouChar" style="--delay: 500ms">！</span>
+      </p>
+    </div>
+  </div>
+</section>

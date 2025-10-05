@@ -1,0 +1,49 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-btnLine {
+  background-color: $LINE;
+  max-width: calc(282 / $fz-base * 1rem);
+  margin: calc(50 / $fz-base * 1rem) auto 0;
+  padding: calc(16 / $fz-base * 1rem) calc(16 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) calc(16 / $fz-base * 1rem);
+  
+  @include mq(tab) {
+    max-width: calc(579 / $fz-base * 1rem);
+    margin: calc(30 / $fz-base * 1rem) auto 0;
+    padding: calc(20 / $fz-base * 1rem) calc(40 / $fz-base * 1rem);
+  }
+}
+
+.c-btnLine__linkContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(9 / $fz-base * 1rem);
+  text-align-last: left;
+  
+  @include mq(tab) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(20 / $fz-base * 1rem);
+    align-items: center;
+  }
+}
+
+.c-btnLine__linkInner {
+  display: grid;
+  grid-template-columns: calc(40 / $fz-base * 1rem) 1fr;
+  align-items: center;
+  max-width: calc(229 / $fz-base * 1rem);
+  margin: 0 auto;
+}
+
+.c-btnLine__text {
+  font-family: $font-family-ja;
+  font-weight: 700;
+  font-size: calc(16 / $fz-base * 1rem);
+  line-height: calc(20 / 16);
+  letter-spacing: calc(150 / 1000 * 1rem);
+  color: $fc-white;
+}
+
+.c-btnLine__linkBtnWrapper {
+  padding: 0;
+}

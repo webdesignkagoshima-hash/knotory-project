@@ -1,0 +1,45 @@
+{
+  "index.html": {
+    "title": "Knotory（ノトリー）｜ふたりらしい結婚報告サイト",
+    "description": "プロのデザイナーが手がける、ふたりだけのオリジナル結婚報告Webサイト。QR付きはがきもセットで、大切な人へ丁寧にお届け",
+    "pageId": "home",
+    "navigation": [
+      {
+        "name": "announcement",
+        "href": "#announcement",
+        "id": "nav-announcement",
+        "subText": "ふたりからのご報告"
+      },
+      {
+        "name": "about us",
+        "href": "#about-us",
+        "id": "nav-about",
+        "subText": "私たちについて"
+      },
+      {
+        "name": "our story",
+        "href": "#our-story",
+        "id": "nav-story",
+        "subText": "ふたりの物語"
+      },
+      {
+        "name": "q&a with us",
+        "href": "#qa-with-us",
+        "id": "nav-qa",
+        "subText": "ふたりに聞いてみました"
+      },
+      {
+        "name": "memories",
+        "href": "#memories",
+        "id": "nav-memories",
+        "subText": "思い出のアルバム"
+      },
+      {
+        "name": "gratitude",
+        "href": "#gratitude",
+        "id": "nav-gratitude",
+        "subText": "心からのメッセージ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+dist/
+template-*.zip
+node_modules/
+.vscode/
+.github/
+.DS_Store
+*/.DS_Store

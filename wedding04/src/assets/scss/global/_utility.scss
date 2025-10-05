@@ -1,0 +1,47 @@
+@use './mixin' as *;
+@use './variables' as *;
+
+.u-onlyPc {
+  display: none;
+  
+  @include mq(tab) {
+    display: block;
+  }
+}
+
+.u-onlySp {
+  display: block;
+  
+  @include mq(tab) {
+    display: none;
+  }
+}
+
+.u-visuallyHidden {
+  position: fixed !important;
+  inset: 0 !important;
+  contain: strict !important;
+  visibility: initial !important;
+  inline-size: 4px !important;
+  block-size: 4px !important;
+  margin: unset !important;
+  padding: unset !important;
+  border: unset !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.u-fontFamilyEn {
+  font-family: $font-family-en;
+  font-weight: 300;
+}
+
+/* スクロールを無効化するクラス */
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+.u-bgGradient {
+background: radial-gradient(413.11% 50.97% at 57.44% 49.03%, #F5F7F9 0%, #F5F7F9 26.44%, #FFFFFF 58.51%, #F0F5F7 87.79%, #EDF2F5 98.56%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+}

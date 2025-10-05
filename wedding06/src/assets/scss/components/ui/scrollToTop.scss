@@ -1,0 +1,50 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-scrollToTop {
+  position: fixed;
+  right: calc(20 / $fz-base * 1rem);
+  bottom: calc(20 / $fz-base * 1rem);
+  width: calc(60 / $fz-base * 1rem);
+  height: calc(60 / $fz-base * 1rem);
+  border: none;
+  border-radius: 50%;
+  background-color: #fff;
+  color: $base;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(calc(20 / $fz-base * 1rem));
+
+  @include mq(tab) {
+    right: calc(75 / $fz-base * 1rem);
+    bottom: calc(20 / $fz-base * 1rem);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(calc(20 / $fz-base * 1rem));
+  }
+
+  &:hover {
+    background-color: #f5f5f5;
+    transform: translateY(calc(-2 / $fz-base * 1rem));
+  }
+
+  svg {
+    width: calc(60 / $fz-base * 1rem);
+    height: calc(60 / $fz-base * 1rem);
+  }
+}

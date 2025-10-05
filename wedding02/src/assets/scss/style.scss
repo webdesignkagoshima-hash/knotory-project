@@ -1,0 +1,30 @@
+@use './global/normalize';
+@use './global/variables' as *;
+@use './global/mixin' as *;
+@use './global/common';
+@use './global/utility';
+@use './global/animation';
+
+// splide
+@use '@splidejs/splide/dist/css/splide.min.css';
+
+// components
+@use './components/ui/heading';
+@use './components/ui/profile';
+@use './components/ui/ourStoryTitle';
+@use './components/ui/ourStoryCard';
+@use './components/ui/button';
+@use './components/ui/buttonLine';
+@use './components/ui/fvTextOverlay';
+@use './components/ui/scrollToTop';
+
+// sections
+@use './components/section/header';
+@use './components/section/fv';
+@use './components/section/announcement';
+@use './components/section/aboutUs';
+@use './components/section/ourStory';
+@use './components/section/qaWithUs';
+@use './components/section/memories';
+@use './components/section/gratitude';
+@use './components/section/footer';

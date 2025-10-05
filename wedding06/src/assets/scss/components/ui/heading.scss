@@ -1,0 +1,56 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-heading2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+
+  &__mainText {
+    font-family: $font-family-heading;
+    font-size: calc(10 / $fz-base * 1rem);
+    font-weight: 500;
+    color: $primary;
+    line-height: calc(15 / 10);
+    
+    @include mq(tab) {
+      font-size: calc(14 / $fz-base * 1rem);
+      line-height: calc(21 / 14);
+    }
+  }
+
+  &__subText {
+    font-family: $font-family-heading-en;
+    font-size: calc(23 / $fz-base * 1rem);
+    font-weight: 400;
+    color: $sub;
+    line-height: calc(37 / 32);
+    text-transform: capitalize;
+
+    @include mq(tab) {
+      font-size: calc(56 / $fz-base * 1rem);
+      line-height: calc(64 / 56);
+    }
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: calc(38 / $fz-base * 1rem);
+    height: calc(1 / $fz-base * 1rem);
+    background-color: $primary;
+    margin-top: calc(8 / $fz-base * 1rem);
+
+    @include mq(tab) {
+      width: calc(56 / $fz-base * 1rem);
+      margin-top: calc(16 / $fz-base * 1rem);
+    }
+  }
+}
+
+.js {
+  & .c-heading2 {
+    opacity: 0;
+  }
+}

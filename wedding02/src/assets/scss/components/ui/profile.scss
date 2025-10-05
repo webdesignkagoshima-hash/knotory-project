@@ -1,0 +1,133 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-profile {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+
+  @include mq(tab) {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  &__image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 354.24 / 270;
+    transform: translateX(-20px);
+    border-top-right-radius: calc(300 / $fz-base * 1rem);
+    border-bottom-right-radius: calc(300 / $fz-base * 1rem);
+    overflow: hidden;
+
+    @include mq(tab) {
+      width: 100%;
+      max-width: calc(656 / $fz-base * 1rem);
+      aspect-ratio: 656 / 500;
+      border-top-right-radius: calc(400 / $fz-base * 1rem);
+      border-bottom-right-radius: calc(400 / $fz-base * 1rem);
+    }
+  }
+  
+  &[data-type="bride"] {
+    & .c-profile__image {
+      order: 0;
+      margin-left: auto;
+      transform: translateX(20px);
+      border-top-right-radius: unset;
+      border-bottom-right-radius: unset;
+      border-top-left-radius: calc(300 / $fz-base * 1rem);
+      border-bottom-left-radius: calc(300 / $fz-base * 1rem);
+
+      @include mq(tab) {
+        order: 1;
+      }
+    }
+
+    & .c-profile__container {
+      position: relative;
+
+      @include mq(tab) {
+        padding: 0 0 0 calc(40 / $fz-base * 1rem);
+      }
+
+      &::before {
+        content: "Bride";
+        
+        @include mq(tab) {
+          left: calc(-96 / $fz-base * 1rem);
+        }
+      }
+    }
+  }
+}
+
+.c-profile__container {
+  position: relative;
+  padding: 0 calc(20 / $fz-base * 1rem);
+  width: fit-content;
+  justify-self: center;
+
+  @include mq(tab) {
+    padding: 0 calc(40 / $fz-base * 1rem) 0 0;
+  }
+
+  &::before {
+    content: "Groom";
+    font-family: $font-family-en-bg;
+    font-weight: 400;
+    font-size: calc(200 / $fz-base * 1rem);
+    line-height: calc(371 / 200);
+    color: $white;
+    position: absolute;
+    top: calc(-136 / $fz-base * 1rem);
+    left: calc(-64 / $fz-base * 1rem);
+    z-index: -1;
+    
+    @include mq(tab) {
+      font-size: calc(250 / $fz-base * 1rem);
+      line-height: calc(463 / 250);
+      top: calc(-199 / $fz-base * 1rem);
+      left: calc(-96 / $fz-base * 1rem);
+    }
+  }
+}
+
+.c-profile__heading {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: calc(37 / $fz-base * 1rem);
+  gap: calc(10 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    margin-top: unset;
+  }
+}
+
+.c-profile__name {
+  font-family: $font-family-heading;
+  font-weight: 500;
+  font-size: calc(45 / $fz-base * 1rem);
+  line-height: calc(65 / 45);
+  color: $base;
+}
+
+.c-profile__nameEn {
+  font-family: $font-family-en;
+  font-weight: 400;
+  font-size: calc(24 / $fz-base * 1rem);
+  line-height: calc(28 / 24);
+  color: $secondary;
+}
+
+.c-profile__content {
+  font-family: $font-family-ja;
+  font-weight: 400;
+  font-size: calc(16 / $fz-base * 1rem);
+  line-height: 2.2;
+  color: $base;
+  margin-top: calc(12 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    margin-top: calc(32 / $fz-base * 1rem);
+  }
+}

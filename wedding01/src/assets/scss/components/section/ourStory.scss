@@ -1,0 +1,112 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-ourStory {
+  margin-top: calc(107 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    margin-top: calc(160 / $fz-base * 1rem);
+  }
+}
+
+.p-ourStory__container {
+  position: relative;
+  background-image: url('/assets/images/bg-our-story-sp.png');
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+
+  margin-top: calc(30 / $fz-base * 1rem);
+  padding: calc(60 / $fz-base * 1rem) 0 0;
+  
+  @include mq(tab) {
+    background-image: url('/assets/images/bg-our-story.png');
+    margin-top: calc(50 / $fz-base * 1rem);
+    padding: calc(98 / $fz-base * 1rem) 0 calc(164 / $fz-base * 1rem);
+  }
+
+  // 背景の中央に線
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(60 / $fz-base * 1rem);
+    left: 50%;
+    width: 2px;
+    height: calc(100% - 60 / $fz-base * 1rem);
+    background-color: $tertiary;
+    transform: translateX(-50%);
+
+    @include mq(tab) {
+      top: calc(98 / $fz-base * 1rem);
+      height: calc(100% - 98 / $fz-base * 1rem - 164 / $fz-base * 1rem);
+    }
+  }
+}
+
+.p-ourStory__content {
+  @include container;
+
+  & {
+    position: relative;
+    z-index: 1;
+    max-width: calc(587 / $fz-base * 1rem) !important;
+  }
+}
+
+.p-ourStory__contentItem {
+  margin-bottom: calc(50 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    margin-bottom: calc(50 / $fz-base * 1rem);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.p-ourStory__contentItemInner {
+  margin-top: calc(30 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    margin-top: calc(50 / $fz-base * 1rem);
+  }
+}
+
+.p-ourStory__image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: calc(50 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    max-width: calc(999 / $fz-base * 1rem);
+    margin: calc(71 / $fz-base * 1rem) auto 0;
+  }
+}
+
+.js {
+  & .p-ourStory__image.js-fadeIn {
+    opacity: 0;
+  }
+
+  & .p-ourStory__container {
+    // 背景画像を固定（ios対応）
+    &::before {
+      content: '';
+      position: fixed;
+      top: var(--our-story-bg-attachment-fixed, 100svh);
+      left: 0;
+      width: 100vw;
+      height: 100svh;
+      background-image: url('/assets/images/bg-our-story-sp.png');
+      background-size: cover;
+      background-position: center top;
+      z-index: -10;
+
+      @include mq(tab) {
+        background-image: url('/assets/images/bg-our-story.png');
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-ourStoryCard {
+  width: calc(321 / $fz-base * 1rem);
+  height: calc(400 / $fz-base * 1rem);
+  overflow: hidden;
+  box-shadow: 0 0 30px rgb(228, 222, 216);
+  background-color: $white;
+  
+  // SP時（デフォルト）は絶対配置で中央重ね
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); // 中央配置のためのtransform追加
+  opacity: 1; // まず表示状態にしてJSで制御
+  visibility: visible;
+
+  // PC時は通常の配置
+  @include mq(tab) {
+    position: relative;
+    opacity: 1;
+    top: auto;
+    left: auto;
+    transform: none;
+    flex-shrink: 0;
+  }
+
+  & + .c-ourStoryCard {
+    margin-top: 0; // SP時はmargin-top削除
+    
+    @include mq(tab) {
+      margin-top: 0; 
+    }
+  }
+}
+
+.c-ourStoryCard__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(23 / $fz-base * 1rem);
+  padding: calc(20 / $fz-base * 1rem) calc(16.34 / $fz-base * 1rem);
+}
+
+.c-ourStoryCard__year {
+  position: absolute;
+  top: calc(150 / $fz-base * 1rem);
+  left: calc(27 / $fz-base * 1rem);
+  font-family: $font-family-en;
+  font-weight: 400;
+  font-size: calc(57 / $fz-base * 1rem);
+  line-height: calc(65 / 57);
+  color: $white;
+}
+
+.c-ourStoryCard__image {
+  width: 100%;
+  aspect-ratio: 288.32 / 195.11;
+  overflow: hidden;
+  margin: 0;
+  position: relative; // ::beforeの基準となる位置指定を追加
+
+  & img {
+    // デフォルトで表示状態
+    opacity: 1;
+  }
+
+  // フィルター用の疑似要素を追加
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(74.99deg, rgba(144, 158, 126, 0.5) -0.08%, rgba(159, 178, 136, 0) 92.67%);
+    mix-blend-mode: multiply;
+    pointer-events: none; // クリックイベントを透過
+    z-index: 1; // 画像の上に表示
+  }
+}
+
+.c-ourStoryCard__textWrapper {
+  width: 100%;
+  background-color: $white;
+  padding: 0 calc(3.66 / $fz-base * 1rem);
+  // デフォルトで表示状態
+  opacity: 1;
+}
+
+.c-ourStoryCard__text {
+  font-family: $font-family-ja;
+  font-weight: 400;
+  font-size: calc(16 / $fz-base * 1rem);
+  line-height: 2.1;
+}

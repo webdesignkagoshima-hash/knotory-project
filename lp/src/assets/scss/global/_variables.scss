@@ -1,0 +1,43 @@
+// Google Fontsのインポート
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hina+Mincho:wght@400;500&display=swap');
+
+// フォントファミリーの定義
+$font-family-ja: "Noto Sans JP", serif;
+$font-family-ja-serif: "Noto Serif JP", serif;
+$font-family-en: "Josefin Sans", serif;
+$font-family-heading: "Noto Sans JP", serif;
+$font-family-heading-en: "Hina Mincho", serif;
+
+// フォントサイズ
+$fz-base: 16;
+
+// 色
+$base: #333;
+$sub: #AF9B4F;
+$alert: #FE667C;
+$highlight: #FFE541;
+$bg-base: #fff;
+$bg-cta: #E98698;
+$bg-campaign: #EBD6B4;
+$bg-worries: #F4F4F4;
+$bg-recommend: #FDF7F2;
+$bg-example: #F5F6FB;
+$bg-plan: #FDF7F2;
+$bg-flow: linear-gradient(3deg, rgba(107, 210, 207, 0.75) 0%, rgba(139, 208, 226, 0.75) 100%);
+$bg-reviews: #FDF7F2;
+$bg-faq: #E8F5F4;
+$bg-contact-heading: #E3556A;
+$bg-contact: #FBEFF0;
+$bg-footer: #FDF7F2;
+$white: #fff;
+$primary: #968525;
+$border: #f6f5ec;
+$LINE: #71D077;
+$required: #D82020;
+
+// コンテンツサイズ
+$wd-content-max-pc: calc(390 / $fz-base * 1rem);
+$wd-content-padding-sp: 20;

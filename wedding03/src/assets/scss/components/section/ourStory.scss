@@ -1,0 +1,44 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-ourStory {
+  margin-top: calc(34 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    margin-top: calc(54 / $fz-base * 1rem);
+  }
+}
+
+.p-ourStory__container {
+  position: relative;
+}
+
+.p-ourStory__content {
+  position: relative;
+  z-index: 1;
+  max-width: calc(700 / $fz-base * 1rem);
+  margin: 0 auto;
+}
+
+.p-ourStory__contentItemWrapper {
+  margin-top: calc(30 / $fz-base * 1rem);
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include mq(tab) {
+    margin-top: calc(50 / $fz-base * 1rem);
+  }
+}
+
+/* pin-spacerのpadding-bottomを制御 */
+.pin-spacer {
+  padding-bottom: 0 !important;
+}
+
+/* ScrollTriggerのpin-spacer要素の高さを制御 */
+.pin-spacer .p-ourStory__contentItemWrapper {
+  height: 100svh !important;
+}

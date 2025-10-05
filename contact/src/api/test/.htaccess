@@ -1,0 +1,24 @@
+# テストディレクトリ用の設定
+# 開発時のみ使用 - 本番環境では削除すること
+
+# CORSヘッダーの設定
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, X-Requested-With, Authorization, X-CSRF-Token"
+    Header always set Access-Control-Allow-Credentials "true"
+    Header always set Access-Control-Max-Age "86400"
+</IfModule>
+
+# OPTIONSリクエストの処理
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ - [R=200,L]
+</IfModule>
+
+# このディレクトリ内のPHPファイルへのアクセスを許可
+<Files "*.php">
+    Order Allow,Deny
+    Allow from all
+</Files>

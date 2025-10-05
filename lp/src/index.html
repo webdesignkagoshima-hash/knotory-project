@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  {{> global/head }}
+
+  <!-- css -->
+  <link rel="stylesheet" href="./assets/scss/style.scss">
+</head>
+<body>
+  <div class="l-base__wrapper">
+    {{> section/header }}
+    <main class="l-main">
+      {{> section/fv }}
+      {{> section/campaign }}
+      {{> section/cta }}
+      {{> section/worries }}
+      {{> section/recommend }}
+      {{> section/cta }}
+      {{> section/example }}
+      {{> section/plan }}
+      {{> section/cta }}
+      {{> section/flow }}
+      {{> section/reviews }}
+      {{> section/faq }}
+      {{> section/cta }}
+      {{> section/contact }}
+    </main>
+    {{> section/footer }}
+    
+    <!-- Floating CTA Button -->
+    <div class="c-floating-cta js-floating-cta">
+      {{> ui/buttonCTA }}
+    </div>
+
+    <!-- Floating Scroll Icon -->
+    {{> ui/floatingScroll }}
+  </div>
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

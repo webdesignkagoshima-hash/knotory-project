@@ -1,0 +1,221 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-ourStory {
+  margin-top: calc(107 / $fz-base * 1rem);
+  padding: calc(79 / $fz-base * 1rem) 0 calc(108 / $fz-base * 1rem);
+  background-color: $white;
+  border-top-left-radius: calc(100 / $fz-base * 1rem);
+  border-bottom-right-radius: calc(100 / $fz-base * 1rem);
+  overflow-x: hidden;
+  
+  @include mq(tab) {
+    margin-top: calc(160 / $fz-base * 1rem);
+    padding: calc(145 / $fz-base * 1rem) 0 calc(229 / $fz-base * 1rem);
+    border-top-left-radius: calc(200 / $fz-base * 1rem);
+    border-bottom-right-radius: calc(200 / $fz-base * 1rem);
+  }
+}
+
+.p-ourStory__container {
+  position: relative;
+  margin-top: calc(67 / $fz-base * 1rem);
+  
+  @include mq(tab) {
+    margin-top: calc(80 / $fz-base * 1rem);
+  }
+}
+
+.p-ourStory__content {
+  @include container;
+
+  & {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.p-ourStory__contentItem {
+  margin-bottom: calc(50 / $fz-base * 1rem);
+  padding: calc(30 / $fz-base * 1rem) 0;
+  // SP時（デフォルト）は相対配置
+  position: relative;
+  height: 100svh; // 全体を100svhに設定
+
+  @include mq(tab) {
+    margin-bottom: calc(50 / $fz-base * 1rem);
+    padding: calc(40 / $fz-base * 1rem) 0;
+    height: auto; // PCでは高さ自動
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: calc(30 / $fz-base * 1rem);
+    left: calc(16 / $fz-base * 1rem);
+    width: 100svw;
+    height: calc(400 / $fz-base * 1rem);
+    background-color: #f6f4f2;
+    z-index: -10; // 背景として表示
+
+    @include mq(tab) {
+      bottom: unset;
+      top: calc(188 / $fz-base * 1rem);
+    }
+  }
+
+  &--even {
+    & .c-ourStoryTitle {
+      @include mq(tab) {
+        text-align: right;
+      }
+    }
+
+    &::after {
+      left: calc(100% - 100svw);
+      border-top-right-radius: calc(100 / $fz-base * 1rem);
+      border-bottom-right-radius: calc(100 / $fz-base * 1rem);
+  
+      @include mq(tab) {
+        border-bottom-right-radius: calc(200 / $fz-base * 1rem);
+        border-top-right-radius: calc(200 / $fz-base * 1rem);
+      }
+    }
+
+    &::before {
+      content: none;
+  
+      @include mq(tab) {
+        content: var(--ourStoryTitleText);
+        text-transform: capitalize;
+        font-family: $font-family-en-bg;
+        font-size: calc(200 / $fz-base * 1rem);
+        line-height: calc(317 / 200);
+        position: absolute;
+        top: 0;
+        left: calc(50% - 50svw);
+        color: #f6f4f2;
+        z-index: -10; // 背景として表示
+      }
+    }
+  }
+
+  &--odd {
+    &::after {
+      border-top-left-radius: calc(100 / $fz-base * 1rem);
+      border-bottom-left-radius: calc(100 / $fz-base * 1rem);
+  
+      @include mq(tab) {
+        border-bottom-left-radius: calc(200 / $fz-base * 1rem);
+        border-top-left-radius: calc(200 / $fz-base * 1rem);
+      }
+    }
+
+    &::before {
+      content: none;
+  
+      @include mq(tab) {
+        content: var(--ourStoryTitleText);
+        text-transform: capitalize;
+        font-family: $font-family-en-bg;
+        font-size: calc(200 / $fz-base * 1rem);
+        line-height: calc(317 / 200);
+        position: absolute;
+        top: 0;
+        right: calc(50% - 50svw);
+        color: #f6f4f2;
+        z-index: -10; // 背景として表示
+      }
+    }
+  }
+}
+
+.p-ourStory__contentItemInner {
+  margin-top: calc(30 / $fz-base * 1rem);
+  // SP時（デフォルト）は相対配置コンテナとして機能
+  position: relative;
+  height: calc(100% - calc(30 / $fz-base * 1rem) - calc(48 / $fz-base * 1rem)); // 親の高さからmargin-topとタイトル高さを引く
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mq(tab) {
+    margin-top: calc(50 / $fz-base * 1rem);
+    position: static;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: calc(30 / $fz-base * 1rem);
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  // PC時だけカードが並んでいる背景の中央に点線を引く
+  &::after {
+    content: none;
+
+    @include mq(tab) {
+      content: '';
+      position: absolute;
+      top: calc(50% + 49px);
+      left: 0;
+      width: 100svw;
+      height: 4px; // 太さ4px
+      background-image: url("data:image/svg+xml,%3csvg width='12' height='4' xmlns='http://www.w3.org/2000/svg'%3e%3cline x1='2' y1='2' x2='3' y2='2' stroke='%23B3A297' stroke-width='4' stroke-linecap='round'/%3e%3c/svg%3e");
+      background-repeat: repeat-x;
+      background-color: transparent;
+      z-index: -1;
+    }
+  }
+}
+
+/* pin-spacerのpadding-bottomを制御（SPのみ） */
+.pin-spacer {
+  padding-bottom: 0 !important;
+  
+  @include mq(tab) {
+    padding-bottom: initial !important;
+  }
+}
+
+/* ScrollTriggerのpin-spacer要素の高さを制御（SPのみ） */
+.pin-spacer .p-ourStory__contentItem {
+  height: 100svh !important;
+  
+  @include mq(tab) {
+    height: auto !important;
+  }
+}
+
+/* pin-spacer内の奇数番目要素の背景位置調整（SPのみ） */
+.pin-spacer .p-ourStory__contentItem--odd {
+  &::after {
+    left: calc(16 / $fz-base * 1rem) ;
+    border-top-left-radius: calc(100 / $fz-base * 1rem) ;
+    border-bottom-left-radius: calc(100 / $fz-base * 1rem) ;
+    border-top-right-radius: unset ;
+    border-bottom-right-radius: unset ;
+  }
+  
+  @include mq(tab) {
+    &::after {
+      left: calc(16 / $fz-base * 1rem) ;
+    }
+  }
+}
+
+/* pin-spacer内の偶数番目要素の背景位置調整（SPのみ） */
+.pin-spacer .p-ourStory__contentItem--even {
+  &::after {
+    left: calc(100% - 100svw - 16 / $fz-base * 1rem) ;
+    border-top-right-radius: calc(100 / $fz-base * 1rem) ;
+    border-bottom-right-radius: calc(100 / $fz-base * 1rem) ;
+    border-top-left-radius: unset ;
+    border-bottom-left-radius: unset ;
+  }
+}

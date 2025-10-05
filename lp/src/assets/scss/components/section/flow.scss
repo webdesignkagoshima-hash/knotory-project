@@ -1,0 +1,126 @@
+@use '../../global/variables' as *;
+
+$fc-flow: #0ABAB5;
+
+// メインコンポーネント
+.p-flow {
+  background: $bg-flow;
+}
+
+// コンテナ
+.p-flow__container {
+  padding: calc(52 / $fz-base * 1rem) calc(16 / $fz-base * 1rem) calc(48 / $fz-base * 1rem);
+}
+
+// セクションタイトル
+.p-flow__title {
+  font-family: $font-family-heading;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(25 / 20);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $white;
+  text-align: center;
+}
+
+// ステップリスト
+.p-flow__stepList {
+  margin-top: calc(34 / $fz-base * 1rem);
+}
+
+// ステップアイテム
+.p-flow__stepItem {
+  background-color: $white;
+  border-radius: calc(10 / $fz-base * 1rem);
+  max-width: calc(390 / $fz-base * 1rem);
+  margin-left: auto;
+  margin-right: auto;
+
+  & + .p-flow__stepItem {
+    margin-top: calc(65 / $fz-base * 1rem);
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      width: calc(75 / $fz-base * 1rem);
+      height: calc(42 / $fz-base * 1rem);
+      background-image: url('/assets/images/icon-flow-section-arrow.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: calc(-52 / $fz-base * 1rem);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+// ステップアイテム内側
+.p-flow__stepItemInner {
+  padding: calc(30 / $fz-base * 1rem) calc(18 / $fz-base * 1rem) calc(28 / $fz-base * 1rem);
+}
+
+// ステップ番号
+.p-flow__stepNumber {
+  font-family: $font-family-en;
+  font-size: calc(17 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: calc(20 / 17);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: $fc-flow;
+  text-align: center;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ステップ番号の数値
+.p-flow__stepNumberValue {
+  font-size: calc(32 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(38 / 32);
+  letter-spacing: 0;
+  margin-left: calc(2 / $fz-base * 1rem);
+}
+
+// ステップ図表
+.p-flow__stepFigure {
+  margin-top: calc(12 / $fz-base * 1rem);
+}
+
+// ステップタイトル
+.p-flow__stepTitle {
+  font-family: $font-family-ja;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(25 / 20);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $fc-flow;
+  text-align: center;
+  margin-top: calc(25 / $fz-base * 1rem);
+}
+
+// ステップ説明部分
+.p-flow__stepDescription {
+  margin-top: calc(21 / $fz-base * 1rem);
+}
+
+// ステップテキスト
+.p-flow__stepText {
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(20 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+}
+
+// ステップテキスト（注釈）
+.p-flow__stepText--note {
+  margin-top: calc(40 / $fz-base * 1rem);
+  font-size: calc(12 / $fz-base * 1rem);
+  line-height: calc(18 / 12);
+}
+

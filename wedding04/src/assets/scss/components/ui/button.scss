@@ -1,0 +1,80 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-btn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(8.9 / $fz-base * 1rem);
+  justify-content: space-between;
+  padding: calc(16 / $fz-base * 1rem) calc(18.4 / $fz-base * 1rem) calc(15 / $fz-base * 1rem) calc(21 / $fz-base * 1rem);
+  background-color: $primary;
+  color: $fc-white;
+  font-family: $font-family-ja;
+  font-weight: 700;
+  font-size: calc(16 / $fz-base * 1rem);
+  line-height: calc(17 / 16);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  border: 1px solid $primary;
+  border-radius: calc(50 / $fz-base * 1rem);
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &::after {
+    content: '';
+    width: calc(14.63 / $fz-base * 1rem);
+    height: calc(14.63 / $fz-base * 1rem);
+    background-image: url('/assets/images/icon-arrow.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &:hover {
+    @include mq(tab) {
+      // 色反転
+      background-color: $fc-white;
+      color: $primary;
+      border: 1px solid $primary;
+    }
+
+    &::after {
+      @include mq(tab) {
+        // アイコン色反転
+        background-image: url('/assets/images/icon-arrow-inverse.svg');
+      }
+    }
+  }
+}
+
+.c-btn__line {
+  width: calc(250 / $fz-base * 1rem);
+  display: inline-grid;
+  grid-template-columns: 1fr auto;
+  justify-items: center;
+  background-color: $fc-white;
+  color: $LINE;
+  border: 1px solid $LINE;
+  padding: calc(16 / $fz-base * 1rem) calc(18.4 / $fz-base * 1rem) calc(15 / $fz-base * 1rem) calc(21 / $fz-base * 1rem);
+  position: relative;
+  
+  &::after {
+    content: '';
+    background-image: url('/assets/images/icon-arrow-line.svg');
+    position: absolute;
+    right: calc(17.4 / $fz-base * 1rem);
+    top: calc(50% - 7.315 / $fz-base * 1rem);
+  }
+
+  &:hover {
+    @include mq(tab) {
+      background-color: $LINE;
+      color: $fc-white;
+      border: 1px solid $fc-white;
+    }
+
+    &::after {
+      @include mq(tab) {
+        background-image: url('/assets/images/icon-arrow.svg');
+      }
+    }
+  }
+}

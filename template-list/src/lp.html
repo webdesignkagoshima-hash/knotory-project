@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>テストページ - Knotory</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .test-container {
+      text-align: center;
+      padding: 40px;
+    }
+
+    .test-title {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 16px 32px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    .button:active {
+      transform: translateY(1px);
+    }
+
+    .home-link {
+      display: inline-block;
+      color: #333;
+      text-decoration: underline;
+      font-size: 14px;
+      margin-top: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .home-link:hover {
+      color: #007bff;
+    }
+
+    .home-link::after {
+      content: " >";
+      margin-left: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1 class="test-title">テストページ 1</h1>
+    <a href="/templates" class="button">選べるデザインテンプレート一覧を見る</a>
+    <br>
+    <a href="/" class="home-link">ホームページに戻る</a>
+  </div>
+</body>
+</html>

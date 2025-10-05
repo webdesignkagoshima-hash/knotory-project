@@ -1,0 +1,283 @@
+<!-- 
+# 更新マニュアル
+
+このファイルは、結婚式のウェブサイトの「ふたりに聞いてみました」セクションを定義しています。
+このセクションでは、新郎新婦への質問と回答をQ&A形式で表示しています。
+
+## 更新対象
+・質問内容
+・新郎の回答内容
+・新婦の回答内容
+
+## 画像のパス
+新郎新婦のアバター画像
+・新郎アバター: `/assets/images/avatar-groom.png`
+・新婦アバター: `/assets/images/avatar-bride.png`
+
+## Q&A追加・削除方法
+Q&Aの追加・削除は div.p-qaWithUs__item 要素を追加・削除してください。
+各質問には新郎と新婦それぞれの回答を設定できます。
+
+※推奨サイズ：アバター画像 100px x 100px
+-->
+<section class="p-qaWithUs">
+  <div class="p-qaWithUs__container">
+    {{> ui/heading
+      heading="ふたりに聞いてみました"
+      subHeading="Q&A with us"
+      id="qa-with-us"
+    }}
+    <div class="p-qaWithUs__content">
+      <dl class="p-qaWithUs__list">
+        <div class="p-qaWithUs__item js-fadeDown">
+          <!-- 質問内容を入力してください -->
+          <dt class="p-qaWithUs__question">
+            お互いの呼び名は？
+          </dt>
+          <dd class="p-qaWithUs__answers">
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__groom">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-groom.png" alt="新郎のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新郎の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  ゆうな
+                </p>
+              </div>
+            </div>
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__bride">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-bride.png" alt="新婦のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新婦の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  なお
+                </p>
+              </div>
+            </div>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeDown">
+          <!-- 質問内容を入力してください -->
+          <dt class="p-qaWithUs__question">
+            お互いの第一印象は？
+          </dt>
+          <dd class="p-qaWithUs__answers">
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__groom">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-groom.png" alt="新郎のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新郎の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  着物が似合う人
+                </p>
+              </div>
+            </div>
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__bride">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-bride.png" alt="新婦のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新婦の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  まじめそうな人
+                </p>
+              </div>
+            </div>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeDown">
+          <!-- 質問内容を入力してください -->
+          <dt class="p-qaWithUs__question">
+            初デートの場所は？
+          </dt>
+          <dd class="p-qaWithUs__answers">
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__groom">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-groom.png" alt="新郎のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新郎の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  大学帰りの映画
+                </p>
+              </div>
+            </div>
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__bride">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-bride.png" alt="新婦のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新婦の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  恋愛映画みたよね
+                </p>
+              </div>
+            </div>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeDown">
+          <!-- 質問内容を入力してください -->
+          <dt class="p-qaWithUs__question">
+            相手の好きなところは？
+          </dt>
+          <dd class="p-qaWithUs__answers">
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__groom">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-groom.png" alt="新郎のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新郎の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  どんな時もポジティブなとこ
+                </p>
+              </div>
+            </div>
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__bride">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-bride.png" alt="新婦のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新婦の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  真面目だけどちょっと抜けてるとこ
+                </p>
+              </div>
+            </div>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeDown">
+          <!-- 質問内容を入力してください -->
+          <dt class="p-qaWithUs__question">
+            相手に驚いたことは？
+          </dt>
+          <dd class="p-qaWithUs__answers">
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__groom">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-groom.png" alt="新郎のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新郎の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  地図なしでスイスイ歩ける方向感覚
+                </p>
+              </div>
+            </div>
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__bride">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-bride.png" alt="新婦のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新婦の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  料理が得意なとこ
+                </p>
+              </div>
+            </div>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeDown">
+          <!-- 質問内容を入力してください -->
+          <dt class="p-qaWithUs__question">
+            休日はどう過ごしてる？
+          </dt>
+          <dd class="p-qaWithUs__answers">
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__groom">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-groom.png" alt="新郎のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新郎の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  カフェでのんびり
+                </p>
+              </div>
+            </div>
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__bride">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-bride.png" alt="新婦のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新婦の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  映画を見まくる
+                </p>
+              </div>
+            </div>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeDown">
+          <!-- 質問内容を入力してください -->
+          <dt class="p-qaWithUs__question">
+            どんな家庭を築きたい？
+          </dt>
+          <dd class="p-qaWithUs__answers">
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__groom">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-groom.png" alt="新郎のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新郎の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  安心して帰りたくなる場所
+                </p>
+              </div>
+            </div>
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__bride">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-bride.png" alt="新婦のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新婦の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  笑顔が絶えない家族
+                </p>
+              </div>
+            </div>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeDown">
+          <!-- 質問内容を入力してください -->
+          <dt class="p-qaWithUs__question">
+            最後にひとこと！
+          </dt>
+          <dd class="p-qaWithUs__answers">
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__groom">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-groom.png" alt="新郎のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新郎の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  どんな時もずっと支えるね
+                </p>
+              </div>
+            </div>
+            <div class="p-qaWithUs__answer p-qaWithUs__answer__bride">
+              <div class="p-qaWithUs__answerHeader">
+                <img src="./assets/images/avatar-bride.png" alt="新婦のアバター" class="p-qaWithUs__avatar">
+              </div>
+              <div class="p-qaWithUs__answerBox">
+                <!-- 新婦の回答を入力してください -->
+                <p class="p-qaWithUs__answerText">
+                  これからもよろしくね
+                </p>
+              </div>
+            </div>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+</section>

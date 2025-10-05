@@ -1,0 +1,92 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-profile {
+  &__image {
+    margin: 0 auto;
+    display: block;
+    width: calc(220 / $fz-base * 1rem);
+    aspect-ratio: 220 / 230;
+    position: relative;
+    
+    & img {
+      border-radius: calc(10 / $fz-base * 1rem);
+    }
+
+    &__groom::after {
+      content: '';
+      display: block;
+      width: calc(155 / $fz-base * 1rem);
+      aspect-ratio: 155 / 162;
+      border-radius: calc(10 / $fz-base * 1rem);
+      background-color: $tertiary;
+      position: absolute;
+      top: calc(-47 / $fz-base * 1rem);
+      right: calc(-55 / $fz-base * 1rem);
+      z-index: -1;
+    }
+
+    &__bride::after {
+      content: '';
+      display: block;
+      width: calc(155 / $fz-base * 1rem);
+      aspect-ratio: 155 / 162;
+      border-radius: calc(10 / $fz-base * 1rem);
+      background-color: $tertiary;
+      position: absolute;
+      top: calc(-47 / $fz-base * 1rem);
+      left: calc(-55 / $fz-base * 1rem);
+      z-index: -1;
+    }
+  }
+}
+
+.c-profile__name {
+  font-family: $font-family-heading;
+  font-weight: 600;
+  font-size: calc(20 / $fz-base * 1rem);
+  line-height: calc(24 / 20);
+  letter-spacing: calc(100 / 1000 * 1rem);
+  color: $fc-heading;
+  text-align: center;
+  margin-top: calc(25 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    font-size: calc(22 / $fz-base * 1rem);
+    line-height: calc(26 / 22);
+    margin-top: calc(27 / $fz-base * 1rem);
+  }
+}
+
+.c-profile__nameEn {
+  font-family: $font-family-en;
+  font-weight: 400;
+  font-size: calc(10 / $fz-base * 1rem);
+  line-height: calc(13 / 10);
+  letter-spacing: calc(200 / 1000 * 1rem);
+  color: $secondary;
+  text-align: center;
+  margin-top: calc(9 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    font-size: calc(12 / $fz-base * 1rem);
+    line-height: calc(14 / 12);
+    margin-top: calc(13 / $fz-base * 1rem);
+  }
+}
+
+.c-profile__content {
+  font-family: $font-family-ja;
+  font-weight: 400;
+  font-size: calc(14 / $fz-base * 1rem);
+  line-height: calc(25 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $fc-base;
+  text-align: center;
+  margin-top: calc(22 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    font-size: calc(16 / $fz-base * 1rem);
+    line-height: calc(30 / 16);
+  }
+}

@@ -1,0 +1,233 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-fv {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  height: 100svh;
+
+  &__imageContainer {
+    padding: calc(39 / $viewport-height-sp * 100svh) calc(20 / $viewport-height-sp * 100svh) calc(100svh - calc(661.3 / $fz-base * 1rem));
+    overflow: hidden;
+    width: 100%;
+    height: 100svh;
+    margin: 0 auto;
+    
+    @include mq(tab) {
+      padding: calc(52 / $viewport-height * 100svh) calc(122 / $viewport-height * 100svh) 0;
+      width: fit-content;
+      height: 100%;
+    }
+  }
+
+  .p-fv__image {
+    width: auto;
+    height: 100%;
+    
+    @include mq(tab) {
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  .p-fv__copyWrapper {
+    position: absolute;
+    top: calc(49 / $viewport-height-sp * 100svh);
+    left: calc(17 / $viewport-height-sp * 100svh);
+    rotate: 90deg;
+    transform-origin: bottom left;
+
+    @include mq(tab) {
+      top: calc((150 - 61.86) / $viewport-height * 100svh);
+      left: calc(115 / $viewport-height * 100svh);
+    }
+  }
+
+  &__copy {
+    font-family: $font-family-en;
+    font-size: min(calc(45 / $viewport-height-sp * 100svh), calc(45 / $fz-base * 1rem));
+    font-weight: 300;
+    line-height: calc(47 / 45);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: $fc-sub;
+    white-space: nowrap;
+    
+    @include mq(tab) {
+      font-size: calc(59.6 / $viewport-height * 100svh);
+      line-height: calc(61.86 / 59.6);
+    }
+  }
+
+  .p-fv__bylineWrapper {
+    position: absolute;
+    bottom: max(0px, calc(100svh - calc(861.3 / $viewport-height-sp * 100svh)));
+    left: 0;
+    width: calc(263 / $viewport-height-sp * 100svh);
+    height: calc(259 / $viewport-height-sp * 100svh);
+
+    @include mq(tab) {
+      bottom: 0;
+      left: calc(200 / $viewport-height * 100svh);
+    }
+  }
+
+  &__byline {
+    position: relative;
+    font-family: $font-family-amiri;
+    font-weight: 400;
+    line-height: 1.2;
+    color: $fc-sub;
+    z-index: 1;
+
+    &Broom {
+      position: absolute;
+      top: calc(79 / $viewport-height-sp * 100svh);
+      left: calc(33 / $viewport-height-sp * 100svh);
+      font-size: calc(40 / $viewport-height-sp * 100svh);
+      
+      @include mq(tab) {
+        font-size: calc(30 / $viewport-height * 100svh);
+        top: calc(60 / $viewport-height * 100svh);
+        left: calc(72 / $viewport-height * 100svh);
+      }
+    }
+
+    &And {
+      position: absolute;
+      top: calc(133 / $viewport-height-sp * 100svh);
+      left: calc(83 / $viewport-height-sp * 100svh);
+
+      @include mq(tab) {
+        font-size: calc(14.08 / $viewport-height * 100svh);
+        top: calc(107 / $viewport-height * 100svh);
+        left: calc(126 / $viewport-height * 100svh);
+      }
+    }
+
+    &Bride {
+      position: absolute;
+      top: calc(124 / $viewport-height-sp * 100svh);
+      left: calc(108 / $viewport-height-sp * 100svh);
+      font-size: calc(40 / $viewport-height-sp * 100svh);
+
+      @include mq(tab) {
+        font-size: calc(30 / $viewport-height * 100svh);
+        top: calc(100 / $viewport-height * 100svh);
+        left: calc(147 / $viewport-height * 100svh);
+      }
+    }
+  }
+
+  .p-fv__bylineBgImageWrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .p-fv__bylineBgImage {
+    scale: 1.5;
+    position: relative;
+    top: calc(20 / $viewport-height-sp * 100svh);
+    left: calc(-32 / $viewport-width-sp * 100svw);
+    width: calc(263 / $viewport-width-sp * 100svw);
+    height: calc(253 / $viewport-height-sp * 100svh);
+    max-width: calc(263 / $fz-base * 1rem);
+
+    @include mq(tab) {
+      scale: 1;
+      top: calc(0 / $viewport-height * 100svh);
+      left: calc(0 / $viewport-width * 100svw);
+      width: auto;
+      height: calc(320 / $viewport-height * 100svh);
+    }
+  }
+
+  &__date {
+    position: absolute;
+    top: calc(186 / $viewport-height-sp * 100svh);
+    left: 0;
+    font-family: $font-family-amiri;
+    font-weight: 400;
+    font-size: calc(20 / $viewport-height-sp * 100svh);
+    line-height: 1.2;
+    color: $fc-sub;
+    z-index: 1;
+
+    @include mq(tab) {
+      font-size: calc(13.51 / $viewport-height * 100svh);
+      top: calc(167 / $viewport-height * 100svh);
+      left: calc(69.14 / $viewport-height * 100svh);
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: calc(72 / $viewport-height-sp * 100svh);
+      height: 1px;
+      background-color: rgba(128, 136, 137, 0.24);
+      margin-bottom: calc(4 / $viewport-height-sp * 100svh);
+      margin-right: calc(12 / $viewport-height-sp * 100svh);
+
+      @include mq(tab) {
+        width: calc(56 / $viewport-height * 100svh);
+        margin-bottom: calc(4 / $viewport-height * 100svh);
+        margin-right: 1em;
+      }
+    }
+  }
+
+  &__scroll {
+    position: absolute;
+    right: calc(15 / $viewport-height-sp * 100svh);
+    bottom: max(0px, calc(100svh - calc(741.3 / $viewport-height-sp * 100svh)));
+    z-index: 1;
+    width: calc(116 / $viewport-height-sp * 100svh);
+    height: calc(116 / $viewport-height-sp * 100svh);
+    aspect-ratio: 1 / 1;
+
+    @include mq(tab) {
+      width: calc(182 / $viewport-height * 100svh);
+      height: calc(182 / $viewport-height * 100svh);
+      right: calc(147 / $viewport-height * 100svh);
+      bottom: 0;
+    }
+  }
+
+  .p-fv__scrollDownArrow {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.js {
+  .p-fv__imageContainer {
+    opacity: 0;
+  }
+  
+  .p-fv__container {
+    .p-fv__copy {
+      opacity: 0;
+    }
+
+    .p-fv__byline {
+      opacity: 0;
+    }
+  }
+
+  .p-fv__scroll {
+    opacity: 0;
+  }
+}
+
+.p-fv__container.u-anime {
+  .p-fv__copy {
+    animation: fadeUp 1s ease-in-out forwards;
+  }
+
+  .p-fv__byline {
+    animation: fadeDown 1s ease-in-out forwards;
+  }
+}

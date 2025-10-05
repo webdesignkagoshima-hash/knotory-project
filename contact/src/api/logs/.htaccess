@@ -1,0 +1,14 @@
+# ログファイルへの直接アクセスを禁止
+<FilesMatch "\.(log|json)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# ディレクトリリスティングを無効化
+Options -Indexes
+
+# すべてのファイルへのアクセスを禁止
+<Files "*">
+    Order Allow,Deny
+    Deny from all
+</Files>

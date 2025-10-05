@@ -11,3 +11,7 @@ coverage/
 Thumbs.db
 .vscode/*
 !.vscode/extensions.json
+*.zip
+*/.project
+*/.serena
+*/.vscode

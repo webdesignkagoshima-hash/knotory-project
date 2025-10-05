@@ -1,0 +1,166 @@
+@use '../../global/variables' as *;
+
+.p-worries {
+  background-color: $bg-worries;
+}
+
+.p-worries__container {
+  padding: calc(50 / $fz-base * 1rem) calc(20 / $fz-base * 1rem);
+  text-align: center;
+}
+
+.p-worries__heading {
+  font-family: $font-family-heading;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(24 / 20);
+  letter-spacing: calc(50 / 1000 * 1rem);
+}
+
+.p-worries__headingLogo {
+  width: calc(153 / $fz-base * 1rem);
+  height: calc(52 / $fz-base * 1rem);
+  margin-right: calc(5 / $fz-base * 1rem);
+}
+
+.p-worries__headingAccent {
+  color: #3C8BBF;
+  font-family: $font-family-ja-serif;
+  font-size: calc(25 / $fz-base * 1rem);
+  line-height: calc(36 / 25);
+  -webkit-text-stroke: 0.4px;
+
+  @supports not (-webkit-text-stroke: 0.4px) {
+    text-shadow: 
+      0.4px 0 0 currentColor,
+      -0.4px 0 0 currentColor,
+      0 0.4px 0 currentColor,
+      0 -0.4px 0 currentColor;
+  }
+}
+
+.p-worries__content {
+  background-color: $white;
+  margin-top: calc(28 / $fz-base * 1rem);
+}
+
+.p-worries__problemArea {
+  background-color: #92C6E8;
+  color: $white;
+  padding: calc(15 / $fz-base * 1rem);
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: calc(90 / $fz-base * 1rem);
+    height: calc(12 / $fz-base * 1rem);
+    background-image: url('/assets/images/icon-worries-problem-answer-arrow.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: calc(-11 / $fz-base * 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.p-worries__figure {
+  margin: 0 auto;
+}
+
+.p-worries__problemText {
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(20 / 16);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  margin-top: calc(1.6 / $fz-base * 1rem);
+  
+  &--accent {
+    font-weight: 700;
+    font-size: calc(18 / $fz-base * 1rem);
+    line-height: calc(22 / 18);
+  }
+}
+
+.p-worries__solutionArea {
+  padding: calc(23 / $fz-base * 1rem) calc(14 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) calc(14 / $fz-base * 1rem);
+}
+
+.p-worries__solutionText {
+  // ソリューションテキストのスタイル
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(20 / 16);
+  letter-spacing: calc(50 / 1000 * 1rem);
+
+  &--accent {
+    font-weight: 500;
+    color: $alert;
+  }
+}
+
+.p-worries__solutionText--highlight {
+  font-size: calc(22 / $fz-base * 1rem);
+  font-weight: 700;
+  margin: 0 auto calc(16 / $fz-base * 1rem);
+  width: fit-content;
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    content: '';
+    display: block;
+    width: calc(100% + 6px);
+    height: calc(10 / $fz-base * 1rem);
+    background-color: #FFE541;
+    position: absolute;
+    left: calc(-3 / $fz-base * 1rem);
+    bottom: calc(0 / $fz-base * 1rem);
+    z-index: -1;
+  }
+}
+
+.p-worries__pointArea {
+  background-color: #EEF8FF;
+  border-radius: calc(5 / $fz-base * 1rem);
+  padding: calc(20 / $fz-base * 1rem) calc(10 / $fz-base * 1rem) calc(18 / $fz-base * 1rem);
+  margin: calc(20 / $fz-base * 1rem) auto 0;
+  max-width: calc(390 / $fz-base * 1rem);
+}
+
+.p-worries__pointLabel {
+  font-family: $font-family-en;
+  font-size: calc(17 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: $white;
+  background-color: #2F93D5;
+  padding: calc(8 / $fz-base * 1rem) calc(18 / $fz-base * 1rem) calc(2 / $fz-base * 1rem) calc(21 / $fz-base * 1rem);
+  border-radius: calc(50 / $fz-base * 1rem);
+
+  &--number {
+    font-size: calc(21 / $fz-base * 1rem);
+    margin-left: calc(7 / $fz-base * 1rem);
+  }
+}
+
+.p-worries__pointText {
+  margin-top: calc(10 / $fz-base * 1rem);
+  font-family: $font-family-ja;
+  font-size: calc(18 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: calc(25 / 18);
+  letter-spacing: calc(25 / 1000 * 1rem);
+
+  &--accent {
+    color: $alert;
+  }
+}
+
+.p-worries__pointFigure {
+  margin: calc(10 / $fz-base * 1rem) auto 0;
+}

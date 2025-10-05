@@ -1,0 +1,73 @@
+<section class="p-contact">
+  <div class="p-contact__container">
+    <hgroup class="p-contact__header js-fadeIn">
+      <h2 class="p-contact__title">メールでお問い合わせ</h2>
+      <p class="p-contact__subtitle">CONTACT</p>
+    </hgroup>
+
+    <div class="p-contact__content">
+      <p class="p-contact__description js-fadeIn">
+        メールからのお問い合わせもできます。<br>
+        お気軽にお問い合わせください。<br>
+      </p>
+      <p class="p-contact__note js-fadeIn">
+        <span class="p-contact__required">*</span>必須項目です
+      </p>
+
+      <div class="p-contact__formWrapper js-fadeIn">
+        <form class="p-contact__form" action="/api/contact.php" method="post">
+          <!-- CSRF Token (JavaScriptで動的に設定) -->
+          <input type="hidden" name="csrf_token" id="csrfToken" value="">
+          
+          <!-- ハニーポット (ボット対策) - CSSで非表示 -->
+          <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
+          
+          <!-- お問い合わせ項目(radio button) -->
+          <fieldset class="p-contact__fieldset">
+            <legend class="p-contact__legend">お問い合わせ項目<span class="p-contact__required">*</span></legend>
+            <div class="p-contact__radioGroup">
+              <input class="p-contact__radioInput" type="radio" id="inquiry-type-1" name="inquiry-type" value="制作をお願いしたい" checked>
+              <label class="p-contact__radioLabel" for="inquiry-type-1">制作をお願いしたい</label>
+            </div>
+            <div class="p-contact__radioGroup">
+              <input class="p-contact__radioInput" type="radio" id="inquiry-type-2" name="inquiry-type" value="サービス内容について相談したい">
+              <label class="p-contact__radioLabel" for="inquiry-type-2">サービス内容について相談したい</label>
+            </div>
+            <div class="p-contact__radioGroup">
+              <input class="p-contact__radioInput" type="radio" id="inquiry-type-3" name="inquiry-type" value="その他">
+              <label class="p-contact__radioLabel" for="inquiry-type-3">その他のお問い合わせ</label>
+            </div>
+          </fieldset>
+          <!-- お名前 -->
+          <div class="p-contact__inputGroup">
+            <label class="p-contact__label" for="name">お名前<span class="p-contact__required">*</span></label>
+            <input class="p-contact__input" type="text" id="name" name="name" required>
+          </div>
+          <!-- メールアドレス -->
+          <div class="p-contact__inputGroup">
+            <label class="p-contact__label" for="email">メールアドレス<span class="p-contact__required">*</span></label>
+            <input class="p-contact__input" type="email" id="email" name="email" required>
+          </div>
+          <!-- 電話番号 -->
+          <div class="p-contact__inputGroup">
+            <label class="p-contact__label" for="phone">電話番号</label>
+            <input class="p-contact__input" type="tel" id="phone" name="phone" pattern="^\d{10,11}$">
+          </div>
+          <!-- お問い合わせ内容 -->
+          <div class="p-contact__inputGroup">
+            <label class="p-contact__label" for="message">お問い合わせ内容<span class="p-contact__required">*</span></label>
+            <textarea class="p-contact__textarea" id="message" name="message" rows="5" required></textarea>
+          </div>
+          
+          <div class="p-contact__privacyNote">
+            <p class="p-contact__privacyText">
+              <a class="p-contact__privacyLink" href="#">プライバシーポリシー</a>に同意の上、送信してください。</p>
+          </div>
+          <div class="p-contact__buttonWrapper">
+            <button class="p-contact__submitButton" type="submit">送信する</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

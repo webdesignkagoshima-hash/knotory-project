@@ -1,0 +1,7 @@
+@use './variables' as *;
+
+.l-base__wrapper {
+  width: 100%;
+  max-width: $wd-content-max-pc;
+  margin: 0 auto;
+}

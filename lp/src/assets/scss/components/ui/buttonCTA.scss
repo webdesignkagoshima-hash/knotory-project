@@ -1,0 +1,121 @@
+@use "../../global/variables" as *;
+
+.c-buttonCTA__wrapper {
+  background-color: $bg-cta;
+  text-align: center;
+  padding: calc(25.5 / $fz-base * 1rem) calc(26 / $fz-base * 1rem) calc(32 / $fz-base * 1rem);
+}
+
+.c-buttonCTA__message {
+  color: $white;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-family: $font-family-ja;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: calc(50 / 1000 * 1rem);
+  display: flex;
+  justify-content: center;
+  margin-bottom: calc(5.5 / $fz-base * 1rem);
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: calc(8 / $fz-base * 1rem);
+    height: calc(16 / $fz-base * 1rem);
+    background-image: url('/assets/images/decoration-slash-before.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: calc(4.5 / $fz-base * 1rem);
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: calc(8 / $fz-base * 1rem);
+    height: calc(16 / $fz-base * 1rem);
+    background-image: url('/assets/images/decoration-slash-after.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: calc(12 / $fz-base * 1rem);
+  }
+}
+
+.c-buttonCTA__messageHighlight {
+  color: $highlight;
+  -webkit-text-stroke: 0.2px;
+
+  @supports not (-webkit-text-stroke: 0.2px) {
+    text-shadow: 
+      0.2px 0 0 currentColor,
+      -0.2px 0 0 currentColor,
+      0 0.2px 0 currentColor,
+      0 -0.2px 0 currentColor;
+  }
+}
+
+.c-buttonCTA {
+  display: block;
+  text-decoration: none;
+  max-width: calc(338 / $fz-base * 1rem);
+  margin: 0 auto;
+  background-color: $LINE;
+  border-radius: calc(40 / $fz-base * 1rem);
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: scale 0.4s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: calc(25.5 / $fz-base * 1rem);
+    transform: translate(0, -50%);
+    width: calc(100% - 4 / $fz-base * 1rem);
+    height: calc(100% - 4 / $fz-base * 1rem);
+    width: calc(16.57 / $fz-base * 1rem);
+    height: calc(16.57 / $fz-base * 1rem);
+    background-image: url('/assets/images/icon-arrow-dropright-circle.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &:hover {
+    scale: 1.1;
+  }
+}
+
+.c-buttonCTA__container {
+  display: grid;
+  grid-template-columns: calc(40 / $fz-base * 1rem) auto;
+  align-items: center;
+  justify-content: center;
+  gap: calc(10 / $fz-base * 1rem); 
+  padding: calc(6 / $fz-base * 1rem) calc(25.4 / $fz-base * 1rem);
+}
+
+.c-buttonCTA__circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(40 / $fz-base * 1rem);
+  height: calc(40 / $fz-base * 1rem);
+  background-color: $highlight;
+  border-radius: 50%;
+  font-size: calc(12 / $fz-base * 1rem);
+  color: $alert;
+  font-family: $font-family-ja;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: calc(50 / 1000 * 1rem);
+}
+
+.c-buttonCTA__text {
+  width: fit-content;
+  color: $white;
+  font-family: $font-family-ja;
+  font-weight: 500;
+  font-size: calc(20 / $fz-base * 1rem);
+  line-height: calc(24 / 20);
+  letter-spacing: calc(50 / 1000 * 1rem);
+}
+

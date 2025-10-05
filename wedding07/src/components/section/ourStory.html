@@ -1,0 +1,151 @@
+<!-- 
+# ふたりの物語セクション 更新マニュアル
+
+このファイルは、結婚式のウェブサイトの「ふたりの物語」セクションを定義しています。
+このセクションでは、新郎新婦の生い立ちから出会い、結婚までのストーリーを時系列で表示しています。
+
+## 更新対象
+・各年代の年号（年号のテキスト部分）
+・各ストーリーのテキスト内容（テキスト部分）
+・ストーリーの画像（img要素のsrc属性）
+
+## 画像のパス
+ストーリーごとに画像を設定できます
+・ストーリー画像: /assets/images/our-story-001.png ～ /assets/images/our-story-008.png
+・推奨サイズ：400px x 400px
+・対応フォーマット：PNG
+
+## ストーリーセクションの追加方法
+
+新しいストーリーセクションを追加したい場合は、以下の手順で行います：
+
+### 1. 新しいsectionタグを追加
+HTMLテンプレートの形式：
+<div class="p-ourStory__contentItem">  
+  <div class="p-ourStory__contentItemInner">
+    <article class="c-ourStoryCard">
+      <div class="c-ourStoryCard__container">
+        <h1 class="c-ourStoryCard__year">年号</h1>
+        <figure class="c-ourStoryCard__image">
+          <img src="/assets/images/our-story-XXX.png" alt="">
+        </figure>
+        <div class="c-ourStoryCard__textWrapper">
+          <p class="c-ourStoryCard__text">
+            ストーリーテキスト
+          </p>
+        </div>
+      </div>
+    </article>
+    
+    * 必要に応じて複数のカードを追加 
+  </div>
+</div>
+
+### 4. 画像ファイルの準備
+- 新しい画像を /assets/images/ フォルダに配置
+- ファイル名は our-story-009.png のように連番で命名することを推奨
+
+## ストーリーカードの構造
+### カード部分
+<article class="c-ourStoryCard">
+  <div class="c-ourStoryCard__container">
+    <h1 class="c-ourStoryCard__year">年号</h1>
+    <figure class="c-ourStoryCard__image">
+      <img src="画像パス" alt="">
+    </figure>
+    <div class="c-ourStoryCard__textWrapper">
+      <p class="c-ourStoryCard__text">
+        ストーリーテキスト（<br>タグで改行可能）
+      </p>
+    </div>
+  </div>
+</article>
+
+## 更新手順
+1. 年号を変更する場合：<h1 class="c-ourStoryCard__year">内のテキストを変更
+2. テキストを変更する場合：<p class="c-ourStoryCard__text">内のテキストを変更（改行は<br>タグを使用）
+3. 画像を変更する場合：
+   - 新しい画像を /assets/images/ フォルダに配置
+   - <img src="">のsrc属性を変更
+
+## 注意事項
+- ストーリーの順序は時系列順に配置してください
+- テキスト内では必要に応じて<br>タグで改行を入れてください
+- 画像のalt属性は空文字列""のままで構いません
+-->
+<section class="p-ourStory">
+  {{> ui/heading
+    heading="ふたりの物語"
+    subHeading="Our Story"
+    id="our-story"
+    type="our-story"
+  }}
+  <div class="p-ourStory__container">
+    <!-- 背景画像コンテナを追加 -->
+    <div class="p-ourStory__backgroundContainer" aria-hidden="true">
+      <div class="p-ourStory__backgroundImage p-ourStory__backgroundImage--1" data-bg-index="0"></div>
+      <div class="p-ourStory__backgroundImage p-ourStory__backgroundImage--2" data-bg-index="1"></div>
+      <div class="p-ourStory__backgroundImage p-ourStory__backgroundImage--3" data-bg-index="2"></div>
+      <div class="p-ourStory__backgroundImage p-ourStory__backgroundImage--4" data-bg-index="3"></div>
+      <div class="p-ourStory__backgroundImage p-ourStory__backgroundImage--5" data-bg-index="4"></div>
+    </div>
+    
+    <div class="p-ourStory__content">
+      <div class="p-ourStory__contentItem">
+        <div class="p-ourStory__contentItemInner">
+          {{> ui/ourStoryCard
+            year="1995"
+            imageSrc="/assets/images/our-story-001.png"
+            text="1995年9月25日誕生<br>石川県生まれ O型<br>吉岡家の次男としてのびのびと<br>成長する。"
+          }}
+  
+          {{> ui/ourStoryCard
+            year="1998"
+            imageSrc="/assets/images/our-story-002.png"
+            text="1998年2月10日誕生<br>東京都生まれ O型<br>花村家の長女として、<br>やさしく朗らかに育ちました。"
+          }}
+          {{> ui/ourStoryCard
+            year="2004"
+            imageSrc="/assets/images/our-story-003.png"
+            text="毎日外で元気いっぱいに遊び<br>運動会では俊足を<br>活かして活躍し、<br>いつも全力で走っていました。"
+          }}
+    
+          {{> ui/ourStoryCard
+            year="2009"
+            imageSrc="/assets/images/our-story-004.png"
+            text="本を読むことや勉強も大好きで、<br>静かに机に向かうのが得意な<br>子どもでした。<br>テストはいつも満点でした。"
+          }}
+          {{> ui/ourStoryCard
+            year="2011"
+            imageSrc="/assets/images/our-story-005.png"
+            text="中学では野球部に所属し、<br>仲間と汗を流しながら<br>夢中で白球を追いかける毎日を<br>過ごしました。"
+          }}
+    
+          {{> ui/ourStoryCard
+            year="2015"
+            imageSrc="/assets/images/our-story-006.png"
+            text="茶道部に所属し、<br>着物や和の文化に親しむ日々。<br>心落ち着く豊かな高校生活を<br>過ごしました。"
+          }}
+          {{> ui/ourStoryCard
+            year="2017"
+            imageSrc="/assets/images/our-story-007.png"
+            text="大学のサークルで出会い、<br>自然と会話を重ねるうちに距離が<br>縮まっていきました。ほぼ毎日<br>あっていました。"
+          }}
+    
+          {{> ui/ourStoryCard
+            year="2024"
+            imageSrc="/assets/images/our-story-008.png"
+            text="付き合った記念日に、「これから<br>もそばで笑っていてほしい」と<br>プロポーズ。これから2人で<br>支え合って歩んでいきます。"
+          }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="p-ourStory__justMarried js-fadeIn">
+    <h3 class="p-ourStory__justMarriedTitle">Just married</h3>
+    <picture>
+      <source srcset="/assets/images/figure-just-married.png" type="image/png" media="(min-width: 769px)">
+      <img src="/assets/images/figure-just-married-sp.png" alt="just married">
+    </picture>
+  </section>
+</section>
