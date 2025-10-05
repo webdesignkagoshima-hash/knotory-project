@@ -11,3 +11,4 @@ coverage/
 Thumbs.db
 .vscode/*
 !.vscode/extensions.json
+node_modules/\ndist/\n.env\n*.log
