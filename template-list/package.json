@@ -3,16 +3,6 @@
   "private": true,
   "version": "0.0.2",
   "type": "module",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{html,hbs}": "npm run lint:html",
-    "src/**/*.{css,scss}": "npm run lint:style",
-    "src/**/*.js": "npm run lint:es"
-  },
   "scripts": {
     "dev": "vite",
     "build": "vite build --emptyOutDir",
@@ -20,8 +10,7 @@
     "lint": "npm run lint:html && npm run lint:style && npm run lint:es",
     "lint:html": "markuplint src/**/*.{html,hbs}",
     "lint:style": "stylelint src/assets/scss/**/*.{css,scss}",
-    "lint:es": "eslint src/assets/js/*.js",
-    "prepare": "husky install"
+    "lint:es": "eslint src/assets/js/*.js"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^5.0.0",
@@ -34,8 +23,6 @@
     "eslint": "^8.44.0",
     "eslint-plugin-vue": "^9.15.1",
     "gsap": "^3.13.0",
-    "husky": "^8.0.0",
-    "lint-staged": "^15.2.7",
     "markuplint": "^3.12.0",
     "postcss": "^8.4.23",
     "postcss-normalize-charset": "^6.0.0",
