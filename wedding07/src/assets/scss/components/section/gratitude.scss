@@ -1,0 +1,161 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-gratitude {
+  background-color: $white;
+
+  @include mq(tab) {
+    padding-bottom: calc(200 / $fz-base * 1rem);
+  }
+}
+
+.p-gratitude__title {
+  text-align:center;
+  writing-mode:vertical-rl;
+  -ms-writing-mode:tb-rl;
+  display: inline-block;
+  font-family: $font-family-ja;
+  font-weight: 400;
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
+  font-size: calc(16 / $fz-base * 1rem);
+  line-height: 1;
+  
+  @include mq(tab) {
+    font-size: calc(24 / $fz-base * 1rem);
+    margin-top: -7rem;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -12%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(88 / $fz-base * 1rem);
+    height: calc(88 / $fz-base * 1rem);
+    background-image: url('/assets/images/decoration-gratitude-title.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    @include mq(tab) {
+      bottom: -16%;
+      width: calc(145 / $fz-base * 1rem);
+      height: calc(145 / $fz-base * 1rem);
+    }
+  }
+}
+
+.p-gratitude__container {
+  padding: calc(60 / $fz-base * 1rem) 0 0;
+  position: relative;
+  text-align: center;
+  
+  @include mq(tab) {
+    padding: calc(166 / $fz-base * 1rem) 0 0;
+    width: 85%;
+    max-width: $wd-content-max-pc;
+    margin: 0 auto; 
+  }
+}
+
+.p-gratitude__content {
+  @include container;
+
+  & {
+    border-radius: calc(5 / $fz-base * 1rem);
+    text-align: center;
+    padding: calc(80 / $fz-base * 1rem) calc(8 / $fz-base * 1rem) 0;
+    height: calc(692 / $fz-base * 1rem);
+    position: relative;
+  }
+  
+  @include mq(tab) {
+    & {
+      padding: calc(120 / $fz-base * 1rem) calc(16 / $fz-base * 1rem) 0;
+    }
+  }
+}
+
+.p-gratitude__message {
+  font-family: $font-family-ja;
+  font-weight: 300;
+  font-size: calc(13 / $fz-base * 1rem);
+  line-height: 2;
+  letter-spacing: calc(100 / 1000 * 1rem);
+  
+  @include mq(tab) {
+    font-size: calc(17 / $fz-base * 1rem);
+    line-height: calc(32 / 17);
+    font-weight: 400;
+  }
+}
+
+.p-gratitude__thankYou {
+  font-family: $font-family-en;
+  font-weight: 500;
+  font-size: calc(29 / $fz-base * 1rem);
+  line-height: calc(35 / 29);
+  letter-spacing: calc(200 / 1000 * 1rem);
+  color: $sub;
+  margin-top: calc(57 / $fz-base * 1rem);
+  
+  @include mq(tab) {
+    font-size: calc(29 / $fz-base * 1rem);
+    line-height: calc(35 / 29);
+    margin-top: calc(58 / $fz-base * 1rem);
+  }
+
+  & .p-gratitude__thankYouChar {
+    display: inline-block;
+    color: $sub;
+    transition: opacity 0.3s cubic-bezier(0.4, 0.0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition-delay: calc(0.5s + var(--delay)); // 各文字の遅延時間
+  }
+}
+
+.js {
+  .p-gratitude__title {
+    opacity: 0;
+  }
+
+  & .p-gratitude.js-anime {
+    & .p-gratitude__content {
+      opacity: 0;
+    }
+  }
+  & .p-gratitude__thankYou {
+    overflow: hidden; // アニメーション用にオーバーフローを隠す
+
+    & .p-gratitude__thankYouChar {
+      opacity: 0;
+      transform: translateY(1.5em); // 下から1.5文字分の位置に配置
+    }
+  }
+}
+
+.p-gratitude.u-anime {
+  & .c-heading2 {
+    animation: fadeIn 0.75s ease-in-out 0s forwards;
+  }
+  
+  & .p-gratitude__content {
+    animation: fadeIn 0.75s ease-in-out 0.75s forwards;
+  }
+
+  & .p-gratitude__rose {
+    animation: fadeIn 0.75s ease-in-out 1.5s forwards;
+  }
+}
+
+.p-gratitude__thankYou {
+  &.is-visible {
+    & .p-gratitude__thankYouChar {
+      opacity: 1;
+      transform: translateY(0); // 元の位置にフェードイン
+    }
+  }
+}

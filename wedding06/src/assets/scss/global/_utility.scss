@@ -1,0 +1,92 @@
+@use './mixin' as *;
+@use './variables' as *;
+
+.u-onlyPc {
+  display: none;
+  
+  @include mq(tab) {
+    .u-onlyPc {
+      display: block;
+    }
+  }
+}
+
+.u-onlySp {
+  display: block;
+  
+  @include mq(tab) {
+    .u-onlySp {
+      display: none;
+    }
+  }
+}
+
+.u-visuallyHidden {
+  position: fixed !important;
+  inset: 0 !important;
+  contain: strict !important;
+  visibility: initial !important;
+  inline-size: 4px !important;
+  block-size: 4px !important;
+  margin: unset !important;
+  padding: unset !important;
+  border: unset !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.u-fontFamilyEn {
+  font-family: $font-family-en;
+  font-weight: 300;
+}
+
+.u-fadeUp {
+  animation: fadeUp 1s ease forwards;
+}
+
+
+.u-fadeIn {
+  animation: fadeIn 1s ease forwards;
+}
+
+.u-fadeDown {
+  animation: fadeDown 1s ease forwards;
+}
+
+.u-scaleUp {
+  animation: scaleUp 1s ease-in-out forwards;
+}
+
+.u-blur {
+  animation: blur 1.3s ease-in-out forwards;
+}
+
+// テキストアニメーション用のスタイル
+.u-textAnimation {
+  overflow: hidden; // 枠からはみ出た文字を隠す
+  
+  .js-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(1.5em); // 下から1.5文字分の位置に配置
+    transition: opacity 0.3s cubic-bezier(0.4, 0.0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition-delay: calc( 0.5s + var(--delay)); // 各文字の遅延時間
+    
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0); // 元の位置にフェードイン
+    }
+  }
+}
+
+// bg
+.u-bg__diamond {
+  background: conic-gradient(from 196.39deg at 90.85% -25.22%, #F5E2DC 0deg, #F5F0EC 55.38deg, #FFDBE0 187.47deg, #F9E7E9 286.15deg, #F5E2DC 360deg);
+  background-size: 100%;
+  
+  @include mq(tab) {
+    background: radial-gradient(50% 50% at 50% 50%, #F5F0EC 15%, #FFDBE0 52%, #F9E7E9 79%, #F5E2DC 100%);
+    background-size: 200%;
+  }
+}

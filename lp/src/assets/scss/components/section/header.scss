@@ -1,0 +1,43 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.l-header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(60 / $fz-base * 1rem);
+  background-color: $bg-base;
+  border-bottom: 0.5px solid $border;
+  z-index: 100;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: calc(12 / $fz-base * 1rem) calc($wd-content-padding-sp / $fz-base * 1rem);
+    height: 100%;
+  }
+
+  &__logo {
+    flex-shrink: 0;
+
+    &-link {
+      display: block;
+      text-decoration: none;
+    }
+
+    &-img {
+      height: calc(36 / $fz-base * 1rem);
+      width: auto;
+      object-fit: contain;
+    }
+  }
+
+  &__nav {
+    flex-shrink: 0;
+  }
+
+  
+}

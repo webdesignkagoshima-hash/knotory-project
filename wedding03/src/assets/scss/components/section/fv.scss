@@ -1,0 +1,162 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-fv {
+  position: relative;
+  width: 100svw;
+  overflow: hidden;
+
+  &__imageContainer {
+    padding-top: calc(60 / $viewport-height-sp * 100svh);
+    padding-bottom: calc(108 / $viewport-height-sp * 100svh);
+    overflow: hidden;
+    width: calc(350 / $viewport-width-sp * 100svw);
+    height: calc(675 / $viewport-height-sp * 100svh);
+    box-sizing: initial;
+    
+    @include mq(tab) {
+      padding-top: calc(100 / $viewport-height * 100svh);
+      padding-bottom: calc(120 / $viewport-height * 100svh);
+      width: calc(1565 / $viewport-width * 100svw);
+      height: calc(860 / $viewport-height * 100svh);
+    }
+
+    & picture {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    & .p-fv__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 19%;
+    }
+  }
+
+  &__container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(150 / $viewport-height-sp * 100svh);
+
+    @include mq(tab) {
+      height: calc(150 / $viewport-height * 100svh);
+    }
+  }
+
+  &__copy {
+    font-family: $font-family-en;
+    font-size: calc(42 / $viewport-height-sp * 100svh);
+    font-weight: 500;
+    line-height: calc(45 / 37);
+    letter-spacing: calc(100 / 1000 * 1rem);
+    color: $fc-white;
+    position: absolute;
+    left: calc(12 / $viewport-width-sp * 100svw);
+    bottom: calc(95 / $viewport-height-sp * 100svh);
+    
+    @include mq(tab) {
+      font-size: calc(88 / $viewport-height * 100svh);
+      line-height: calc(106 / 88);
+      left: calc(50 / $viewport-width * 100svw);
+      bottom: calc(93 / $viewport-height * 100svh);
+    }
+  }
+
+  &__byline {
+    font-family: $font-family-en;
+    font-size: calc(30 / $viewport-height-sp * 100svh);
+    font-weight: 300;
+    line-height: calc(30 / 25);
+    letter-spacing: calc(100 / 1000 * 1rem);
+    font-weight: 300;
+    color: $fc-base;
+    position: absolute;
+    left: calc(12 / $viewport-width-sp * 100svw);
+    bottom: calc(75 / $viewport-height-sp * 100svh);
+    
+    @include mq(tab) {
+      font-size: calc(56 / $viewport-height * 100svh);
+      line-height: calc(68 / 56);
+      left: calc(50 / $viewport-width * 100svw);
+      bottom: calc(50 / $viewport-height * 100svh);
+    }
+  }
+
+  &__scroll {
+    position: absolute;
+    right: calc(15 / $viewport-width-sp * 100svw);
+    bottom: calc(222 / $viewport-height-sp * 100svh);
+
+    @include mq(tab) {
+      right: calc(147 / $viewport-width * 100svw);
+      bottom: calc(388 / $viewport-height * 100svh);
+    }
+  }
+  
+  &__scrollText {
+    display: inline-grid;
+    align-items: center;
+    grid-template-columns: calc(150 / $viewport-height-sp * 100svh) 1fr;
+    gap: calc(10 / $viewport-height-sp * 100svh);
+    flex-direction: row-reverse;
+    font-family: $font-family-ja;
+    font-size: calc(9 / $viewport-height-sp * 100svh);
+    line-height: 1;
+    letter-spacing: calc(500 / 1000 * 1rem);
+    color: $fc-base;
+    transform: rotate(-90deg);
+    transform-origin: bottom right;
+    text-transform: uppercase;
+    position: relative;
+    
+    @include mq(tab) {
+      grid-template-columns: calc(267 / $viewport-height * 100svh) 1fr;
+      gap: calc(18 / $viewport-height * 100svh);
+      font-size: calc(15 / $viewport-height * 100svh);
+      left: 0;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0.3px;
+      background-color: $fc-base;
+      animation: scrollBarAnime 2s ease-in-out infinite;
+    }
+  }
+}
+
+.js {
+  .p-fv__imageContainer {
+    opacity: 0;
+  }
+  
+  .p-fv__container {
+    .p-fv__copy {
+      opacity: 0;
+    }
+
+    .p-fv__byline {
+      opacity: 0;
+    }
+  }
+
+  .p-fv__scroll {
+    opacity: 0;
+  }
+}
+
+.p-fv__container.u-anime {
+  .p-fv__copy {
+    animation: fadeUp 1s ease-in-out forwards;
+  }
+
+  .p-fv__byline {
+    animation: fadeDown 1s ease-in-out forwards;
+  }
+}

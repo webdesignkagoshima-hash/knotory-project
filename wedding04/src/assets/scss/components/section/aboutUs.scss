@@ -1,0 +1,50 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-aboutUs {
+  margin-top: calc(216 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    margin-top: calc(356 / $fz-base * 1rem);
+  }
+}
+
+.p-aboutUs__profileWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(56 / $fz-base * 1rem);
+  margin-top: calc(64 / $fz-base * 1rem);
+  padding: 0 calc(21 / $fz-base * 1rem);
+  width: 100%;
+  overflow-x: hidden;
+  
+  @media screen and (min-width: 999px) {
+    gap: calc(132 / $fz-base * 1rem);
+    margin: calc(80 / $fz-base * 1rem) auto 0;
+    padding: 0 calc(124 / $fz-base * 1rem);
+    max-width: calc(1139 / $fz-base * 1rem);
+  }
+}
+
+.js {
+  & .c-profile {
+    opacity: 0;
+  }
+
+  .c-profile__image {
+    & img {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.c-profile.u-anime {
+  animation: fadeIn 1s ease-in-out forwards;
+
+  .c-profile__image {
+    & img {
+      animation: scaleDown 1s ease-in-out forwards;
+    }
+  }
+}

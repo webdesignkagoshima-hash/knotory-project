@@ -1,0 +1,84 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-announcement {
+  position: relative;
+  margin-top: calc(56 / $fz-base * 1rem);
+  padding: 0 calc(20 / $fz-base * 1rem);
+  overflow: hidden;
+
+  @include mq(tab) {
+    margin-top: calc(118 / $fz-base * 1rem);
+    padding: unset;
+  }
+
+  // 背景の上下中央に見出しの文字を配置
+  &::before {
+    content: 'Announcement';
+    display: block;
+    font-family: $font-family-en-bg;
+    font-size: calc(112 / $fz-base * 1rem);
+    line-height: calc(207 / 112);
+    color: #F5F4F0;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    translate: -50% 0;
+    animation: loopBgText 10s linear 0s infinite;
+    
+    @include mq(tab) {
+      top: 50%;
+      bottom: unset;
+      translate: -100% -50%;
+      font-size: calc(250 / $fz-base * 1rem);
+      line-height: calc(463 / 250);
+      color: $white;
+      z-index: -1;
+    }
+  }
+}
+
+@keyframes loopBgText {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform:  translateX(100%);
+  }
+  
+}
+
+.p-announcement__container {
+  text-align: center;
+  background-color: $white;
+  border-radius: calc(500 / $fz-base * 1rem);
+  padding: calc(130 / $fz-base * 1rem) calc(24 / $fz-base * 1rem);
+  margin: 0 auto;
+  outline: 1px solid $sub;
+  outline-offset: -14px;
+  
+  @include mq(tab) {
+    max-width: calc(650 / $fz-base * 1rem);
+    padding: calc(200 / $fz-base * 1rem) calc(100 / $fz-base * 1rem);
+    outline-offset: -20px;
+  }
+}
+
+.p-announcement__content {
+  margin-top: calc(40 / $fz-base * 1rem);
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: 2.2;
+
+  @include mq(tab) {
+    margin-top: calc(61 / $fz-base * 1rem);
+  }
+}
+
+.js {
+  & .p-announcement__content.js-fadeUp {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+}

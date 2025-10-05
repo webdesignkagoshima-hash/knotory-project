@@ -1,0 +1,316 @@
+@use '../../global/variables' as *;
+
+.p-example {
+  background-color: #D4BE6C;
+  // カードスタックアニメーション用の高さを設定
+  min-height: 550vh; // 3枚のカード分（300vh）+ 後続コンテンツ用余白（250vh）
+}
+
+.p-example__container {
+  padding: calc(52 / $fz-base * 1rem) 0 0;
+}
+
+.p-example__heading {
+  font-family: $font-family-heading;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(24 / 20);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: $white;
+  text-align: center;
+}
+
+.p-example__item {
+  background-color: var(--bg-example-color);
+  height: 100vh;
+  padding: 2svh calc(20 / $fz-base * 1rem);
+  
+  // カードスタックアニメーション用のスタイル
+  position: sticky;
+  top: 0;
+  
+  // z-indexの設定（後のカードほど前面に）
+  &:nth-of-type(1) { z-index: 50; }
+  &:nth-of-type(2) { z-index: 51; }
+  &:nth-of-type(3) { z-index: 52; }
+}
+
+.p-example__itemHeader {
+  text-align: center;
+}
+
+.p-example__itemCategory {
+  font-family: $font-family-ja-serif;
+  font-weight: 600;
+  font-size: calc(20 / $fz-base * 1rem);
+  line-height: calc(24 / 20);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: var(--bg-example-color);
+  background-color: $white;
+  width: fit-content;
+  border-radius: calc(30 / $fz-base * 1rem);
+  padding: calc(7 / $fz-base * 1rem) calc(34 / $fz-base * 1rem) calc(8 / $fz-base * 1rem);
+  margin: 0 auto;
+}
+
+.p-example__itemTitle {
+  font-family: $font-family-ja-serif;
+  font-weight: 400;
+  font-size: calc(20 / $fz-base * 1rem);
+  line-height: calc(29 / 20);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: $white;
+  margin-top: calc(15 / $fz-base * 1rem);
+}
+
+.p-example__itemContent {
+  margin-top: calc(20 / $fz-base * 1rem);
+}
+
+.p-example__itemFigure {
+  width: fit-content;
+  height: 85svh;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 110%;
+    aspect-ratio: 295 / 629;
+    background-image: url('/assets/images/frame-smartphone-01.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    position: absolute;
+    top: calc(-5 / $fz-base * 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.p-example__itemImage {
+  height: 90%;
+  width: auto;
+}
+
+.p-example__item:nth-of-type(2) {
+  .p-example__itemFigure {
+    &::before {
+      background-image: url('/assets/images/frame-smartphone-02.png');
+      top: calc(-16 / $fz-base * 1rem);
+    }
+  }
+}
+
+.p-example__item:nth-of-type(3) {
+  .p-example__itemFigure {
+    &::before {
+      background-image: url('/assets/images/frame-smartphone-03.png');
+    }
+  }
+}
+
+.p-example__designSection {
+  background-color: $bg-example;
+  padding-top: calc(28 / $fz-base * 1rem);
+  // 3枚目のカードの後に十分な余白を確保
+  position: relative;
+  z-index: 53; // カードより前面に表示
+  margin-top: 150vh; // カード分の余白を増加
+}
+
+.p-example__designHeading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(25 / 16);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  text-align: center;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: calc(18.34 / $fz-base * 1rem);
+    height: calc(31 / $fz-base * 1rem);
+    background-image: url('/assets/images/decoration-accent-text-before.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: calc(14 / $fz-base * 1rem);
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: calc(18.34 / $fz-base * 1rem);
+    height: calc(31 / $fz-base * 1rem);
+    background-image: url('/assets/images/decoration-accent-text-after.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: calc(14 / $fz-base * 1rem);
+  }
+}
+
+.p-example__designList {
+  margin-top: calc(23 / $fz-base * 1rem);
+}
+
+.p-example__designLinkWrap {
+  width: fit-content;
+  margin: calc(33 / $fz-base * 1rem) auto 0;
+  text-align: center;
+}
+
+.p-example__designLink {
+  text-decoration: none;
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(25 / 16);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+  padding-bottom: calc(5 / $fz-base * 1rem);
+  border-bottom: 1px solid currentColor;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: calc(6.01 / $fz-base * 1rem);
+    height: calc(10.51 / $fz-base * 1rem);
+    background-image: url('/assets/images/icon-arrow-forward.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: calc(14 / $fz-base * 1rem);
+    padding-right: calc(6 / $fz-base * 1rem);
+  }
+}
+
+.p-example__contentInfo {
+  width: calc(300 / $fz-base * 1rem);
+  margin: calc(47 / $fz-base * 1rem) auto 0;
+}
+
+.p-example__contentInfoList {
+  text-align: center;
+}
+
+.p-example__contentInfoTerm {
+  font-family: $font-family-ja;
+  font-size: calc(18 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(22 / 18);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: $white;
+  background-color: #0ABAB5;
+  padding: calc(11 / $fz-base * 1rem);
+  border-top-right-radius: calc(5 / $fz-base * 1rem);
+  border-top-left-radius: calc(5 / $fz-base * 1rem);
+}
+
+.p-example__contentInfoDescription {
+  background-color: $white;
+  border-bottom-left-radius: calc(5 / $fz-base * 1rem);
+  border-bottom-right-radius: calc(5 / $fz-base * 1rem);
+  padding: calc(23 / $fz-base * 1rem) calc(43 / $fz-base * 1rem) calc(30 / $fz-base * 1rem);
+}
+
+.p-example__contentInfoItems {
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(30 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+}
+
+.p-example__brochureSection {
+  background-color: $bg-example;
+  text-align: center;
+  padding-bottom: calc(50 / $fz-base * 1rem);
+  padding-top: calc(52 / $fz-base * 1rem);
+  // designSectionと同じz-index
+  position: relative;
+  z-index: 53;
+}
+
+.p-example__brochureHeading {
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(25 / 16);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+}
+
+.p-example__brochureContent {
+  margin-top: calc(23 / $fz-base * 1rem);
+}
+
+.p-example__brochureFigure {
+  width: calc(345 / $fz-base * 1rem);
+  aspect-ratio: 345 / 180;
+  margin: 0 auto;
+}
+
+.p-example__brochureText {
+  margin-top: calc(20 / $fz-base * 1rem);
+  font-family: $font-family-ja;
+  font-size: calc(12 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(20 / 12);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+
+  &--accent {
+    color: $alert;
+    font-weight: 500;
+  }
+}
+
+.p-example__brochureNote {
+  margin-top: calc(31 / $fz-base * 1rem);
+  font-family: $font-family-ja;
+  font-size: calc(12 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(20 / 12);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+
+  &--accent {
+    color: #0ABAB5;
+    font-weight: 500;
+  }
+}
+
+.p-example__brochureLinkWrap {
+  width: fit-content;
+  margin: calc(33 / $fz-base * 1rem) auto 0;
+  text-align: center;
+}
+
+.p-example__brochureLink {
+  text-decoration: none;
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(25 / 16);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+  padding-bottom: calc(5 / $fz-base * 1rem);
+  border-bottom: 1px solid currentColor;
+  
+  &::after {
+    content: '';
+    display: inline-block;
+    width: calc(6.01 / $fz-base * 1rem);
+    height: calc(10.51 / $fz-base * 1rem);
+    background-image: url('/assets/images/icon-arrow-forward.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: calc(14 / $fz-base * 1rem);
+    padding-right: calc(6 / $fz-base * 1rem);
+  }
+}

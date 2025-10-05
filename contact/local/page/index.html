@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせフォーム</title>
+    <style>
+        .p-contact__form { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .p-contact__fieldset { border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; }
+        .p-contact__legend { font-weight: bold; }
+        .p-contact__required { color: red; }
+        .p-contact__radioGroup { margin-bottom: 10px; }
+        .p-contact__inputGroup { margin-bottom: 20px; }
+        .p-contact__label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .p-contact__input, .p-contact__textarea { width: 100%; padding: 8px; border: 1px solid #ddd; }
+        .p-contact__textarea { resize: vertical; }
+        .p-contact__submitButton { background: #007cba; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        .p-contact__submitButton:disabled { background: #ccc; cursor: not-allowed; }
+        /* ハニーポット用スタイル - ボットのみが入力する隠しフィールド */
+        .honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+        .error-message { color: red; margin-top: 10px; }
+        .success-message { color: green; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <form class="p-contact__form" id="contactForm" action="/api/contact.php" method="post">
+        <!-- CSRF Token (JavaScriptで動的に設定) -->
+        <input type="hidden" name="csrf_token" id="csrfToken" value="">
+        
+        <!-- ハニーポット (ボット対策) - CSSで非表示 -->
+        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+        
+        <!-- お問い合わせ項目(radio button) -->
+        <fieldset class="p-contact__fieldset">
+            <legend class="p-contact__legend">お問い合わせ項目<span class="p-contact__required">*</span></legend>
+            <div class="p-contact__radioGroup">
+                <input class="p-contact__radioInput" type="radio" id="inquiry-type-1" name="inquiry-type" value="制作をお願いしたい" checked>
+                <label class="p-contact__radioLabel" for="inquiry-type-1">制作をお願いしたい</label>
+            </div>
+            <div class="p-contact__radioGroup">
+                <input class="p-contact__radioInput" type="radio" id="inquiry-type-2" name="inquiry-type" value="サービス内容について相談したい">
+                <label class="p-contact__radioLabel" for="inquiry-type-2">サービス内容について相談したい</label>
+            </div>
+            <div class="p-contact__radioGroup">
+                <input class="p-contact__radioInput" type="radio" id="inquiry-type-3" name="inquiry-type" value="その他のお問い合わせ">
+                <label class="p-contact__radioLabel" for="inquiry-type-3">その他のお問い合わせ</label>
+            </div>
+        </fieldset>
+        
+        <!-- お名前 -->
+        <div class="p-contact__inputGroup">
+            <label class="p-contact__label" for="name">お名前<span class="p-contact__required">*</span></label>
+            <input class="p-contact__input" type="text" id="name" name="name" required maxlength="50">
+        </div>
+        
+        <!-- メールアドレス -->
+        <div class="p-contact__inputGroup">
+            <label class="p-contact__label" for="email">メールアドレス<span class="p-contact__required">*</span></label>
+            <input class="p-contact__input" type="email" id="email" name="email" required>
+        </div>
+        
+        <!-- 電話番号 -->
+        <div class="p-contact__inputGroup">
+            <label class="p-contact__label" for="phone">電話番号</label>
+            <input class="p-contact__input" type="tel" id="phone" name="phone" pattern="^\d{10,11}$">
+        </div>
+        
+        <!-- お問い合わせ内容 -->
+        <div class="p-contact__inputGroup">
+            <label class="p-contact__label" for="message">お問い合わせ内容<span class="p-contact__required">*</span></label>
+            <textarea class="p-contact__textarea" id="message" name="message" rows="5" required maxlength="2000"></textarea>
+        </div>
+        
+        <div class="p-contact__privacyNote">
+            <p class="p-contact__privacyText">
+                <a class="p-contact__privacyLink" href="#">プライバシーポリシー</a>に同意の上、送信してください。
+            </p>
+        </div>
+        
+        <div class="p-contact__buttonWrapper">
+            <button class="p-contact__submitButton" type="submit" id="submitButton">送信する</button>
+        </div>
+        
+        <!-- メッセージ表示エリア -->
+        <div id="messageArea"></div>
+    </form>
+
+    <script>
+        // API設定
+        const API_CONFIG = {
+            baseURL: '/api',
+            endpoints: {
+                csrfToken: '/get_csrf_token.php',
+                contact: '/contact.php'
+            }
+        };
+        
+        // URLを構築するヘルパー関数
+        function getApiUrl(endpoint) {
+            return API_CONFIG.baseURL + API_CONFIG.endpoints[endpoint];
+        }
+
+        // CSRFトークンを取得してフォームに設定
+        async function loadCsrfToken() {
+            try {
+                const response = await fetch(getApiUrl('csrfToken'), {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                
+                // レスポンスのContent-Typeを確認
+                const contentType = response.headers.get('content-type');
+                console.log('Response Content-Type:', contentType);
+                console.log('Response Status:', response.status);
+                
+                // レスポンステキストを取得してログ出力
+                const responseText = await response.text();
+                console.log('Response Text:', responseText);
+                
+                // JSONとしてパース試行
+                let data;
+                try {
+                    data = JSON.parse(responseText);
+                } catch (parseError) {
+                    console.error('JSONパースエラー:', parseError);
+                    console.error('レスポンス内容（最初の200文字）:', responseText.substring(0, 200));
+                    throw new Error('サーバーからの応答が正しいJSON形式ではありません');
+                }
+                
+                if (data.success) {
+                    document.getElementById('csrfToken').value = data.csrf_token;
+                    console.log('CSRFトークンを正常に取得しました');
+                } else {
+                    console.error('CSRFトークンの取得に失敗しました:', data.message);
+                    throw new Error(data.message || 'CSRFトークンの取得に失敗しました');
+                }
+            } catch (error) {
+                console.error('CSRFトークンの取得でエラーが発生しました:', error);
+                // ユーザーにエラーを表示
+                const messageArea = document.getElementById('messageArea');
+                messageArea.innerHTML = `<div class="error-message">CSRFトークンの取得に失敗しました。ページを再読み込みしてください。</div>`;
+            }
+        }
+        
+        // フォーム送信処理
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitButton = document.getElementById('submitButton');
+            const messageArea = document.getElementById('messageArea');
+            
+            // ボタンを無効化
+            submitButton.disabled = true;
+            submitButton.textContent = '送信中...';
+            
+            try {
+                const formData = new FormData(this);
+                
+                const response = await fetch(getApiUrl('contact'), {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                
+                // メッセージ表示
+                messageArea.innerHTML = `<div class="${result.success ? 'success-message' : 'error-message'}">${result.message}</div>`;
+                
+                if (result.success) {
+                    // 成功時はフォームをリセット
+                    this.reset();
+                    // 新しいCSRFトークンを取得
+                    await loadCsrfToken();
+                }
+                
+            } catch (error) {
+                messageArea.innerHTML = `<div class="error-message">通信エラーが発生しました: ${error.message}</div>`;
+            } finally {
+                // ボタンを有効化
+                submitButton.disabled = false;
+                submitButton.textContent = '送信する';
+            }
+        });
+        
+        // ページ読み込み時にCSRFトークンを取得
+        document.addEventListener('DOMContentLoaded', loadCsrfToken);
+    </script>
+</body>
+</html>

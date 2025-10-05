@@ -1,0 +1,21 @@
+@use './global/normalize';
+@use './global/variables' as *;
+@use './global/mixin' as *;
+@use './global/common';
+@use './global/utility';
+@use './global/animation';
+@use './global/layout';
+
+// splide
+@use '@splidejs/splide/dist/css/splide.min.css';
+
+// components
+@use './components/ui/button';
+@use './components/ui/buttonLine';
+@use './components/ui/buttonLineSmall';
+@use './components/ui/templateListCard';
+
+// sections
+@use './components/section/header';
+@use './components/section/list';
+@use './components/section/footer';

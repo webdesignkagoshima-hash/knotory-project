@@ -1,0 +1,72 @@
+<!-- 
+# 更新マニュアル
+
+このファイルは、結婚式のウェブサイトの「私たちについて」セクションを定義しています。
+このセクションでは、新郎新婦のプロフィールを紹介しています。
+
+## 更新対象
+・新郎新婦の名前
+・新郎新婦の名前（英語表記）
+・新郎新婦のプロフィール（生年月日、出身地、血液型、職業など）
+
+## 画像のパス
+同じファイル名で差し替えて使用してください
+・新郎の画像: `/assets/images/figure-groom.png`
+・新婦の画像: `/assets/images/figure-bride.png`
+
+※推奨サイズ：440px x 460px
+-->
+<section class="p-aboutUs">
+  <div class="p-aboutUs__container">
+    {{> ui/heading
+      heading="私たちについて"
+      subHeading="About us"
+      id="about-us"
+      position="left"
+    }}
+    <div class="p-aboutUs__profileWrapper">
+      <article class="c-profile js-anime">
+        <div class="c-profile__image">
+          {{> ui/profileImageGroom }}
+        </div>
+        <div class="c-profile__content">
+          <!-- 名前を入力してください -->
+          <hgroup class="c-profile__heading">
+            <h1 class="c-profile__name">吉岡 直人</h1>
+            <p class="c-profile__nameEn">Naoto Yoshioka</p>
+          </hgroup>
+          <!-- プロフィールを入力してください -->
+          <p class="c-profile__text">
+            1995年9月25日生まれ<br>
+            石川県出身 O型 会社員(エンジニア)<br>
+            <br>
+            昔から体を動かすことが好きです。<br>
+            休日は趣味で、歴史ある町並みを散歩したり<br>
+            神社巡りをしています。
+          </p>
+        </div>
+      </article>
+      <article class="c-profile js-anime" type="bride">
+        <div class="c-profile__image">
+          {{> ui/profileImageBride }}
+        </div>
+        <div class="c-profile__content">
+          <!-- 名前を入力してください -->
+          <hgroup class="c-profile__heading">
+            <h1 class="c-profile__name">花村 結那</h1>
+            <p class="c-profile__nameEn">Yuna Hanamura</p>
+          </hgroup>
+          <p class="c-profile__text">
+            1998年2月10日生まれ<br>
+            東京都出身　A型 会社員(広報職)<br>
+            <br>
+            和の趣を感じるものが好きで休日は<br>
+            着物で美術館を巡ったり<br>
+            季節の花を楽しむ時間が癒しです
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+</section>

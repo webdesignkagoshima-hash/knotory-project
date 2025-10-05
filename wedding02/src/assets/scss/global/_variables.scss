@@ -1,0 +1,29 @@
+// Google Fontsのインポート
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellefair:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore:wght@400&display=swap');
+
+
+
+// フォントファミリーの定義
+$font-family-ja: "Zen Kaku Gothic New", sans-serif;
+$font-family-en: "Bellefair", serif;
+$font-family-heading: "Shippori Mincho", serif;
+$font-family-en-bg: "La Belle Aurore", cursive;
+
+// フォントサイズ
+$fz-base: 16;
+
+// 色
+$base: #605A57;
+$sub: #948473;
+$bg-base: #FBF6EE;
+$white: #fff;
+$primary: #605A57;
+$secondary: #948473;
+$LINE: #71D077;
+
+// コンテンツサイズ
+$wd-content-max-pc: calc(1026 / $fz-base * 1rem);
+$wd-content-padding-sp: 20;

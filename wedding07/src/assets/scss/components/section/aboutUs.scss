@@ -1,0 +1,121 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-aboutUs {
+  padding-top: calc(92 / $fz-base * 1rem);
+  padding-bottom: calc(120 / $fz-base * 1rem);
+  position: relative;
+  background-image: url('/assets/images/bg-about-us-sp.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+  @include mq(tab) {
+    padding-top: calc(197 / $fz-base * 1rem);
+    padding-bottom: calc(301 / $fz-base * 1rem);
+    background-image: url('/assets/images/bg-about-us.png');
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(-66 / $fz-base * 1rem);
+    right: 0;
+    width: calc(136 / $fz-base * 1rem);
+    height: calc(163 / $fz-base * 1rem);
+    z-index: 1;
+    background-image: url('/assets/images/bg-gold-powder-announcement.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include mq(tab) {
+      content: none;
+    }
+  }
+}
+
+.p-aboutUs__profileWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: calc(68 / $fz-base * 1rem);
+  margin-top: calc(88 / $fz-base * 1rem);
+  max-width: calc(1088 / $fz-base * 1rem);
+  padding: 0 calc(20 / $fz-base * 1rem);
+  width: 100%;
+
+  @media screen and (min-width: 999px) {
+    grid-template-columns: 1fr 1fr;
+    gap: calc(207 / $viewport-weight-pc * 100svw);
+    margin: calc(63 / $fz-base * 1rem) auto 0;
+    padding: 0;
+    align-items: start;
+  }
+
+  & .c-profile {
+
+    & .c-profile__image {
+      border-radius: calc(39 / $fz-base * 1rem) calc(0 / $fz-base * 1rem) calc(0 / $fz-base * 1rem) calc(39 / $fz-base * 1rem);
+      width: calc(100% + calc(20 / $fz-base * 1rem));
+      margin-right: calc(-20 / $fz-base * 1rem);
+
+      @include mq(tab) {
+        border-radius: calc(1 / $fz-base * 1rem) calc(101 / $fz-base * 1rem) calc(101 / $fz-base * 1rem) calc(1 / $fz-base * 1rem);
+      }
+    }
+
+    & .c-profile__heading,
+    & .c-profile__content {
+      justify-self: center;
+
+      @include mq(tab) {
+        justify-self: start;
+      }
+    }
+
+    &:last-child {
+      @include mq(tab) {
+        margin-top: calc(155 / $fz-base * 1rem);
+      }
+
+      & .c-profile__image {
+        border-radius: calc(0 / $fz-base * 1rem) calc(39 / $fz-base * 1rem) calc(39 / $fz-base * 1rem) calc(0 / $fz-base * 1rem);
+        margin-left: calc(-20 / $fz-base * 1rem);
+        margin-right: unset;
+
+        @include mq(tab) {
+          width: 100%;
+          border-radius: calc(101 / $fz-base * 1rem) calc(1 / $fz-base * 1rem) calc(1 / $fz-base * 1rem) calc(101 / $fz-base * 1rem);
+          justify-self: end;
+        }
+      }
+
+      & .c-profile__heading,
+      & .c-profile__content {
+        @include mq(tab) {
+          justify-self: end;
+        }
+      }
+    }
+  }
+}
+
+.js {
+  & .c-profile {
+    & .c-profile__image,
+    & .c-profile__content,
+    & .c-profile__nameEn,
+    & .c-profile__name {
+      opacity: 0;
+    }
+  }
+}
+
+.c-profile.u-anime {
+  & .c-profile__image,
+  & .c-profile__content,
+  & .c-profile__nameEn,
+  & .c-profile__name {
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+}

@@ -1,0 +1,27 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-ourStoryTitle {
+  font-family: $font-family-en;
+  font-weight: 400;
+  font-size: calc(42 / $fz-base * 1rem);
+  line-height: calc(48 / 42);
+  text-transform: capitalize;
+  color: $sub;
+  text-align: center;
+
+  @include mq(tab) {
+    text-align: left;
+  }
+}
+
+.c-ourStoryTitle__numbering {
+  margin-left: 1rem;
+}
+
+.js {
+  .c-ourStoryTitle {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}

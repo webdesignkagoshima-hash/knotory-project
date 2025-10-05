@@ -1,0 +1,129 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-gratitude {
+  background-color: #F5F0EC;
+  padding-bottom: calc(100 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    padding-bottom: 0;
+  }
+}
+
+.p-gratitude__container {
+  padding: calc(60 / $fz-base * 1rem) 0 0;
+  position: relative;
+  
+  @include mq(tab) {
+    padding: calc(166 / $fz-base * 1rem) 0 0;
+    width: 85%;
+    max-width: $wd-content-max-pc;
+    margin: 0 auto; 
+  }
+}
+
+.p-gratitude__content {
+  @include container;
+
+  & {
+    border-radius: calc(5 / $fz-base * 1rem);
+    text-align: center;
+    padding: calc(51 / $fz-base * 1rem) calc(8 / $fz-base * 1rem) 0;
+    height: calc(792 / $fz-base * 1rem);
+    position: relative;
+  }
+  
+  @include mq(tab) {
+    & {
+      padding: calc(51 / $fz-base * 1rem) calc(16 / $fz-base * 1rem) 0;
+    }
+  }
+}
+
+.p-gratitude__message {
+  font-family: $font-family-ja;
+  font-weight: 300;
+  font-size: calc(13 / $fz-base * 1rem);
+  line-height: 2;
+  
+  @include mq(tab) {
+    font-size: calc(17 / $fz-base * 1rem);
+    line-height: calc(32 / 17);
+    font-weight: 400;
+  }
+}
+
+.p-gratitude__thankYou {
+  font-family: $font-family-en;
+  font-weight: 500;
+  font-size: calc(29 / $fz-base * 1rem);
+  line-height: calc(35 / 29);
+  letter-spacing: calc(200 / 1000 * 1rem);
+  color: $sub;
+  margin-top: calc(57 / $fz-base * 1rem);
+  
+  @include mq(tab) {
+    font-size: calc(29 / $fz-base * 1rem);
+    line-height: calc(35 / 29);
+    margin-top: calc(58 / $fz-base * 1rem);
+  }
+
+  & .p-gratitude__thankYouChar {
+    display: inline-block;
+    color: $sub;
+    transition: opacity 0.3s cubic-bezier(0.4, 0.0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition-delay: calc(0.5s + var(--delay)); // 各文字の遅延時間
+  }
+}
+
+.p-gratitude__rose {
+  width: 100%;
+
+  @include mq(tab) {
+    width: 50%;
+    margin-left: 30%;
+  }
+}
+
+.js {  
+  & .p-gratitude.js-anime {
+    & .p-gratitude__content {
+      opacity: 0;
+    }
+  }
+  & .p-gratitude__thankYou {
+    overflow: hidden; // アニメーション用にオーバーフローを隠す
+
+    & .p-gratitude__thankYouChar {
+      opacity: 0;
+      transform: translateY(1.5em); // 下から1.5文字分の位置に配置
+    }
+  }
+  & .p-gratitude__rose {
+    opacity: 0;
+  }
+}
+
+.p-gratitude.u-anime {
+  & .c-heading2 {
+    animation: fadeIn 0.75s ease-in-out 0s forwards;
+  }
+  
+  & .p-gratitude__content {
+    animation: fadeIn 0.75s ease-in-out 0.75s forwards;
+  }
+
+  & .p-gratitude__rose {
+    animation: fadeIn 0.75s ease-in-out 1.5s forwards;
+  }
+}
+
+.p-gratitude__thankYou {
+  &.is-visible {
+    & .p-gratitude__thankYouChar {
+      opacity: 1;
+      transform: translateY(0); // 元の位置にフェードイン
+    }
+  }
+}

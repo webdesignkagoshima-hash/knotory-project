@@ -1,0 +1,30 @@
+// Google Fontsのインポート
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;700&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%26%C2%A9&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600;700&display=swap');
+
+
+// フォントファミリーの定義
+$font-family-ja: "Yu Gothic", "YuGothic", "Yu Gothic Medium", "Noto Sans JP", sans-serif;
+$font-family-en: "Josefin Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$font-family-heading: "Shippori Mincho", "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "HG明朝E", "MS P明朝", "MS PMincho", serif;
+
+// フォントサイズ
+$fz-base: 16;
+
+// 色
+$fc-base: #4e4e4e;
+$fc-heading: #707070;
+$fc-white: #fff;
+$fc-primary: #71afd0;
+$fc-secondary: #abc1c6;
+$primary: #71afd0;
+$secondary: #abc1c6;
+$tertiary: #e0eff7;
+$white: #fff;
+$LINE: #71D077;
+
+// コンテンツサイズ
+$wd-content-max-pc: calc(600 / $fz-base * 1rem);
+$wd-content-padding-pc: 460px;
+$wd-content-padding-sp: 30;

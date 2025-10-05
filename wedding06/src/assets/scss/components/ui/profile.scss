@@ -1,0 +1,83 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-profile {
+  justify-self: center;
+}
+
+.c-profile__image {
+  display: block;
+  width: calc(300 / $fz-base * 1rem);
+  aspect-ratio: 300 / 191.64;
+  border-radius: calc(24 / $fz-base * 1rem);
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+
+  @include mq(tab) {
+    width: calc(400 / $fz-base * 1rem);
+    aspect-ratio: 450 / 287.46;
+    border-radius: calc(40 / $fz-base * 1rem);
+    box-shadow: 14px 15px 17px #F5F0EC;
+  }
+}
+
+.c-profile__heading {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8 / $fz-base * 1rem);
+  margin-top: calc(18.4 / $fz-base * 1rem);
+  text-align: center;
+
+  @include mq(tab) {
+    gap: calc(7.5 / $fz-base * 1rem);
+    margin-top: calc(30 / $fz-base * 1rem);
+  }
+}
+
+.c-profile__name {
+  font-family: $font-family-heading;
+  font-weight: 400;
+  font-size: calc(20 / $fz-base * 1rem);
+  line-height: calc(24 / 20);
+  letter-spacing: calc(100 / 1000 * 1rem);
+  color: $base;
+
+  @include mq(tab) {
+    font-size: calc(30 / $fz-base * 1rem);
+    font-weight: 300;
+    line-height: calc(36 / 30);
+  }
+}
+
+.c-profile__nameEn {
+  font-family: $font-family-en;
+  font-weight: 200;
+  font-size: calc(10 / $fz-base * 1rem);
+  line-height: calc(13 / 10);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: $base;
+
+  @include mq(tab) {
+    font-size: calc(16 / $fz-base * 1rem);
+    line-height: calc(21 / 16);
+  }
+}
+
+.c-profile__content {
+  font-family: $font-family-ja;
+  font-weight: 400;
+  font-size: calc(14 / $fz-base * 1rem);
+  line-height: calc(25 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+  margin-top: calc(19 / $fz-base * 1rem);
+  text-align: center;
+
+  @include mq(tab) {
+    font-size: calc(20 / $fz-base * 1rem);
+    font-weight: 300;
+    line-height: calc(30 / 20);
+    margin-top: calc(24 / $fz-base * 1rem);
+  }
+}

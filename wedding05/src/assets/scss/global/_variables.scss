@@ -1,0 +1,36 @@
+// Google Fontsのインポート
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Jp:wght@100;300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:wght@400;600;700&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%26%C2%A9&display=swap');
+
+
+// フォントファミリーの定義
+$font-family-ja: "Lato", "Hiragino Sans", "Noto Sans JP", sans-serif;
+$font-family-en: "Baskervville", serif;
+$font-family-heading: "Lato", "Hiragino Sans", "Noto Sans JP", sans-serif;
+
+// フォントサイズ
+$fz-base: 16;
+
+// 色
+$fc-base: #2c2c2c;
+$fc-sub: #4e4e4e;
+$fc-white: #fff;
+$fc-another: #2D333C;
+$bg-base: #fff;
+$bg-secondary: #F0F1F1;
+$footer-primary: #00B7BD;
+$primary: #93E3DC;
+$secondary: #E3F7F8;
+$white: #fff;
+$LINE: #71D077;
+
+// viewport height
+$viewport-width-sp: 390;
+$viewport-height-sp: 843;
+$viewport-width: 1920;
+$viewport-height: 1080;
+
+// コンテンツサイズ
+$wd-content-max-pc: calc(600 / $fz-base * 1rem);
+$wd-content-padding-sp: 30;

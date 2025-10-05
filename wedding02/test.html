@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Vertical Slider</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: #f0f4f8;
+            color: #334155;
+            overflow-x: hidden;
+        }
+        .section-wrapper {
+            height: 300vh; /* スクロール量を増やすために高さを3倍に */
+            position: relative;
+        }
+        .slider-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        /* 見出しのスタイル */
+        .section-heading {
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        
+        /* セクションコンテナのコンテナ（複数カード用） */
+        .section-cards-container {
+            display: flex;
+            gap: 0; /* 全セクションでgapを0に */
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            position: relative;
+        }
+        
+        /* 全セクションのカードを中央に重ねて配置 */
+        .section-container {
+            width: 300px;
+            height: 350px;
+            background-color: #fff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-radius: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            padding: 2rem;
+            /* デフォルト状態 - transformはJavaScriptで制御 */
+            opacity: 0;
+        }
+        
+        /* 各セクションの背景色 */
+        .js-slider-wrapper:nth-child(2) .slider-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .js-slider-wrapper:nth-child(3) .slider-section { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .js-slider-wrapper:nth-child(4) .slider-section { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        
+        .section-content h2 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .section-content p {
+            color: #64748b;
+            text-align: center;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        
+        /* カード番号 */
+        .card-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        
+        /* pin-spacerのpadding-bottomを制御 */
+        .pin-spacer {
+            padding-bottom: 0 !important;
+        }
+        
+        /* ScrollTriggerのpin-spacer要素の高さを制御 */
+        .pin-spacer .section-wrapper {
+            height: 100vh !important;
+        }
+    </style>
+</head>
+<body class="js">
+
+    <main>
+        <!-- Dummy content to create space before the slider -->
+        <div class="h-screen bg-sky-100 flex items-center justify-center">
+            <h1 class="text-4xl font-bold text-sky-800">
+                スクロールしてスライダーを開始
+            </h1>
+        </div>
+        
+        <!-- Slider Section 1 -->
+        <div class="section-wrapper js-slider-wrapper" id="slider-wrapper-1">
+            <section class="slider-section">
+                <h1 class="section-heading">セクション1 - 基本的なフェードイン</h1>
+                <div class="section-cards-container">
+                    <div class="section-container">
+                        <div class="card-number">1</div>
+                        <div class="section-content">
+                            <h2>私たちの出会い</h2>
+                            <p>2019年春、大学のサークル活動で初めて出会いました。最初は友達として始まった関係でした。</p>
+                        </div>
+                    </div>
+                    <div class="section-container">
+                        <div class="card-number">2</div>
+                        <div class="section-content">
+                            <h2>友達期間</h2>
+                            <p>共通の趣味を通じて自然と親しくなり、一緒に過ごす時間が増えていきました。</p>
+                        </div>
+                    </div>
+                    <div class="section-container">
+                        <div class="card-number">3</div>
+                        <div class="section-content">
+                            <h2>特別な関係へ</h2>
+                            <p>時間をかけてゆっくりと、友達以上の特別な気持ちが芽生えていきました。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Slider Section 2 -->
+        <div class="section-wrapper js-slider-wrapper" id="slider-wrapper-2">
+            <section class="slider-section">
+                <h1 class="section-heading">セクション2 - スタガーアニメーション</h1>
+                <div class="section-cards-container">
+                    <div class="section-container">
+                        <div class="card-number">1</div>
+                        <div class="section-content">
+                            <h2>計画準備</h2>
+                            <p>半年前から密かにプロポーズの計画を立て始めました。場所選びから指輪まで慎重に準備。</p>
+                        </div>
+                    </div>
+                    <div class="section-container">
+                        <div class="card-number">2</div>
+                        <div class="section-content">
+                            <h2>当日の緊張</h2>
+                            <p>思い出の海辺で夕日を待ちながら、緊張で心臓がバクバクしていました。</p>
+                        </div>
+                    </div>
+                    <div class="section-container">
+                        <div class="card-number">3</div>
+                        <div class="section-content">
+                            <h2>プロポーズ</h2>
+                            <p>「僕と一生一緒にいてくれませんか？」涙と笑顔の中で「はい」という返事をもらえました。</p>
+                        </div>
+                    </div>
+                    <div class="section-container">
+                        <div class="card-number">4</div>
+                        <div class="section-content">
+                            <h2>喜びの瞬間</h2>
+                            <p>二人で抱き合いながら見た夕日は、人生で最も美しい景色でした。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Slider Section 3 -->
+        <div class="section-wrapper js-slider-wrapper" id="slider-wrapper-3">
+            <section class="slider-section">
+                <h1 class="section-heading">セクション3 - 回転＋フェード</h1>
+                <div class="section-cards-container">
+                    <div class="section-container">
+                        <div class="card-number">1</div>
+                        <div class="section-content">
+                            <h2>式場選び</h2>
+                            <p>二人の思い出の場所に近い、温かみのある式場を選びました。</p>
+                        </div>
+                    </div>
+                    <div class="section-container">
+                        <div class="card-number">2</div>
+                        <div class="section-content">
+                            <h2>準備期間</h2>
+                            <p>招待状の作成から料理の試食まで、一つ一つ丁寧に準備を進めました。</p>
+                        </div>
+                    </div>
+                    <div class="section-container">
+                        <div class="card-number">3</div>
+                        <div class="section-content">
+                            <h2>結婚式当日</h2>
+                            <p>家族と親しい友人たちに囲まれて、心温まる結婚式を挙げることができました。</p>
+                        </div>
+                    </div>
+                    <div class="section-container">
+                        <div class="card-number">4</div>
+                        <div class="section-content">
+                            <h2>新しいスタート</h2>
+                            <p>新しい人生の始まりを、大切な人たちと一緒に祝うことができて幸せです。</p>
+                        </div>
+                    </div>
+                    <div class="section-container">
+                        <div class="card-number">5</div>
+                        <div class="section-content">
+                            <h2>これからの未来</h2>
+                            <p>二人で歩む新しい人生への期待と喜びでいっぱいです。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Dummy content to create space after the slider -->
+        <div class="h-screen bg-slate-100 flex items-center justify-center">
+            <h1 class="text-4xl font-bold text-slate-800">
+                スライダー終了
+            </h1>
+        </div>
+    </main>
+
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- ScrollTrigger Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        // Wait for the window to load before running the GSAP animation
+        window.onload = function() {
+            // Register ScrollTrigger plugin
+            gsap.registerPlugin(ScrollTrigger);
+
+            // 各js-slider-wrapperに対して個別にScrollTriggerを作成
+            document.querySelectorAll('.js-slider-wrapper').forEach((wrapper, index) => {
+                const sectionNumber = index + 1;
+                const containers = wrapper.querySelectorAll('.section-container');
+                const cardCount = containers.length;
+                
+                // カード枚数に応じてセクションの高さを動的に調整（より短く）
+                const sectionHeight = Math.max(150, cardCount * 50 + 100); // 最低150vh、カード1枚につき50vh追加
+                wrapper.style.height = `${sectionHeight}vh`;
+                
+                // 各カードの初期位置を正確に中央配置
+                containers.forEach((container) => {
+                    gsap.set(container, {
+                        x: -150, // width: 300pxの半分
+                        y: -175, // height: 350pxの半分
+                        opacity: 0,
+                        scale: 0.8,
+                        rotation: 0
+                    });
+                });
+                
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: wrapper,
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true,
+                        pin: true,
+                    }
+                });
+
+                // 各カードを順番に表示（一枚ずつ）
+                containers.forEach((container, cardIndex) => {
+                    tl.to(container, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.8,
+                        ease: "power2.out",
+                    })
+                    .to(container, {
+                        opacity: 0,
+                        scale: 0.8,
+                        duration: 0.5,
+                        ease: "power2.in",
+                    }, "+=0.5"); // 0.5秒表示してからフェードアウト
+                });
+            });
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-aboutUs {
+  margin-top: calc(102 / $fz-base * 1rem);
+  padding-top: calc(142 / $fz-base * 1rem);
+  padding-bottom: calc(240 / $fz-base * 1rem);
+  position: relative;
+  background-color: $white;
+
+  @include mq(tab) {
+    margin-top: calc(386 / $fz-base * 1rem);
+    padding-top: calc(382 / $fz-base * 1rem);
+    padding-bottom: calc(301 / $fz-base * 1rem);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: calc(-49 / $fz-base * 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(170 / $fz-base * 1rem);
+    aspect-ratio: 400 / 292.19;
+    background-image: url('/assets/images/figure-ring.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @include mq(tab) {
+      top: calc(-150 / $fz-base * 1rem);
+      width: calc(400 / $fz-base * 1rem);
+    }
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: calc(189 / $fz-base * 1rem);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, #F5E2DC 85.89%);
+    position: absolute;
+    bottom: 0;
+
+    @include mq(tab) {
+      height: calc(333 / $fz-base * 1rem);
+    }
+  }
+}
+
+.p-aboutUs__profileWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: calc(37 / $fz-base * 1rem);
+  margin-top: calc(34 / $fz-base * 1rem);
+  max-width: calc(900 / $fz-base * 1rem);
+  width: 100%;
+
+  @media screen and (min-width: 999px) {
+    grid-template-columns: 1fr 1fr;
+    gap: calc(91 / $fz-base * 1rem);
+    margin: calc(38 / $fz-base * 1rem) auto 0;
+    align-items: start;
+  }
+
+  & .c-profile {
+    &:last-child {
+      @include mq(tab) {
+        margin-top: calc(88 / $fz-base * 1rem);
+      }
+    }
+  }
+}
+
+.js {
+  & .c-profile {
+    & .c-profile__image,
+    & .c-profile__content,
+    & .c-profile__nameEn,
+    & .c-profile__name {
+      opacity: 0;
+    }
+  }
+}
+
+.c-profile.u-anime {
+  & .c-profile__image,
+  & .c-profile__content,
+  & .c-profile__nameEn,
+  & .c-profile__name {
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+}

@@ -1,0 +1,218 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-memories {
+  margin-top: calc(107 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    margin-top: calc(386 / $fz-base * 1rem);
+  }
+
+  &__content {
+    margin: calc(96 / $fz-base * 1rem) auto 0;
+
+    @include mq(tab) {
+      margin: calc(120 / $fz-base * 1rem) auto 0;
+    }
+  }
+
+  &__slider {
+    margin-top: calc(70 / $fz-base * 1rem);
+    height: calc(387 / $fz-base * 1rem);
+
+    @include mq(tab) {
+      margin: calc(100 / $fz-base * 1rem) auto 0;
+      height: calc(294 / $fz-base * 1rem);
+    }
+  }
+
+  .p-memories__slideFigure {
+    width: calc(294 / $fz-base * 1rem);
+    height: calc(387 / $fz-base * 1rem);
+
+    @include mq(tab) {
+      width: calc(295.5 / $fz-base * 1rem);
+      height: calc(294 / $fz-base * 1rem);
+    }
+
+    & img {
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+  }
+
+  & .splide, .reverseSplide {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__video {
+    margin-top: calc(98 / $fz-base * 1rem);
+
+    @include mq(tab) {
+      margin-top: calc(356 / $fz-base * 1rem);
+    }
+  }
+
+  &__videoWrapper {
+    position: relative;
+    width: 100%;
+    max-width: calc(890 / $fz-base * 1rem);
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: $primary;
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.7; // デフォルト状態では透過
+      transition: opacity 0.3s ease;
+    }
+
+    // 動画再生中は不透明に
+    &.is-playing video {
+      opacity: 1;
+    }
+  }
+
+  &__playButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      svg {
+        transform: scale(1.1);
+      }
+    }
+
+    svg {
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16));
+      transition: transform 0.3s ease;
+      pointer-events: none; // SVG自体のクリックイベントを無効化
+    }
+
+    // 動画再生中は非表示
+    &.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    // トランジション中のスタイル
+    &.is-transitioning {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+
+  &__videoCaption {
+    display: none;
+    
+    @include mq(tab) {
+      display: none;
+      font-family: $font-family-ja;
+      font-weight: 400;
+      font-size: calc(20 / $fz-base * 1rem);
+      line-height: calc(36 / 20);
+      color: $fc-base;
+      text-align: center;
+      margin-top: calc(32 / $fz-base * 1rem);
+    }
+  }
+}
+
+.p-memories__images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto calc(200 / $fz-base * 1rem);
+  row-gap: calc(50 / $fz-base * 1rem);
+  margin: 0 auto;
+  
+  @include mq(tab) {
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    gap: calc(42 / $fz-base * 1rem);
+  }
+  
+  @include mq(pc) {
+    width: calc(1000 / $fz-base * 1rem);
+    min-height: calc(400 / $fz-base * 1rem);
+  }
+}
+
+.js {
+  & .p-memories__slider {
+    opacity: 0;
+  }
+
+  & .p-memories__video {
+    opacity: 0;
+  }
+
+  & .p-memories__imageFigure {
+    height: 0;
+
+    &__main {
+      transition: height 0.8s ease 0s;
+      
+      @include mq(tab) {
+        transition: height 0.8s ease 0s;
+      }
+    }
+    
+    &__leftSide {
+      transition: height 0.8s ease 0s;
+
+      @include mq(tab) {
+        transition: height 0.8s ease 0.5s;
+      }
+    }
+    
+    &__rightSide {
+      transition: height 0.8s ease 0s;
+
+      @include mq(tab) {
+        transition: height 0.8s ease 1s;
+      }
+    }
+  }
+}
+
+.p-memories__images.u-anime {
+  .p-memories__imageFigure {
+    @include mq(tab) {
+      &__main,
+      &__leftSide,
+      &__rightSide {
+        height: 100%;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.p-memories__imageFigure {
+  &__main,
+  &__leftSide,
+  &__rightSide {
+    &.u-anime {
+      height: 100%;
+      opacity: 1;
+    }
+  }
+}

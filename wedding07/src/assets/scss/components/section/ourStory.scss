@@ -1,0 +1,200 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-ourStory {
+  width: 100svw;
+  overflow-x: hidden;
+  margin-top: calc(100 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    margin-top: calc(189 / $fz-base * 1rem);
+  }
+}
+
+.p-ourStory__container {
+  position: relative;
+  margin-top: calc(67 / $fz-base * 1rem);
+  
+  @include mq(tab) {
+    margin-top: calc(80 / $fz-base * 1rem);
+  }
+}
+
+/* 背景画像コンテナ */
+.p-ourStory__backgroundContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.p-ourStory__backgroundImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0; // 初期状態は非表示
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 0.8s ease-in-out; // スムーズな切り替え
+  z-index: -1;
+
+  // 左右交互に配置 - 常に表示
+  &--1 {
+    background-image: url('/assets/images/bg-shape-our-story-1.png');
+    left: -50%;
+    top: 25%;
+  }
+  
+  &--2 {
+    background-image: url('/assets/images/bg-shape-our-story-2.png');
+    right: -50%;
+    top: 25%;
+  }
+  
+  &--3 {
+    background-image: url('/assets/images/bg-shape-our-story-3.png');
+    left: -50%;
+    top: 25%;
+  }
+  
+  &--4 {
+    background-image: url('/assets/images/bg-shape-our-story-4.png');
+    right: -50%;
+    top: 25%;
+  }
+  
+  &--5 {
+    background-image: url('/assets/images/bg-shape-our-story-5.png');
+    left: -50%;
+    top: 25%;
+  }
+
+  // アクティブ状態
+  &.is-active {
+    opacity: 1; // アクティブ時に表示
+  }
+
+  @include mq(tab) {
+    
+    &--1 {
+      left: -25%;
+      top: 25%;
+    }
+    
+    &--2 {
+      right: -25%;
+      top: 25%;
+    }
+    
+    &--3 {
+      left: -25%;
+      top: 25%;
+    }
+    
+    &--4 {
+      right: -25%;
+      top: 25%;
+    }
+    
+    &--5 {
+      left: -25%;
+      top: 25%;
+    }
+  }
+}
+
+.p-ourStory__content {
+  position: relative;
+  z-index: 1;
+  padding: 0 calc(20 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    padding: 0;
+  }
+}
+
+.p-ourStory__contentItem {
+  padding: calc(30 / $fz-base * 1rem) 0;
+  // SP時（デフォルト）は相対配置
+  position: relative;
+  height: 100svh; // 全体を100svhに設定
+
+  @include mq(tab) {
+    height: auto; // PC時は高さ自動
+    padding: unset;
+  }
+}
+
+.p-ourStory__contentItemInner {
+  // SP時（デフォルト）は相対配置コンテナとして機能
+  position: relative;
+  height: calc(100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-ourStory__justMarried {
+  position: relative;
+
+  @include mq(tab) {
+    margin: calc(120 / $fz-base * 1rem) auto 0;
+  }
+
+  &Title {
+    font-family: $font-family-en;
+    text-transform: uppercase;
+    font-size: calc(24 / $fz-base * 1rem);
+    letter-spacing: calc(140 / 1000 * 1em);
+    text-align: center;
+    margin-bottom: calc(40 / $fz-base * 1rem);
+
+    @include mq(tab) {
+      font-size: calc(32 / $fz-base * 1rem);
+      margin-bottom: calc(85 / $fz-base * 1rem);
+    }
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    width: calc(212 / $fz-base * 1rem);
+    height: calc(219 / $fz-base * 1rem);
+    background-image: url('/assets/images/bg-gold-powder-our-story.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0;
+    top: calc(-111 / $fz-base * 1rem);
+    z-index: 1;
+
+    @include mq(tab) {
+      right: 0;
+      top: calc(-363 / $fz-base * 1rem);
+      width: calc(566 / $fz-base * 1rem);
+      height: calc(589 / $fz-base * 1rem);
+      background-image: url('/assets/images/bg-gold-powder-our-story-pc.png');
+    }
+  }
+}
+
+.js {
+  .p-ourStory__justMarried {
+    opacity: 0;
+  }
+}
+
+/* pin-spacerのpadding-bottomを制御（SPのみ） */
+.pin-spacer {
+  padding-bottom: 0 !important;
+}
+
+/* ScrollTriggerのpin-spacer要素の高さを制御（SPのみ） */
+.pin-spacer .p-ourStory__contentItem {
+  height: 100svh !important;
+}

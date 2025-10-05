@@ -1,0 +1,32 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-aboutUs {
+  margin-top: calc(69 / $fz-base * 1rem);
+  width: 100%;
+
+  @include mq(tab) {
+    margin-top: calc(161 / $fz-base * 1rem);
+  }
+}
+
+.p-aboutUs__profileWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(64 / $fz-base * 1rem);
+  width: 100%;
+  margin-top: calc(47 / $fz-base * 1rem);
+  justify-self: center;
+  overflow-x: hidden;
+
+  @include mq(tab) {
+    grid-template-columns: 1fr;
+    gap: calc(33 / $fz-base * 1rem);
+  }
+}
+
+.js {
+  & .c-profile.js-fadeIn {
+    opacity: 0;
+  }
+}

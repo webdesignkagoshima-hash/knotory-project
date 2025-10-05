@@ -1,0 +1,56 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.l-header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(60 / $fz-base * 1rem);
+  background-color: $bg-base;
+  border-bottom: 0.5px solid $border;
+  z-index: 100;
+
+  @include mq(tab) {
+    height: calc(100 / $fz-base * 1rem);
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: $wd-content-max-pc;
+    margin: 0 auto;
+    padding: calc(12 / $fz-base * 1rem) calc($wd-content-padding-sp / $fz-base * 1rem);
+    height: 100%;
+
+    @include mq(tab) {
+      padding: calc(18 / $fz-base * 1rem) 0 calc(21 / $fz-base * 1rem);
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+
+    &-link {
+      display: block;
+      text-decoration: none;
+    }
+
+    &-img {
+      height: calc(36 / $fz-base * 1rem);
+      width: auto;
+      object-fit: contain;
+
+      @include mq(tab) {
+        height: calc(61 / $fz-base * 1rem);
+      }
+    }
+  }
+
+  &__nav {
+    flex-shrink: 0;
+  }
+
+  
+}

@@ -1,0 +1,71 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-profile__image {
+  display: block;
+  width: calc(300 / $fz-base * 1rem);
+  aspect-ratio: 300 / 191.64;
+  position: relative;
+  overflow: hidden;
+
+  @include mq(tab) {
+    width: calc(450 / $fz-base * 1rem);
+    aspect-ratio: 450 / 287.46;
+  }
+}
+
+.c-profile__heading {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: calc(10 / $fz-base * 1rem);
+  margin-top: calc(19.4 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    gap: calc(14 / $fz-base * 1rem);
+    margin-top: calc(39.5 / $fz-base * 1rem);
+  }
+}
+
+.c-profile__name {
+  font-family: $font-family-heading;
+  font-weight: 600;
+  font-size: calc(20 / $fz-base * 1rem);
+  line-height: calc(24 / 20);
+  letter-spacing: calc(100 / 1000 * 1rem);
+  color: $fc-base;
+
+  @include mq(tab) {
+    font-size: calc(22 / $fz-base * 1rem);
+    line-height: calc(26 / 22);
+  }
+}
+
+.c-profile__nameEn {
+  font-family: $font-family-en;
+  font-weight: 700;
+  font-size: calc(10 / $fz-base * 1rem);
+  line-height: calc(12 / 10);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: $fc-base;
+
+  @include mq(tab) {
+    font-size: calc(14 / $fz-base * 1rem);
+    line-height: calc(17 / 14);
+  }
+}
+
+.c-profile__content {
+  font-family: $font-family-ja;
+  font-weight: 400;
+  font-size: calc(14 / $fz-base * 1rem);
+  line-height: calc(25 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $fc-base;
+  margin-top: calc(23 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    font-size: calc(20 / $fz-base * 1rem);
+    line-height: calc(35 / 20);
+    margin-top: calc(30 / $fz-base * 1rem);
+  }
+}

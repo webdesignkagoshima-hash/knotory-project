@@ -1,0 +1,149 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+// Template list card component styles
+.c-templateListCard {
+  display: block;
+  background: white;
+  overflow: hidden;
+
+  // PC: 横並びレイアウト
+  @include mq(tab) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
+}
+
+.c-templateListCard__imgLink {
+  display: block;
+  text-decoration: none;
+
+  // PC: 画像部分の幅を50%に
+  @include mq(tab) {
+    flex: 0 0 50%;
+  }
+}
+
+.c-templateListCard__imgBox {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 220 / 350; // SP: 220×350のアスペクト比
+
+  // PC: 600×337のアスペクト比
+  @include mq(tab) {
+    aspect-ratio: 600 / 337;
+  }
+}
+
+.c-templateListCard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.c-templateListCard__body {
+  // PC: コンテンツ部分の幅を50%に
+  @include mq(tab) {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.c-templateListCard__titleLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+  margin-top: calc(20 / $viewport-weight-sp * 100svw);
+
+  @include mq(tab) {
+    margin: 0;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.c-templateListCard__title {
+  font-size: calc(18 / $viewport-weight-sp * 100svw);
+  font-weight: 400;
+  line-height: calc(26 / 18);
+  letter-spacing: calc(50 / 1000 * 1em);
+  color: $base;
+  
+  // PC: タイトルサイズを大きく
+  @include mq(tab) {
+    font-size: calc(32 / $viewport-weight-pc * 100svw);
+    line-height: calc(46 / 32);
+    padding-right: calc(100 / $viewport-weight-pc * 100svw);
+  }
+}
+
+.c-templateListCard__desc {
+  color: $base;
+  font-size: calc(14 / $viewport-weight-sp * 100svw);
+  font-weight: 300;
+  line-height: calc(20 / 14);
+  letter-spacing: calc(25 / 1000 * 1em);
+  margin-top: calc(22 / $viewport-weight-sp * 100svw);
+
+  // PC: 説明文のサイズを調整
+  @include mq(tab) {
+    font-size: calc(24 / $viewport-weight-pc * 100svw);
+    font-weight: 400;
+    line-height: calc(35 / 24);
+    letter-spacing: calc(25 / 1000 * 1em);
+    padding-right: calc(10 / $viewport-weight-pc * 100svw);
+    margin-top: calc(34 / $viewport-weight-pc * 100svw);
+  }
+}
+
+.c-templateListCard__linkBtn {
+  display: block;
+  color: $base;
+  width: fit-content;
+  padding: 0 calc(13 / $viewport-weight-sp * 100svw) calc(4 / $viewport-weight-sp * 100svw);
+  border-bottom: 1px solid $base;
+  text-decoration: none;
+  font-size: calc(10 / $viewport-weight-sp * 100svw);
+  font-weight: 400;
+  line-height: 1.5;
+  transition: opacity 0.3s ease;
+  margin-top: calc(20 / $viewport-weight-sp * 100svw);
+  
+  // PC: ボタンサイズを調整
+  @include mq(tab) {
+    padding: 0 calc(15 / $viewport-weight-pc * 100svw) calc(6.5 / $viewport-weight-pc * 100svw);
+    font-size: calc(16 / $viewport-weight-pc * 100svw);
+    margin-top: calc(30 / $viewport-weight-pc * 100svw);
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: calc(2.92 / $fz-base * 1rem);
+    height: calc(5.1 / $fz-base * 1rem);
+    margin-left: calc(9.9 / $fz-base * 1rem);
+    background-image: url('/assets/images/icon-arrow-sub-black.svg');
+    
+    @include mq(tab) {
+      width: calc(4.64 / $fz-base * 1rem);
+      height: calc(8.11 / $fz-base * 1rem);
+      margin-left: calc(15 / $fz-base * 1rem);
+    }
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

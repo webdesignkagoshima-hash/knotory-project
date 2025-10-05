@@ -1,0 +1,181 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-fv {
+  width: 100%;
+  height: 100svh;
+  background-color: $bg-base;
+  position: relative;
+  
+  @include mq(tab) {
+    height: calc(100svh - calc(53 / $fz-base * 1rem));
+    min-height: calc(560 / $fz-base * 1rem);
+    margin-top: calc(53 / $fz-base * 1rem);
+  }
+
+  &__imageContainer {
+    overflow: hidden;
+    height: 50svh;
+    padding-top: 26.5svh;
+    box-sizing: initial;
+
+    @include mq(tab) {
+      height: calc(100svh - calc(53 / $fz-base * 1rem));
+      padding-top: 0;
+    }
+
+    & picture {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    & .p-fv__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    translate: 0 0 calc(20 / $fz-base * 1rem); 
+    width: 100%;
+  }
+  
+  &__copy {
+    width: 100%;
+    height: 35svh;
+    background-image: url('/assets/images/figure-flowers-sp.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    @include mq(tab) {
+      height: calc(501 / 794 * 100svh);
+      background-image: url('/assets/images/figure-flowers.png');
+      margin-top: calc(390 / 794 * 100svh);
+    }
+    
+    @media screen and (max-height: 800px) and (max-width: 768px) {
+      background-image: url('/assets/images/figure-flowers-sp-min.png');
+      background-size: contain;
+    }
+
+    &Image {
+      height: 29svh;
+      box-sizing: initial;
+
+      @include mq(tab) {
+        position: absolute;
+        top: calc(155 / 794 * 100svh);
+        left: 0;
+        height: calc(200 / 794 * 100svh);
+      }
+
+      & img {
+        height: 100%;
+        width: auto;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &__bylineWrapper {
+    position: absolute;
+    top: 79.5svh;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: $font-family-en;
+    font-weight: 200;
+    color: $sub;
+
+    @include mq(tab) {
+      top: calc(520 / 794 * 100svh);
+      font-weight: 300;
+      color: $white;
+    }
+  }
+
+  &__byline {
+    font-size: calc(16 / $fz-base * 1rem);
+    line-height: calc(84 / 77.86);
+    letter-spacing: 0.07em;
+
+    @include mq(tab) {
+      font-size: calc(36 / $fz-base * 1rem);
+      line-height: 1;
+    }
+  }
+
+  &__date {
+    font-size: calc(16 / $fz-base * 1rem);
+    line-height: 1;
+    letter-spacing: 0.12em;
+    margin-top: calc(8 / $fz-base * 1rem);
+
+    @include mq(tab) {
+      font-size: calc(32 / $fz-base * 1rem);
+      line-height: 1;
+      margin-top: calc(32 / $fz-base * 1rem);
+    }
+  }
+
+  &__scroll {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    translate: -50% 0;
+  }
+  
+  &__scrollText {
+    display: inline-grid;
+    align-items: end;
+    justify-content: center;
+    grid-template-rows: 1fr calc(56 / $fz-base * 1rem);
+    gap: calc(4 / $fz-base * 1rem);
+    font-family: $font-family-en;
+    font-size: calc(16 / $fz-base * 1rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    color: $primary;
+    
+    @include mq(tab) {
+      grid-template-rows: 1fr calc(46 / $fz-base * 1rem);
+      font-weight: 400;
+      color: $white;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: calc(0.67 / $fz-base * 1rem);
+      height: 100%;
+      background-color: $primary;
+      justify-self: center;
+      animation: scrollBarAnime 2s infinite;
+      
+      @include mq(tab) {
+        width: calc(1 / $fz-base * 1rem);
+        background-color: $white;
+      }
+    }
+  }
+}
+
+.js {
+  .p-fv__container {
+    .p-fv__copyImage {
+      filter: blur(50px);
+      scale: 0.5;
+    }
+
+    .p-fv__bylineWrapper {
+      opacity: 0;
+    }
+  }
+}

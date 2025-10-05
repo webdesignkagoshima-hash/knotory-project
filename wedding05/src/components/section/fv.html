@@ -1,0 +1,47 @@
+<!-- 
+# 更新マニュアル
+
+このファイルは、結婚式のウェブサイトのファーストビューセクションを定義しています。
+このセクションでは、メインキャッチコピーと新郎新婦の名前を表示しています。
+
+## 更新対象
+・メインキャッチコピー
+・新郎新婦の名前（英語表記）
+
+## 画像のパス
+背景画像として使用されます
+・デスクトップ用背景画像: `/assets/images/figure-fv.png`
+・デスクトップ用背景画像（Webp）: `/assets/images/figure-fv.webp`
+・スマートフォン用背景画像: `/assets/images/figure-fv-sp.png`
+・スマートフォン用背景画像（Webp）: `/assets/images/figure-fv-sp.webp`
+
+※推奨サイズ：デスクトップ 3840px x 2160px、スマートフォン 750px x 1624px
+
+## 注意事項
+・画像は、WebP形式とPNG形式の両方を用意してください。
+　※WebP形式とは、Googleが開発した画像フォーマットで、圧縮率が高く、画質を保ちながらファイルサイズを小さくできます。
+　※WebP形式の画像は、対応しているブラウザでのみ表示されます。
+・画像は、デスクトップとスマートフォンで異なるサイズを使用します。
+
+-->
+<div class="p-fv">
+  <div class="p-fv__container">
+    <!-- メインキャッチコピーを入力してください -->
+    <p class="p-fv__copy js-fadeIn">We Tied the Knot</p>
+    <!-- 新郎新婦の名前（英語表記）を入力してください -->
+    <p class="p-fv__byline js-fadeIn">By Naoto&Yuna</p>
+  </div>
+
+  <!-- 画像は、WebP形式とPNG形式の両方を用意してください -->
+  <div class="p-fv__imageContainer js-fadeIn">
+    <picture>
+      <source srcset="/assets/images/figure-fv.webp" type="image/webp" media="(min-width: 769px)">
+      <source srcset="/assets/images/figure-fv.png" type="image/png" media="(min-width: 769px)">
+      <source srcset="/assets/images/figure-fv-sp.webp" type="image/webp" media="(max-width: 768px)">
+      <img src="/assets/images/figure-fv-sp.webp" alt="" class="p-fv__image js-fv__image">
+    </picture>
+  </div>
+  <div class="p-fv__scroll js-fadeIn">
+    <p class="p-fv__scrollText">scroll</p>
+  </div>
+</div>
