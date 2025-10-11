@@ -1,0 +1,35 @@
+<header class="l-header">
+  <div class="l-header__container">
+    <!-- ハンバーガーメニューボタン -->
+    <button class="p-hamburger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
+      <span class="p-hamburger__line"></span>
+      <span class="p-hamburger__line"></span>
+      <span class="p-hamburger__line"></span>
+      {{> ui/headerHamburgerBgImage }}
+    </button>
+
+    <!-- グローバルナビゲーション -->
+    <nav class="p-global-nav" id="global-nav" role="navigation" aria-label="メインメニュー">
+      <div class="p-global-nav__overlay"></div>
+      <div class="p-global-nav__content">
+        <div class="p-global-nav__menu">
+          <svg class="p-global-nav__menu-bg" width="956" height="1555" viewBox="0 0 956 1555" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M103.439 70C215.439 -14 483.439 2 483.439 2C483.439 2 782.439 5.24976 843.439 114C904.439 222.75 943.68 465.997 943.68 778C943.68 1006 1012.76 1361.23 819.439 1474C660.016 1567 155.602 1585.63 87.4391 1498C-15.2413 1366 30.3432 1050 11.4391 810C-11.5609 518 -8.56093 154 103.439 70Z" fill="white"/>
+          </svg>
+          {{#each navigation}}
+          <hgroup class="p-global-nav__item">
+            <div class="p-global-nav__itemContainer">
+              <a href="{{href}}" class="global-nav__link" id="{{id}}">
+                <h2 class="p-global-nav__title">
+                  {{subText}}
+                </h2>
+                <p class="p-global-nav__subTitle">{{name}}</p>
+              </a>
+            </div>
+          </hgroup>
+          {{/each}}
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

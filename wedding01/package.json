@@ -1,0 +1,36 @@
+{
+  "name": "template-001",
+  "private": true,
+  "version": "0.0.7",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "preview": "vite preview",
+    "lint": "npm run lint:html && npm run lint:style && npm run lint:es",
+    "lint:html": "markuplint src/**/*.{html,hbs}",
+    "lint:style": "stylelint src/assets/scss/**/*.{css,scss}",
+    "lint:es": "eslint src/assets/js/*.js"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "@markuplint/mustache-parser": "^3.11.0",
+    "@splidejs/splide": "^4.1.4",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "autoprefixer": "^10.4.14",
+    "css-declaration-sorter": "^6.4.0",
+    "eslint": "^8.44.0",
+    "eslint-plugin-vue": "^9.15.1",
+    "markuplint": "^3.12.0",
+    "postcss": "^8.4.23",
+    "postcss-normalize-charset": "^6.0.0",
+    "postcss-sort-media-queries": "^5.1.0",
+    "sass": "^1.62.1",
+    "stylelint": "^15.10.1",
+    "stylelint-config-standard-scss": "^10.0.0",
+    "terser": "^5.43.1",
+    "vite": "^6.3.5",
+    "vite-plugin-handlebars": "^2.0.0"
+  }
+}

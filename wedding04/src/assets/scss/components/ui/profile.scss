@@ -1,0 +1,139 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-profile {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(24 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    grid-template-columns: 1fr 1fr;
+    gap: calc(56 / $fz-base * 1rem);
+    align-items: center;
+  }
+
+  &[type="bride"] {
+    .c-profile__image{
+      grid-row: 1;
+    }
+  }
+}
+
+.c-profile__image {
+  display: flex;
+  place-items: center;
+  width: calc(268 / $fz-base * 1rem);
+  aspect-ratio: 1 / 1;
+  position: relative;
+  justify-self: center;
+
+  @include mq(tab) {
+    width: calc(412 / $fz-base * 1rem);
+  }
+
+  & svg {
+    width: 100%;
+    height: auto;
+  }
+
+  &Bg {
+    position: absolute;
+    top: calc(-20 / $fz-base * 1rem);
+    left: calc(-27 / $fz-base * 1rem);
+    z-index: -1;
+
+    @include mq(tab) {
+      top: calc(52.13 / $fz-base * 1rem);
+      left: calc(-97.49 / $fz-base * 1rem);
+    }
+  }
+}
+
+.c-profile[type="bride"] {
+  .c-profile__image {
+    &Bg {
+      top: 0;
+      left: calc(10 / $fz-base * 1rem);
+
+      @include mq(tab) {
+        top: calc(-46.92 / $fz-base * 1rem);
+        left: calc(70.17 / $fz-base * 1rem);
+      }
+    }
+  }
+
+  .c-profile__content {
+    @include mq(tab) {
+      margin-top: calc(12 / $fz-base * 1rem);
+    }
+  }
+} 
+
+.c-profile__heading {
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 / $fz-base * 1rem);
+  color: #C4A361;
+
+  @include mq(tab) {
+    gap: calc(12 / $fz-base * 1rem);
+  }
+}
+
+.c-profile__name {
+  font-family: $font-family-noto-serif;
+  font-weight: 600;
+  font-size: calc(26 / $fz-base * 1rem);
+  line-height: calc(24 / 20);
+  letter-spacing: calc(100 / 1000 * 1rem);
+
+  @include mq(tab) {
+    font-size: calc(32 / $fz-base * 1rem);
+    line-height: calc(46 / 32);
+  }
+}
+
+.c-profile__nameEn {
+  font-family: $font-family-en;
+  font-weight: 700;
+  font-size: calc(16 / $fz-base * 1rem);
+  line-height: calc(12 / 10);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  text-transform: uppercase;
+
+  @include mq(tab) {
+    font-size: calc(16 / $fz-base * 1rem);
+    line-height: calc(32 / 16);
+    letter-spacing: 0.15em;
+  }
+}
+
+.c-profile__text {
+  margin-top: calc(16 / $fz-base * 1rem);
+  line-height: 1.9;
+
+  @include mq(tab) {
+    margin-top: calc(16 / $fz-base * 1rem);
+  }
+}
+
+.c-profile__content {
+  font-family: $font-family-ja;
+  font-weight: 300;
+  font-size: calc(14 / $fz-base * 1rem);
+  line-height: calc(25 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $fc-sub;
+  justify-self: center;
+  width: 100%;
+  text-align: center;
+  
+  @include mq(tab) {
+    width: fit-content;
+    font-size: calc(16 / $fz-base * 1rem);
+    font-weight: 500;
+    line-height: calc(31.6 / 16);
+    margin-top: calc(100 / $fz-base * 1rem);
+    text-align: unset;
+  }
+}

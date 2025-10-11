@@ -1,0 +1,26 @@
+<header class="l-header">
+  <div class="l-header__container">
+    <!-- ハンバーガーメニューボタン -->
+    <button class="p-hamburger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
+      <span class="p-hamburger__line"></span>
+      <span class="p-hamburger__line"></span>
+    </button>
+
+    <!-- グローバルナビゲーション -->
+    <nav class="p-global-nav" id="global-nav" role="navigation" aria-label="メインメニュー">
+      <div class="p-global-nav__overlay"></div>
+      <div class="p-global-nav__content">
+        <div class="p-global-nav__menu">
+          {{#each navigation}}
+          <hgroup class="p-global-nav__item">
+            <h2 class="p-global-nav__title">
+              <a href="{{href}}" class="global-nav__link" id="{{id}}">{{subText}}</a>
+            </h2>
+            <p class="p-global-nav__subTitle">{{name}}</p>
+          </hgroup>
+          {{/each}}
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

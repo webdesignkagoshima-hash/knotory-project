@@ -1,0 +1,14 @@
+# config.phpへの直接アクセスを禁止
+<Files "config.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# ディレクトリリスティングを無効化
+Options -Indexes
+
+# PHPファイルへの直接アクセスを禁止（より厳格）
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

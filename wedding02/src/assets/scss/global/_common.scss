@@ -1,0 +1,51 @@
+@use './variables' as *;
+@use './mixin' as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: $base;
+  background-color: $bg-base;
+  width: 100svw;
+  overflow-x: hidden;
+}
+
+.l-main {
+  background-image: url('/assets/images/bg-base-sp.png');
+  background-repeat: repeat;
+  position: relative;
+  z-index: 1;
+
+  @include mq(tab) {
+    background-image: url('/assets/images/bg-base.png');
+  }
+}
+
+figure {
+  margin: 0;
+}
+
+picture {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
+
+ul,ol {
+  list-style: none;
+}

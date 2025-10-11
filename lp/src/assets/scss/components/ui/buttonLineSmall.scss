@@ -1,0 +1,48 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-btnLineSmall {
+  text-decoration: none;
+  color: $white;
+  height: calc(36 / $fz-base * 1rem);
+  font-family: $font-family-ja;
+  font-weight: 600;
+  font-size: calc(13 / $fz-base * 1rem);
+  line-height: calc(19 / 13);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  transition: opacity 0.3s ease, color 0.3s ease;
+  
+  .c-btnLineSmall__container {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(8.9 / $fz-base * 1rem);
+    justify-content: space-between;
+    height: inherit;
+    border-radius: calc(50 / $fz-base * 1rem);
+    border: 1px solid $LINE;
+    background-color: $LINE;
+    padding: calc(8.9 / $fz-base * 1rem) calc(10.4 / $fz-base * 1rem) calc(8.1 / $fz-base * 1rem) calc(12.9 / $fz-base * 1rem);
+
+    &::after {
+      content: '';
+      width: calc(14.63 / $fz-base * 1rem);
+      height: calc(14.63 / $fz-base * 1rem);
+      background-image: url('/assets/images/icon-arrow.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  & .c-btnLine__linkIcon {
+    display: block;
+    width: calc(19.68 / $fz-base * 1rem);
+    height: calc(19.68 / $fz-base * 1rem);
+  }
+
+
+  &:hover {
+    @include mq(tab) {
+      opacity: 0.6;
+    }
+  }
+}

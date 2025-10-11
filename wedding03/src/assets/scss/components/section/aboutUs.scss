@@ -1,0 +1,101 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-aboutUs {
+  margin-top: calc(102 / $fz-base * 1rem);
+  padding-top: calc(50 / $fz-base * 1rem);
+  padding-bottom: calc(52 / $fz-base * 1rem);
+  background: $bg-secondary;
+
+  @include mq(tab) {
+    margin-top: calc(153 / $fz-base * 1rem);
+    padding-top: calc(100 / $fz-base * 1rem);
+    padding-bottom: calc(104 / $fz-base * 1rem);
+  }
+
+  .c-heading2 {
+    text-align: left;
+
+    @include mq(tab) {
+      text-align: center;
+    }
+  }
+}
+
+.p-aboutUs__profileWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(52 / $fz-base * 1rem);
+  margin-top: calc(34 / $fz-base * 1rem);
+  max-width: calc(999 / $fz-base * 1rem);
+  width: 100%;
+
+  @media screen and (min-width: 999px) {
+    grid-template-columns: 1fr 1fr;
+    gap: calc(99 / $fz-base * 1rem);
+    margin: calc(54 / $fz-base * 1rem) auto 0;
+  }
+
+  & .c-profile:first-child {
+    justify-self: start;
+
+    & .c-profile__content,
+    & .c-profile__nameEn,
+    & .c-profile__name {
+      padding-left: calc(21 / $fz-base * 1rem);
+  
+      @include mq(tab) {
+        padding-left: unset;
+      }
+    }
+  }
+
+  & .c-profile:last-child {
+    justify-self: end;
+
+    @media screen and (min-width: 999px) {
+      margin-top: calc(477 / $fz-base * 1rem);
+    }
+
+    & .c-profile__content,
+    & .c-profile__nameEn,
+    & .c-profile__name {
+      padding-right: calc(21 / $fz-base * 1rem);
+  
+      @include mq(tab) {
+        padding-right: unset;
+      }
+    }
+  }
+}
+
+.js {
+  & .c-profile {
+    & .c-profile__content,
+    & .c-profile__nameEn,
+    & .c-profile__name {
+      opacity: 0;
+    }
+  }
+
+  .c-profile__image {
+    & img {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.c-profile.u-anime {
+  & .c-profile__content,
+  & .c-profile__nameEn,
+  & .c-profile__name {
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+
+  .c-profile__image {
+    & img {
+      animation: scaleDown 1s ease-in-out forwards;
+    }
+  }
+}

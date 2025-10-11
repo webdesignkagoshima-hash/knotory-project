@@ -1,0 +1,126 @@
+<!-- 
+# 更新マニュアル
+
+このファイルは、結婚式のウェブサイトの「思い出のアルバム」セクションを定義しています。
+このセクションでは、写真のスライダーと動画を表示しています。
+
+## 更新対象
+・写真スライドの画像とキャプション
+・動画ファイル
+・動画のキャプション
+・動画のサムネイル
+
+## 画像のパス
+スライダー用の画像ファイル
+・思い出画像: `/assets/images/figure-memories-001.png` など
+（複数枚使用する場合は連番で管理：figure-memories-002.png, figure-memories-003.png など）
+
+## 動画のパス
+・思い出動画: `/assets/videos/memories.mp4`
+
+## 動画のサムネイル
+・サムネイル画像: `/assets/images/thumbnail-memories.jpg`
+
+## スライド追加・削除方法
+スライドの追加・削除は li.splide__slide 要素を追加・削除してください。
+各スライドには画像とキャプションを設定できます。
+
+※推奨サイズ：スライド画像 800px x 600px、動画 1920px x 1080px
+-->
+<section class="p-memories">
+  <div class="p-memories__container">
+    {{> ui/heading
+      heading="思い出のアルバム"
+      subHeading="memories"
+      id="memories"
+      type="memories"
+    }}
+    <div class="p-memories__content">
+      <!-- splide.jsを使ったカルーセルスライダーで画像＋画像のキャプションのスライドを生成 -->
+      <div class="p-memories__slider splide js-fadeIn">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <figure class="p-memories__slideFigure">
+                <!-- 思い出画像を入力してください -->
+                <img src="/assets/images/figure-memories-001.png" alt="" class="p-memories__slideImage">
+                <figcaption class="p-memories__slideCaption">
+                  <!-- 画像のキャプションを入力してください -->
+                  友人の結婚式場にて 1
+                </figcaption>
+              </figure>
+            </li>
+            <li class="splide__slide">
+              <figure class="p-memories__slideFigure">
+                <!-- 思い出画像を入力してください -->
+                <img src="/assets/images/figure-memories-001.png" alt="" class="p-memories__slideImage">
+                <figcaption class="p-memories__slideCaption">
+                  <!-- 画像のキャプションを入力してください -->
+                  友人の結婚式場にて 2
+                </figcaption>
+              </figure>
+            </li>
+            <li class="splide__slide">
+              <figure class="p-memories__slideFigure">
+                <!-- 思い出画像を入力してください -->
+                <img src="/assets/images/figure-memories-001.png" alt="" class="p-memories__slideImage">
+                <figcaption class="p-memories__slideCaption">
+                  <!-- 画像のキャプションを入力してください -->
+                  友人の結婚式場にて 3
+                </figcaption>
+              </figure>
+            </li>
+            <li class="splide__slide">
+              <figure class="p-memories__slideFigure">
+                <!-- 思い出画像を入力してください -->
+                <img src="/assets/images/figure-memories-001.png" alt="" class="p-memories__slideImage">
+                <figcaption class="p-memories__slideCaption">
+                  <!-- 画像のキャプションを入力してください -->
+                  友人の結婚式場にて 4
+                </figcaption>
+              </figure>
+            </li>
+            <li class="splide__slide">
+              <figure class="p-memories__slideFigure">
+                <!-- 思い出画像を入力してください -->
+                <img src="/assets/images/figure-memories-001.png" alt="" class="p-memories__slideImage">
+                <figcaption class="p-memories__slideCaption">
+                  <!-- 画像のキャプションを入力してください -->
+                  友人の結婚式場にて 5
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- videoタグでMP4データを埋め込み -->
+      <div class="p-memories__video js-fadeIn">
+        <div class="p-memories__videoWrapper">
+          <!-- 動画ファイル/サムネイルを入力してください -->
+          <video
+            controls
+            muted
+            playsinline
+            preload
+            onclick="this.play();"
+            poster="/assets/images/thumbnail-memories.jpg"
+          >
+            <source src="/assets/videos/memories.mp4" type="video/mp4">
+            お使いのブラウザは動画タグに対応していません。
+          </video>
+          <button class="p-memories__playButton" aria-label="動画を再生">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+              <circle cx="30" cy="30" r="30" fill="rgba(255, 255, 255, 0.9)"/>
+              <path d="M25 20L40 30L25 40V20Z" fill="#968525"/>
+            </svg>
+          </button>
+        </div>
+        <!-- 動画のキャプションを入力してください -->
+        <p class="p-memories__videoCaption">
+          想い出のムービー
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

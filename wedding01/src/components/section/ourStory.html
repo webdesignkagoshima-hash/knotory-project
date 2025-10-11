@@ -1,0 +1,119 @@
+<!-- 
+# 更新マニュアル
+
+このファイルは、結婚式のウェブサイトの「ふたりの物語」セクションを定義しています。
+このセクションでは、新郎新婦の生い立ちから出会い、結婚までのストーリーを時系列で表示しています。
+
+## 更新対象
+・各年代の年号
+・各ストーリーのテキスト内容
+・ストーリーの画像
+
+## 画像のパス
+ストーリーごとに画像を設定できます
+・ストーリー画像: `/assets/images/our-story-001.png` ～ `/assets/images/our-story-006.png`
+
+## ストーリー構成
+1. birthday: 誕生のストーリー
+2. growth: 成長期のストーリー
+3. meeting: 出会いから結婚までのストーリー
+
+※推奨サイズ：ストーリー画像 500px x 400px
+-->
+<section class="p-ourStory">
+  {{> ui/heading
+    heading="ふたりの物語"
+    subHeading="Our Story"
+    id="our-story"
+  }}
+  <div class="p-ourStory__container">
+    <div class="p-ourStory__content">
+      <section class="p-ourStory__contentItem">
+        {{> ui/ourStoryTitle text="birthday"}}
+
+        <div class="p-ourStory__contentItemInner">
+          {{> ui/ourStoryCard
+            year="1995"
+            imageSrc="/assets/images/our-story-001.png"
+            text="1995年9月25日誕生<br>石川県生まれ O型<br>吉岡家の次男としてのびのびと<br>成長する。"
+            position="left"
+          }}
+  
+          {{> ui/ourStoryCard
+            year="1998"
+            imageSrc="/assets/images/our-story-002.png"
+            text="1998年2月10日誕生<br>東京都生まれ O型<br>花村家の長女として、やさしく<br>朗らかに育ちました。"
+            position="right"
+          }}
+        </div>
+      </section>
+
+      <section class="p-ourStory__contentItem">
+        {{> ui/ourStoryTitle text="growth" numbering="01"}}
+
+        <div class="p-ourStory__contentItemInner">
+          {{> ui/ourStoryCard
+            year="2004"
+            imageSrc="/assets/images/our-story-003.png"
+            text="毎日外で元気いっぱいに遊び<br>運動会では俊足を<br>活かして活躍し、<br>いつも全力で走っていました。"
+            position="left"
+          }}
+  
+          {{> ui/ourStoryCard
+            year="2009"
+            imageSrc="/assets/images/our-story-004.png"
+            text="本を読むことや勉強も大好きで、<br>静かに机に向かうのが得意な<br>子どもでした。<br>テストはいつも満点でした。"
+            position="right"
+          }}
+        </div>
+      </section>
+
+      <section class="p-ourStory__contentItem">
+        {{> ui/ourStoryTitle text="growth" numbering="02"}}
+
+        <div class="p-ourStory__contentItemInner">
+          {{> ui/ourStoryCard
+            year="2011"
+            imageSrc="/assets/images/our-story-005.png"
+            text="中学では野球部に所属し、<br>仲間と汗を流しながら<br>夢中で白球を追いかける毎日を<br>過ごしました。"
+            position="left"
+          }}
+  
+          {{> ui/ourStoryCard
+            year="2015"
+            imageSrc="/assets/images/our-story-006.png"
+            text="茶道部に所属し、<br>着物や和の文化に親しむ日々。<br>心落ち着く豊かな高校生活を<br>過ごしました。"
+            position="right"
+          }}
+        </div>
+      </section>
+
+      <section class="p-ourStory__contentItem">
+        {{> ui/ourStoryTitle text="meeting"}}
+
+        <div class="p-ourStory__contentItemInner">
+          {{> ui/ourStoryCard
+            year="2017"
+            imageSrc="/assets/images/our-story-007.png"
+            text="大学のサークルで出会い、<br>自然と会話を重ねるうちに距離が<br>縮まっていきました。ほぼ毎日<br>あっていました。"
+            position="center"
+          }}
+  
+          {{> ui/ourStoryCard
+            year="2024"
+            imageSrc="/assets/images/our-story-008.png"
+            text="付き合った記念日に、「これから<br>もそばで笑っていてほしい」と<br>プロポーズ。これから2人で<br>支え合って歩んでいきます。"
+            position="center"
+          }}
+        </div>
+      </section>
+
+    </div>
+
+    <div class="p-ourStory__image js-fadeIn">
+      <figure>
+        <img src="/assets/images/figure-just-married.png" alt="Just Married">
+      </figure>
+    </div>
+  </div>
+</section>

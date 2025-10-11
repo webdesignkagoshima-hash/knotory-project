@@ -1,0 +1,123 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-heading2 {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  position: relative;
+
+  &__mainText {
+    font-family: $font-family-heading;
+    font-size: calc(19 / $fz-base * 1rem);
+    font-weight: 500;
+    color: $fc-base;
+    line-height: calc(50 / 33);
+    letter-spacing: 0.07em;
+    
+    @include mq(tab) {
+      font-size: calc(33 / $fz-base * 1rem);
+      font-weight: 700;
+    }
+  }
+
+  &__subText {
+    display: block;
+    position: absolute;
+    right: calc(11 / $fz-base * 1rem);
+    top: 50%;
+    transform: translate(calc(-20 / $fz-base * 1rem), 5em) rotate(90deg); // 中央配置 + 90度回転
+    transform-origin: right bottom;
+    font-family: $font-family-en;
+    font-size: calc(16 / $fz-base * 1rem);
+    font-weight: 300;
+    color: var(--fc-heading-en-sp, $fc-sub);
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    display: grid;
+    grid-template-columns: calc(72 / $fz-base * 1rem) 1fr;
+    align-items: center;
+    gap: calc(8 / $fz-base * 1rem);
+    
+    @include mq(tab) {
+      right: calc(120 / $fz-base * 1rem);
+      grid-template-columns: calc(88 / $fz-base * 1rem) 1fr;
+      transform: translate(calc(-24 / $fz-base * 1rem), 5em) rotate(90deg); // 中央配置 + 90度回転
+      font-size: calc(24 / $fz-base * 1rem);
+      letter-spacing: 0.18em;
+      gap: calc(16 / $fz-base * 1rem);
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: calc(72 / $fz-base * 1rem);
+      height: 1px;
+      background-color: currentColor;
+
+      @include mq(tab) {
+        width: calc(88 / $fz-base * 1rem);
+      }
+    }
+
+    &[type="left"] {
+      right: unset;
+      left: calc(11 / $fz-base * 1rem);
+      transform: translate(calc(4 / $fz-base * 1rem), -10em) rotate(90deg);
+      transform-origin: left bottom;
+
+      @include mq(tab) {
+        left: calc(120 / $fz-base * 1rem);
+        transform: translate(0, -7em) rotate(90deg);
+      }
+
+      &::before {
+        grid-column: 1;
+      }
+    }
+  }
+}
+
+.js {
+  .c-heading2__mainText.js-fadeIn {
+    opacity: 0;
+  }
+  
+  .c-heading2__subText.js-anime {
+    opacity: 0;
+    transform: translate(calc(-20 / $fz-base * 1rem), 3em) rotate(90deg);
+    transition: transform 1s ease, opacity 1s ease;
+
+    @include mq(tab) {
+      transform: translate(calc(-28 / $fz-base * 1rem), 3em) rotate(90deg);
+    }
+  }
+  
+  .c-heading2__subText.u-anime {
+    opacity: 1;
+    transform: translate(calc(-20 / $fz-base * 1rem), 5em) rotate(90deg);
+
+    @include mq(tab) {
+      transform: translate(calc(-28 / $fz-base * 1rem), 5em) rotate(90deg);
+    }
+  }
+
+  .c-heading2__subText[type="left"].js-anime {
+    opacity: 0;
+    transform: translate(calc(4 / $fz-base * 1rem), -6em) rotate(90deg);
+
+    @include mq(tab) {
+      transform: translate(calc(5 / $fz-base * 1rem), -10.5em) rotate(90deg);
+    }
+  }
+  
+  .c-heading2__subText[type="left"].u-anime {
+    opacity: 1;
+    transform: translate(calc(4 / $fz-base * 1rem), -8em) rotate(90deg);
+
+    @include mq(tab) {
+      transform: translate(calc(5 / $fz-base * 1rem), -8.5em) rotate(90deg);
+    }
+  }
+}

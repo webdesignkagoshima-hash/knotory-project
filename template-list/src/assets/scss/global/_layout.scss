@@ -1,0 +1,13 @@
+@use './variables' as *;
+@use './mixin' as *;
+
+.l-main__btnWrapper {
+  text-align: center;
+  margin-top: calc(143.8 / $fz-base * 1rem);
+  margin-bottom: calc(100.6 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    margin-top: calc(100.6 / $fz-base * 1rem);
+    margin-bottom: calc(200.6 / $fz-base * 1rem);
+  }
+}

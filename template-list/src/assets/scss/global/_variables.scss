@@ -1,0 +1,31 @@
+// Google Fontsのインポート
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400&text=0123456789&display=swap');
+
+// フォントファミリーの定義
+$font-family-ja: "Noto Sans JP", serif;;
+$font-family-en:  "Jost", sans-serif;
+
+// フォントサイズ
+$fz-base: 16;
+
+// 色
+$base: #333333;
+$sub: #968525;
+$bg-base: #fff;
+$white: #fff;
+$primary: #968525;
+$border: #D8BFAE;
+$ourStoryCardBgBox: #f6f5ec;
+$bg-footer: #605a57;
+$LINE: #71D077;
+
+// コンテンツサイズ
+$wd-content-max-pc: calc(1026 / $fz-base * 1rem);
+$wd-content-padding-sp: 20;
+
+// viewport height
+$viewport-height-sp: 844;
+$viewport-height-pc: 1080;
+$viewport-weight-sp: 390;
+$viewport-weight-pc: 1920;

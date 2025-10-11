@@ -1,0 +1,172 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-qaWithUs {
+  position: relative;
+  margin-top: calc(105 / $fz-base * 1rem);
+  padding-bottom: calc(240 / $fz-base * 1rem);
+  
+  @include mq(tab) {
+    margin: calc(157 / $fz-base * 1rem) auto 0;
+    max-width: calc(1050 / $fz-base * 1rem);
+    padding-bottom: calc(333 / $fz-base * 1rem);
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100svw;
+    height: calc(122 / $fz-base * 1rem);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 67.49%);
+    position: absolute;
+    bottom: 0;
+    
+    @include mq(tab) {
+      height: calc(333 / $fz-base * 1rem);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  &__container {
+    background-color: $white;
+    margin: 0 calc(20 / $fz-base * 1rem);
+    padding: calc(100 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) calc(50 / $fz-base * 1rem);
+    
+    @include mq(tab) {
+      margin: 0 calc(20 / $fz-base * 1rem);
+      padding: calc(100 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) calc(50 / $fz-base * 1rem);
+    }
+  }
+
+  &__content {
+    max-width: calc(600 / $fz-base * 1rem);
+    margin: calc(30 / $fz-base * 1rem) auto 0;
+  }
+
+  &__question {
+    background-color: $sub;
+    font-family: $font-family-ja;
+    font-weight: 700;
+    font-size: calc(16 / $fz-base * 1rem);
+    line-height: calc(25 / 16);
+    letter-spacing: calc(50 / 1000 * 1rem);
+    color: $white;
+    text-align: center;
+    padding: calc(12 / $fz-base * 1rem) calc(24 / $fz-base * 1rem);
+    
+    @include mq(tab) {
+      font-size: calc(18 / $fz-base * 1rem);
+      line-height: calc(25 / 18);
+    }
+  }
+
+  &__answers {
+    padding: calc(30 / $fz-base * 1rem) 0 calc(50 / $fz-base * 1rem);
+  }
+
+  &__answer {
+    display: grid;
+    grid-template-columns: calc(50 / $fz-base * 1rem) 1fr;
+    gap: calc(11 / $fz-base * 1rem);
+    align-items: center;
+    justify-content: center;
+    
+    @include mq(tab) {
+      padding: 0 calc(114 / $fz-base * 1rem) 0 calc(115 / $fz-base * 1rem);
+    }
+
+    & + .p-qaWithUs__answer {
+      margin-top: calc(20 / $fz-base * 1rem);
+
+      @include mq(tab) {
+        margin-top: calc(23 / $fz-base * 1rem);
+      }
+    }
+
+    &__bride {
+      grid-template-columns: 1fr calc(50 / $fz-base * 1rem);
+      & .p-qaWithUs__answerHeader {
+        grid-column: 2;
+      }
+
+      & .p-qaWithUs__answerBox {
+        grid-template-columns: 1fr calc(14 / $fz-base * 1rem);
+        grid-row: 1;
+
+        &::before {
+          // clip-pathを使って三角形にする(デフォルトとは向き反対）
+          clip-path: polygon(100% 50%, 0% 0%, 0% 100%);
+          grid-column: 2;
+          grid-row: 1;
+          left: unset;
+          right: 1px;
+        }
+        
+        &::after {
+          // clip-pathを使って三角形にする(デフォルトとは向き反対）
+          clip-path: polygon(100% 50%, 0% 0%, 0% 100%);
+          left: unset;
+          right: 3px;
+        }
+      }
+    }
+  }
+
+  &__answerBox {
+    position: relative;
+    display: grid;
+    grid-template-columns: calc(14 / $fz-base * 1rem) 1fr;
+    align-items: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: calc(14 / $fz-base * 1rem);
+      height: calc(13 / $fz-base * 1rem);
+      background-color: $primary;
+      clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+      position: relative;
+      left: 1px;
+    }
+    
+    &::after {
+      content: "";
+      display: block;
+      width: calc(14 / $fz-base * 1rem);
+      height: calc(13 / $fz-base * 1rem);
+      background-color: $white;
+      clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 3px;
+    }
+  }
+
+  &__answerText {
+    font-family: $font-family-ja;
+    font-weight: 400;
+    font-size: calc(14 / $fz-base * 1rem);
+    line-height: calc(22 / 14);
+    letter-spacing: calc(50 / 1000 * 1rem);
+    padding: calc(12 / $fz-base * 1rem) calc(12 / $fz-base * 1rem);
+    background-color: $white;
+    border-radius: calc(26 / $fz-base * 1rem);
+    border: 1px solid $primary;
+    text-align: center;
+    
+    @include mq(tab) {
+      padding: calc(12 / $fz-base * 1rem) calc(18 / $fz-base * 1rem);
+      font-size: calc(15 / $fz-base * 1rem);
+      line-height: calc(27 / 15);
+    }
+  }
+}
+
+.js {
+  & .p-qaWithUs__item.js-fadeDown {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+}

@@ -1,0 +1,10 @@
+<h3 class="c-ourStoryTitle js-fadeIn">
+  <!-- SVG背景を追加 -->
+  <svg class="c-ourStoryTitle__background" width="298" height="264" viewBox="0 0 298 264" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M298 157.714C298 235.35 226.977 264 147.287 264C67.5981 264 0 190.778 0 113.143C0 35.5074 98.4256 0 178.115 0C257.804 0 298 80.0788 298 157.714Z" {{#if color}}fill="#E8F3FA"{{else}}fill="#71AFD0"{{/if}} />
+  </svg>
+  
+  <!-- テキスト部分 -->
+  <span class="c-ourStoryTitle__text"  {{#if color}}style="color: #71AFD0"{{/if}}>{{text}}</span>
+  {{#if numbering}}<span class="c-ourStoryTitle__numbering">{{numbering}}</span>{{/if}}
+</h3>

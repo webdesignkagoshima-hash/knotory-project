@@ -1,0 +1,138 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-ourStoryCard {
+  width: fit-content;
+  position: relative;
+
+  & + .c-ourStoryCard {
+    margin-top: calc(20 / $fz-base * 1rem);
+    
+    @include mq(tab) {
+      margin-top: calc(30 / $fz-base * 1rem);
+    }
+  }
+}
+
+.c-ourStoryCard__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: calc(250 / $fz-base * 1rem);
+
+  @include mq(tab) {
+    max-width: calc(374 / $fz-base * 1rem);
+  }
+}
+
+.c-ourStoryCard__year {
+  position: absolute;
+  top: calc(165 / $fz-base * 1rem);
+  left: calc(10 / $fz-base * 1rem);
+  font-family: $font-family-en;
+  font-weight: 700;
+  font-size: calc(35 / $fz-base * 1rem);
+  line-height: calc(42 / 35);
+  letter-spacing: calc(400 / 1000 * 1rem);
+  color: $fc-white;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  // デフォルトで表示状態
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+  
+  @include mq(tab) {
+    top: calc(247 / $fz-base * 1rem);
+    left: calc(15 / $fz-base * 1rem);
+    font-size: calc(52 / $fz-base * 1rem);
+    line-height: calc(62 / 52);
+  }
+}
+
+.c-ourStoryCard__image {
+  width: 100%;
+  aspect-ratio: 250 / 200;
+  margin: 0;
+
+  @include mq(tab) {
+    aspect-ratio: 374 / 299;
+  }
+
+  & img {
+    // デフォルトで表示状態
+    opacity: 1;
+  }
+}
+
+.c-ourStoryCard__textWrapper {
+  width: 100%;
+  padding: calc(17 / $fz-base * 1rem) calc(15 / $fz-base * 1rem) calc(17 / $fz-base * 1rem) calc(15 / $fz-base * 1rem);
+  background-color: $white;
+  // デフォルトで表示状態
+  opacity: 1;
+
+  @include mq(tab) {
+    padding: calc(25 / $fz-base * 1rem) calc(61 / $fz-base * 1rem) calc(22 / $fz-base * 1rem) calc(22 / $fz-base * 1rem);
+  }
+}
+
+.c-ourStoryCard__text {
+  font-family: $font-family-ja;
+  font-weight: 400;
+  font-size: calc(14 / $fz-base * 1rem);
+  line-height: calc(25 / 14);
+  letter-spacing: calc(40 / 1000 * 1rem);
+
+  @include mq(tab) {
+    font-size: calc(20 / $fz-base * 1rem);
+    line-height: calc(36 / 20);
+  }
+}
+
+.c-ourStoryCard[data-position="left"] {
+  margin-right: auto;
+
+  & .c-ourStoryCard__container,
+  & .c-ourStoryCard__image {
+    border-top-right-radius: calc(10 / $fz-base * 1rem);
+    border-bottom-right-radius: calc(10 / $fz-base * 1rem);
+  }
+}
+
+.c-ourStoryCard[data-position="right"] {
+  margin-left: auto;
+  
+  & .c-ourStoryCard__container,
+  & .c-ourStoryCard__image {
+    border-top-left-radius: calc(10 / $fz-base * 1rem);
+    border-bottom-left-radius: calc(10 / $fz-base * 1rem);
+  }
+}
+
+.c-ourStoryCard[data-position="center"] {
+  margin: 0 auto;
+
+  & .c-ourStoryCard__container,
+  & .c-ourStoryCard__image {
+    border-radius: calc(10 / $fz-base * 1rem);
+  }
+
+  & + .c-ourStoryCard[data-position="center"] {
+    @include mq(tab) {
+      margin-top: calc(30 / $fz-base * 1rem);
+    }
+  }
+}
+
+// JSが有効な時のみアニメーションの初期状態を設定
+.js {
+  & .c-ourStoryCard {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+// アニメーションの設定
+.c-ourStoryCard.u-anime {
+  animation: scaleUp 1.25s ease 0s forwards;
+}

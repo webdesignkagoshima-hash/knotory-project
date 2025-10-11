@@ -1,0 +1,40 @@
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- noindex -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="format-detection" content="telephone=no">
+
+<!-- favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+<!-- OGP -->
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta property="og:title" content="{{title}}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{url}}" />
+<meta property="og:image" content="{{ogp}}" />
+<meta property="og:site_name" content="{{sitename}}" />
+<meta property="og:description" content="{{description}}" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{url}}">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{description}}">
+<meta name="twitter:image:src" content="{{ogp}}">
+
+<!-- FV画像のプリロード（WebP優先） -->
+<link rel="preload" as="image" href="/assets/images/figure-fv-sp.webp" type="image/webp" media="(max-width: 767px)">
+<link rel="preload" as="image" href="/assets/images/figure-fv.webp" type="image/webp" media="(min-width: 768px)">
+<!-- WebP非対応ブラウザ用フォールバック -->
+<link rel="preload" as="image" href="/assets/images/figure-fv-sp.png" type="image/png" media="(max-width: 767px)">
+<link rel="preload" as="image" href="/assets/images/figure-fv.png" type="image/png" media="(min-width: 768px)">
+
+<!-- fontfamily -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+

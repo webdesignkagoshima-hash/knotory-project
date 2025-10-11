@@ -1,0 +1,233 @@
+@use '../../global/variables' as *;
+
+.p-fv__notice {
+  background-color: #F9E87B;
+  color: $base;
+  font-family: $font-family-ja;
+  font-size: calc(12 / $fz-base * 1rem);
+  line-height: calc(17 / 12);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  text-align: center;
+  padding: calc(6 / $fz-base * 1rem) calc(16 / $fz-base * 1rem);
+}
+
+.p-fv__container {
+  background-image: url('/assets/images/bg-fv.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: calc(25 / $fz-base * 1rem);
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: calc(138 / $fz-base * 1rem);
+    background-image: url('/assets/images/decoration-fv-under.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    position: absolute;
+    bottom: calc(80 / $fz-base * 1rem);
+    left: 0;
+    z-index: 5;
+  }
+}
+
+.p-fv__text {
+  width: fit-content;
+  margin: 0 auto;
+  background-color: $white;
+  color: $base;
+  font-family: $font-family-ja;
+  font-weight: 500;
+  font-size: calc(16 / $fz-base * 1rem);
+  line-height: calc(19 / 16);
+  letter-spacing: calc(20 / 1000 * 1rem);
+  padding: calc(8 / $fz-base * 1rem) calc(10 / $fz-base * 1rem) calc(6.5 / $fz-base * 1rem);
+}
+
+.p-fv__textHighlight {
+  color: $alert;
+}
+
+.p-fv__slider {
+  margin-top: calc(15 / $fz-base * 1rem);
+  position: relative;
+}
+
+// スマートフォンフレームを独立した要素として配置
+.p-fv__sliderFrame {
+  width: calc(291 / $fz-base * 1rem);
+  height: calc(561 / $fz-base * 1rem);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: url('/assets/images/frame-smartphone.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 2; // フレームを画面より前面に配置
+  pointer-events: none; // フレームがクリックイベントを妨げないように
+}
+
+.p-fv__sliderList {
+  height: calc(561 / $fz-base * 1rem);
+}
+
+.p-fv__sliderSlide {
+  width: calc(291 / $fz-base * 1rem);
+  height: calc(561 / $fz-base * 1rem);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1; // フレームより背面に配置
+}
+
+.p-fv__sliderFigure {
+  width: calc(261 / $fz-base * 1rem);
+  height: calc(561 / $fz-base * 1rem);
+  aspect-ratio: 261 / 561;
+  margin-left: calc(16 / $fz-base * 1rem);
+}
+.p-fv__sliderImage {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(40 / $fz-base * 1rem);
+}
+
+.p-fv__header {
+  position: absolute;
+  top: calc(295 / $fz-base * 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: calc(338 / $fz-base * 1rem);
+  padding: calc(17 / $fz-base * 1rem) calc(14 / $fz-base * 1rem) calc(8 / $fz-base * 1rem);
+  border-radius: calc(15 / $fz-base * 1rem);
+  background-color: rgba($color: $white, $alpha: 0.95);
+  text-align: center;
+  z-index: 10;
+}
+
+.p-fv__subtitle {
+  color: $base;
+  font-family: $font-family-ja;
+  font-weight: 500;
+  font-size: calc(16 / $fz-base * 1rem);
+  line-height: calc(18 / 16);
+  letter-spacing: calc(50 / 1000 * 1rem);
+}
+
+.p-fv__title {
+  width: calc(153 / $fz-base * 1rem);
+  height: calc(52 / $fz-base * 1rem);
+  margin: calc(6 / $fz-base * 1rem) auto 0;
+}
+
+.p-fv__price {
+  color: $base;
+  font-family: $font-family-ja;
+  font-weight: 500;
+  font-size: calc(18 / $fz-base * 1rem);
+  line-height: calc(22 / 18);
+  letter-spacing: calc(20 / 1000 * 1rem);
+  margin-top: calc(5 / $fz-base * 1rem);
+
+  &Number {
+    font-family: $font-family-en;
+    font-size: calc(33 / $fz-base * 1rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: calc(50 / 1000 * 1rem);
+    color: $sub;
+  }
+
+  &Unit {
+    font-size: calc(20 / $fz-base * 1rem);
+    font-weight: 700;
+    line-height: calc(24 / 20);
+    letter-spacing: calc(50 / 1000 * 1rem);
+    color: $sub;
+  }
+
+  &Tax {
+    font-size: calc(12 / $fz-base * 1rem);
+    line-height: calc(14 / 12);
+    letter-spacing: calc(50 / 1000 * 1rem);
+    color: $sub;
+    -webkit-text-stroke: 0.2px $base;
+
+    @supports not (-webkit-text-stroke: 0.2px $base) {
+      text-shadow: 
+        0.2px 0 0 $base,
+        -0.2px 0 0 $base,
+        0 0.2px 0 $base,
+        0 -0.2px 0 $base;
+    }
+  }
+}
+
+.p-fv__features {
+  position: absolute;
+  top: calc(439 / $fz-base * 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(10 / $fz-base * 1rem);
+  z-index: 10;
+}
+
+.p-fv__featureContent {
+  width: calc(106 / $fz-base * 1rem);
+  height: calc(106 / $fz-base * 1rem);
+  border-radius: 50%;
+  background-color: #6BD2CF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-fv__featureImage {
+  width: calc(32 / $fz-base * 1rem);
+  height: calc(32 / $fz-base * 1rem);
+  margin: 0 auto;
+}
+
+.p-fv__feature {
+  &:nth-child(2) {
+    & .p-fv__featureImage {
+      width: calc(44 / $fz-base * 1rem);
+      height: calc(26 / $fz-base * 1rem);
+      margin-bottom: calc(4 / $fz-base * 1rem);
+    }
+  }
+}
+
+.p-fv__featureDescription {
+  color: $base;
+  font-family: $font-family-ja;
+  font-weight: 500;
+  font-size: calc(15 / $fz-base * 1rem);
+  line-height: 1.2;
+  letter-spacing: calc(50 / 1000 * 1rem);
+  text-align: center;
+  color: $white;
+  margin-top: calc(2.5 / $fz-base * 1rem);
+}
+
+.p-fv__featureHighlight{
+  color: $highlight;
+}
+
+.p-fv__ctaArea {
+  margin-top: calc(-80 / $fz-base * 1rem);
+  z-index: 10;
+  position: relative;
+}

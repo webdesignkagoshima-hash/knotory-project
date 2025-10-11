@@ -1,0 +1,108 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-ourStoryCard__wrapper {
+  width: 100svw;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg-base;
+  position: absolute;
+  opacity: 1; // まず表示状態にしてJSで制御
+  visibility: visible;
+}
+
+.c-ourStoryCard {
+  margin: 0 auto;
+  max-width: calc(700 / $fz-base * 1rem);
+  width: 100%;
+
+  &::after {
+    content: '';
+    display: block;
+    width: calc(29.25 / $fz-base * 1rem);
+    height: calc(29.25 / $fz-base * 1rem);
+    margin: calc(52.4 / $fz-base * 1rem) auto 0;
+    background-image: url('/assets/images/icon-drop-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include mq(tab) {
+      margin: calc(53.4 / $fz-base * 1rem) auto 0;
+    }
+  }
+}
+
+.c-ourStoryCard__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.c-ourStoryCard__year {
+  position: absolute;
+  top: calc(200 / $fz-base * 1rem);
+  left: calc(10 / $fz-base * 1rem);
+  font-family: $font-family-en;
+  font-weight: 700;
+  font-size: calc(40 / $fz-base * 1rem);
+  line-height: 1;
+  letter-spacing: calc(400 / 1000 * 1rem);
+  color: $fc-white;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  // デフォルトで表示状態
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+  
+  @include mq(tab) {
+    top: calc(370.13 / $fz-base * 1rem);
+    left: calc(15 / $fz-base * 1rem);
+    font-size: calc(64 / $fz-base * 1rem);
+  }
+}
+
+.c-ourStoryCard__image {
+  width: 100%;
+  aspect-ratio: 390 / 250;
+  margin: 0;
+  overflow: hidden;
+  
+  @include mq(tab) {
+    // width: calc(700 / $viewport-width * 100vw);
+    aspect-ratio: 700 / 449.13;
+  }
+
+  & img {
+    // デフォルトで表示状態
+    opacity: 1;
+  }
+}
+
+.c-ourStoryCard__textWrapper {
+  width: 100%;
+  background-color: $white;
+  margin-top: calc(29 / $fz-base * 1rem);
+  // デフォルトで表示状態
+  opacity: 1;
+
+  @include mq(tab) {
+    margin-top: calc(35.9 / $fz-base * 1rem);
+  }
+}
+
+.c-ourStoryCard__text {
+  font-family: $font-family-ja;
+  font-weight: 500;
+  font-size: calc(14 / $fz-base * 1rem);
+  line-height: calc(25 / 14);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  text-align: center;
+
+  @include mq(tab) {
+    font-size: calc(18 / $fz-base * 1rem);
+    line-height: calc(35 / 18);
+  }
+}

@@ -1,0 +1,225 @@
+<!-- 
+# 更新マニュアル
+
+このファイルは、結婚式のウェブサイトの「ふたりに聞いてみました」セクションを定義しています。
+このセクションでは、新郎新婦への質問と回答をQ&A形式で表示しています。
+
+## 更新対象
+・質問内容
+・新郎の回答内容
+・新婦の回答内容
+
+## 画像のパス
+新郎新婦のアバター画像
+・新郎アバター: `/assets/images/avatar-groom.png`
+・新婦アバター: `/assets/images/avatar-bride.png`
+
+## Q&A追加・削除方法
+Q&Aの追加・削除は div.p-qaWithUs__item 要素を追加・削除してください。
+各質問には新郎と新婦それぞれの回答を設定できます。
+
+※推奨サイズ：アバター画像 100px x 100px
+-->
+<section class="p-qaWithUs">
+  <div class="p-qaWithUs__container">
+    {{> ui/heading
+      heading="ふたりに聞いてみました"
+      subHeading="q&a with us"
+      id="qa-with-us"
+    }}
+    
+    <!-- 新郎のQ&Aセクション -->
+    <div class="p-qaWithUs__content p-qaWithUs__content--groom">
+      <div class="p-qaWithUs__sectionHeader js-fadeIn">
+        <img src="/assets/images/avatar-groom.png" alt="新郎のアバター" class="p-qaWithUs__sectionAvatar">
+        <h3 class="p-qaWithUs__sectionTitle">Naoto</h3>
+      </div>
+      <dl class="p-qaWithUs__list">
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            新婦の呼び名は？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--groom">
+              ゆうな
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            新婦の第一印象は？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--groom">
+              着物が似合う人
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            初デートの場所は？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--groom">
+              大学帰りの映画
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            新婦の好きなところは？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--groom">
+              どんな時もポジティブなとこ
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            新婦に驚いたことは？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--groom">
+              地図なしでスイスイ歩ける方向感覚
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            休日はどう過ごしてる？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--groom">
+              カフェでのんびり
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            どんな家庭を築きたい？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--groom">
+              安心して帰りたくなる場所
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            最後にひとこと！
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--groom">
+              どんな時もずっと支えるね
+            </p>
+          </dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- 新婦のQ&Aセクション -->
+    <div class="p-qaWithUs__content p-qaWithUs__content--bride">
+      <div class="p-qaWithUs__sectionHeader js-fadeIn">
+        <img src="/assets/images/avatar-bride.png" alt="新婦のアバター" class="p-qaWithUs__sectionAvatar">
+        <h3 class="p-qaWithUs__sectionTitle">Yuna</h3>
+      </div>
+      <dl class="p-qaWithUs__list">
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            新郎の呼び名は？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--bride">
+              なお
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            新郎の第一印象は？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--bride">
+              まじめそうな人
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            初デートの場所は？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--bride">
+              恋愛映画みたよね
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            新郎の好きなところは？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--bride">
+              真面目だけどちょっと抜けてるとこ
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            新郎に驚いたことは？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--bride">
+              料理が得意なとこ
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            休日はどう過ごしてる？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--bride">
+              映画を見まくる
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            どんな家庭を築きたい？
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--bride">
+              笑顔が絶えない家族
+            </p>
+          </dd>
+        </div>
+
+        <div class="p-qaWithUs__item js-fadeIn">
+          <dt class="p-qaWithUs__question">
+            最後にひとこと！
+          </dt>
+          <dd class="p-qaWithUs__answer">
+            <p class="p-qaWithUs__answerText p-qaWithUs__answerText--bride">
+              これからもよろしくね
+            </p>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,121 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.c-ourStoryCard__wrapper {
+  width: 100svw;
+  height: 100svh;
+  padding: 0 calc(20 / $fz-base * 1rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg-base;
+  position: absolute;
+  opacity: 1; // まず表示状態にしてJSで制御
+  visibility: visible;
+
+  @include mq(tab) {
+    padding: unset;
+  }
+}
+
+.c-ourStoryCard {
+  margin: 0 auto;
+  max-width: calc(573 / $fz-base * 1rem);
+  width: 100%;
+  background-color: $secondary;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: calc(30 / $fz-base * 1rem);
+    height: calc(30 / $fz-base * 1rem);
+    background-image: url('/assets/images/icon-drop-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(-15 / $fz-base * 1rem);
+
+    @include mq(tab) {
+      width: calc(49 / $fz-base * 1rem);
+      height: calc(49 / $fz-base * 1rem);
+      bottom: calc(-24.5 / $fz-base * 1rem);
+    }
+  }
+}
+
+.c-ourStoryCard__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.c-ourStoryCard__year {
+  position: absolute;
+  top: calc(180 / $fz-base * 1rem);
+  left: calc(10 / $fz-base * 1rem);
+  font-family: $font-family-en;
+  font-weight: 700;
+  font-size: calc(40 / $fz-base * 1rem);
+  line-height: 1;
+  letter-spacing: calc(400 / 1000 * 1rem);
+  color: $fc-white;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  // デフォルトで表示状態
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+  
+  @include mq(tab) {
+    top: calc(300.13 / $fz-base * 1rem);
+    left: calc(15 / $fz-base * 1rem);
+    font-size: calc(64 / $fz-base * 1rem);
+  }
+}
+
+.c-ourStoryCard__image {
+  width: 100%;
+  aspect-ratio: 390 / 250;
+  margin: 0;
+  overflow: hidden;
+  
+  @include mq(tab) {
+    // width: calc(700 / $viewport-width * 100vw);
+    aspect-ratio: 700 / 449.13;
+  }
+
+  & img {
+    // デフォルトで表示状態
+    opacity: 1;
+  }
+}
+
+.c-ourStoryCard__textWrapper {
+  width: 100%;
+  padding: calc(41 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) calc(62 / $fz-base * 1rem);
+  // デフォルトで表示状態
+  opacity: 1;
+
+  @include mq(tab) {
+    padding: calc(69 / $fz-base * 1rem) calc(40 / $fz-base * 1rem) calc(103 / $fz-base * 1rem);
+  }
+}
+
+.c-ourStoryCard__text {
+  font-family: $font-family-ja;
+  color: $fc-sub;
+  font-weight: 400;
+  font-size: calc(14 / $fz-base * 1rem);
+  line-height: calc(25 / 14);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  text-align: center;
+
+  @include mq(tab) {
+    font-size: calc(18 / $fz-base * 1rem);
+    font-weight: 300;
+    line-height: calc(35 / 18);
+  }
+}

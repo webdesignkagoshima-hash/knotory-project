@@ -1,0 +1,118 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-aboutUs {
+  margin-top: calc(154 / $fz-base * 1rem);
+  position: relative;
+
+  @include mq(tab) {
+    margin-top: calc(94 / $fz-base * 1rem);
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: calc(598 / $fz-base * 1rem);
+    background: $bg-secondary;
+    position: absolute;
+    top: calc(40.5 / $fz-base * 1rem);
+    left: 0;
+    z-index: -1;
+
+    @include mq(tab) {
+      top: calc(55.5 / $fz-base * 1rem);
+      height: calc(628 / $fz-base * 1rem);
+    }
+  }
+
+  .c-heading2 {
+    width: 100%;
+    max-width: calc(900 / $fz-base * 1rem);
+    margin: 0 auto;
+    padding-left: calc(20 / $fz-base * 1rem);
+    align-items: unset;
+
+    @include mq(tab) {
+      padding-left: unset;
+    }
+  }
+}
+
+.p-aboutUs__profileWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(37 / $fz-base * 1rem);
+  margin-top: calc(34 / $fz-base * 1rem);
+  max-width: calc(900 / $fz-base * 1rem);
+  width: 100%;
+
+  @media screen and (min-width: 999px) {
+    grid-template-columns: 1fr 1fr;
+    gap: calc(91 / $fz-base * 1rem);
+    margin: calc(38 / $fz-base * 1rem) auto 0;
+  }
+
+  & .c-profile:first-child {
+    justify-self: start;
+
+    & .c-profile__content,
+    & .c-profile__nameEn,
+    & .c-profile__name {
+      padding-left: calc(21 / $fz-base * 1rem);
+  
+      @include mq(tab) {
+        padding-left: unset;
+      }
+    }
+  }
+
+  & .c-profile:last-child {
+    justify-self: end;
+
+    @include mq(tab) {
+      margin-top: calc(444 / $fz-base * 1rem);
+    }
+
+    & .c-profile__content,
+    & .c-profile__nameEn,
+    & .c-profile__name {
+      padding-right: calc(21 / $fz-base * 1rem);
+  
+      @include mq(tab) {
+        padding-right: unset;
+      }
+    }
+  }
+}
+
+.js {
+  & .c-profile {
+    & .c-profile__content,
+    & .c-profile__nameEn,
+    & .c-profile__name {
+      opacity: 0;
+    }
+  }
+
+  .c-profile__image {
+    & img {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.c-profile.u-anime {
+  & .c-profile__content,
+  & .c-profile__nameEn,
+  & .c-profile__name {
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+
+  .c-profile__image {
+    & img {
+      animation: scaleDown 1s ease-in-out forwards;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+# ディレクトリリスティングを無効化
+Options -Indexes
+
+# 特定のPHPファイル以外へのアクセスを制限
+<Files "*">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# 許可するAPIファイルのみアクセス可能
+<Files "contact.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files "get_csrf_token.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# テストディレクトリ全体へのアクセス許可（開発時のみ）
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_URI} ^/src/api/test/
+    RewriteRule .* - [L]
+</IfModule>
+
+# テスト用ファイルへのアクセス許可（開発時のみ）
+<Files "test/session_debug.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# .htaccessファイル自体への直接アクセスを禁止
+<Files ".htaccess">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# バックアップファイルや一時ファイルへのアクセスを禁止
+<FilesMatch "\.(bak|backup|tmp|temp|old|orig|save|swp|~)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# エラーページのカスタマイズ
+ErrorDocument 403 "Access Denied"
+ErrorDocument 404 "Not Found"

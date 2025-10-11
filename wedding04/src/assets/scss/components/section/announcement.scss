@@ -1,0 +1,62 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-announcement {
+  margin-top: calc(125 / $fz-base * 1rem);
+  padding-top: calc(100 / $fz-base * 1rem);
+  position: relative;
+
+  @include mq(tab) {
+    margin-top: calc(167 / $fz-base * 1rem);
+    padding-top: calc(200 / $fz-base * 1rem);
+  }
+
+  & .c-heading2 {
+    align-items: start;
+
+    @include mq(tab) {
+      align-items: center;
+    }
+  }
+
+  // 上部に背景のグラデーションを追加
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(-57 / $fz-base * 1rem);
+    left: 0;
+    width: 100%;
+    height: calc(185 / $fz-base * 1rem);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 66.19%);
+
+    @include mq(tab) {
+      height: calc(440 / $fz-base * 1rem);
+    }
+  }
+}
+
+.p-announcement__content {
+  margin: calc(38 / $fz-base * 1rem) auto 0;
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 300;
+  line-height: 1.92;
+  letter-spacing: 0.07em;
+  color: $fc-sub;
+  text-align: center;
+  
+  @include mq(tab) {
+    margin: calc(59 / $fz-base * 1rem) auto 0;
+    font-size: calc(16 / $fz-base * 1rem);
+    font-weight: 500;
+    max-width: calc(1180 / $fz-base * 1rem);
+    line-height: 2;
+  }
+}
+
+.js {
+  & .p-announcement__content.js-fadeIn {
+    opacity: 0;
+  }
+}

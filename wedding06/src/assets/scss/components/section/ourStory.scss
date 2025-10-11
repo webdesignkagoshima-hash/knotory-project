@@ -1,0 +1,74 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-ourStory {
+  width: 100svw;
+  overflow-x: hidden;
+}
+
+.p-ourStory__container {
+  position: relative;
+  margin-top: calc(67 / $fz-base * 1rem);
+  
+  @include mq(tab) {
+    margin-top: calc(80 / $fz-base * 1rem);
+  }
+}
+
+.p-ourStory__content {
+  @include container;
+
+  & {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.p-ourStory__contentItem {
+  padding: calc(30 / $fz-base * 1rem) 0;
+  // SP時（デフォルト）は相対配置
+  position: relative;
+  height: 100svh; // 全体を100svhに設定
+
+  @include mq(tab) {
+    padding: calc(40 / $fz-base * 1rem) 0;
+    height: auto; // PCでは高さ自動
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.p-ourStory__contentItemInner {
+  // SP時（デフォルト）は相対配置コンテナとして機能
+  position: relative;
+  height: calc(100% - calc(30 / $fz-base * 1rem) - calc(48 / $fz-base * 1rem)); // 親の高さからmargin-topとタイトル高さを引く
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-ourStory__justMarried {
+
+  @include mq(tab) {
+    max-width: calc(1200 / $fz-base * 1rem);
+    margin: calc(120 / $fz-base * 1rem) auto 0;
+  }
+}
+
+.js {
+  .p-ourStory__justMarried {
+    opacity: 0;
+  }
+}
+
+/* pin-spacerのpadding-bottomを制御（SPのみ） */
+.pin-spacer {
+  padding-bottom: 0 !important;
+}
+
+/* ScrollTriggerのpin-spacer要素の高さを制御（SPのみ） */
+.pin-spacer .p-ourStory__contentItem {
+  height: 100svh !important;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  {{> global/head }}
+
+  <!-- css -->
+  <link rel="stylesheet" href="./assets/scss/style.scss">
+</head>
+<body>
+  {{> section/header }}
+  <main class="l-main">
+    <!-- サイトタイトルと合わせて、表示なしのh1要素を入れる -->
+    <h1 class="u-visuallyHidden">Knotory</h1>
+    {{> section/list }}
+
+    <!-- 前のページに戻るボタン -->
+    <div class="l-main__btnWrapper">
+      {{> ui/button
+         text="前のページに戻る"
+         type="sub"
+         href="javascript:history.back()"
+       }}
+    </div>
+  </main>
+  {{> section/footer }}
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+// List section styles
+.p-list-section {
+  padding: 50px 0 0;
+
+  @include mq(tab) {
+    padding: calc(91 / $fz-base * 1rem) 0 0;
+  }
+}
+
+.p-list-section__title {
+  text-align: center;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 500;
+  letter-spacing: calc(50 / 1000 * 1em);
+  line-height: calc(29 / 20);
+  color: #333;
+
+  @include mq(tab) {
+    font-size: calc(40 / $fz-base * 1rem);
+    font-weight: 400;
+    line-height: calc(58 / 40);
+  }
+}
+
+.p-list {
+  position: relative;
+  margin-top: calc(32 / $fz-base * 1rem);
+  
+  // PC: arrow用のスペースを確保
+  @include mq(tab) {
+    padding-bottom: calc(95 / $fz-base * 1rem);
+    margin-top: calc(100 / $fz-base * 1rem);
+  }
+}
+
+.p-list__container {
+  overflow: hidden;
+}
+
+.p-list__item {
+  width: 350px;
+  margin-right: 20px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.p-list__itemNumber {
+  font-family: $font-family-en;
+  font-size: inherit;
+}
+
+.splide__slide {
+  .c-templateListCard {
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+
+    @include mq(tab) {
+      transform: unset;
+    }
+  }
+
+  &.is-active {
+    .c-templateListCard {
+      transform: scale(1);
+
+      @include mq(tab) {
+        transform: unset;
+      }
+    }
+  }
+
+  &:not(.is-active) {
+    .c-templateListCard__body {
+      visibility: hidden;
+
+      @include mq(tab) {
+        visibility: unset;
+      }
+    }
+  }
+}
+
+// Splide arrow customization
+.splide__arrows {
+  // PC: 下部中央に配置
+  @include mq(tab) {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: calc(50 / $fz-base * 1rem);
+    z-index: 10;
+  }
+}
+
+.splide__arrow {
+  width: calc(20.57 / $fz-base * 1rem);
+  height: calc(20.57 / $fz-base * 1rem);
+  background: none;
+  border: none;
+  opacity: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+  
+  // SP: 絶対配置で中央に
+  position: absolute;
+  top: 34%;
+  transform: translateY(-50%);
+  z-index: 10;
+  
+  // PC: 静的配置
+  @include mq(tab) {
+    width: calc(45 / $fz-base * 1rem);
+    height: calc(45 / $fz-base * 1rem);
+    position: static;
+    top: auto;
+    transform: none;
+    z-index: auto;
+  }
+
+  &:hover {
+    transform: translateY(-50%) scale(1.1);
+    
+    @include mq(tab) {
+      transform: scale(1.1);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: translateY(-50%);
+      
+      @include mq(tab) {
+        transform: none;
+      }
+    }
+  }
+
+  svg {
+    display: none;
+  }
+}
+
+.splide__arrow--prev {
+  background-image: url('/assets/images/icon-arrow-left.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  // SP: 左側に配置
+  left: calc(40 / $viewport-weight-sp * 100svw);
+
+  @include mq(tab) {
+    left: auto;
+  }
+}
+
+.splide__arrow--next {
+  background-image: url('/assets/images/icon-arrow-right.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  // SP: 右側に配置
+  right: calc(40 / $viewport-weight-sp * 100svw);
+
+  @include mq(tab) {
+    right: auto;
+  }
+}

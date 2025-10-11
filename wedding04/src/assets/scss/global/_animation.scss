@@ -1,0 +1,139 @@
+@use './variables' as *;
+
+.u-fadeUp {
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.u-fadeIn {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.u-simpleFadeIn {
+  animation: simpleFadeIn 1s ease forwards;
+}
+
+@keyframes simpleFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.u-fadeDown {
+  animation: fadeDown 1s ease forwards;
+}
+
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 左から右へ
+.u-fadeRight {
+  animation: fadeRight 1s ease forwards;
+}
+
+@keyframes fadeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.u-scaleUp {
+  animation: scaleUp 1s ease-in-out forwards;
+}
+
+@keyframes scaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.u-scaleDown {
+  animation: scaleDown 1s ease-in-out forwards;
+}
+
+@keyframes scaleDown {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// テキストアニメーション用のスタイル
+.u-textAnimation {
+  overflow: hidden; // 枠からはみ出た文字を隠す
+  
+  .js-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(1.5em); // 下から1.5文字分の位置に配置
+    transition: opacity 0.3s cubic-bezier(0.4, 0.0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition-delay: calc( 0.5s + var(--delay)); // 各文字の遅延時間
+    
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0); // 元の位置にフェードイン
+    }
+  }
+}
+
+@keyframes scrollBarAnime {
+  0% {
+    opacity: 0;
+    width: 100%;
+  }
+  75% {
+    opacity: 0.8;
+    width: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+  }
+}

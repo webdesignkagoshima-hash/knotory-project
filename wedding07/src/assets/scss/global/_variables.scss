@@ -1,0 +1,38 @@
+// Google Fontsのインポート
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400&display=swap');
+
+// フォントファミリーの定義
+$font-family-ja: "Sawarabi Mincho", serif;;
+$font-family-en: "Bodoni Moda", serif;
+$font-family-heading: "Sawarabi Mincho", serif;
+$font-family-heading-en: "Bodoni Moda", serif;
+$font-family-our-story-card: "Noto Sans JP", serif;
+$font-family-our-story-card-year: "游明朝", "Yu Mincho", "YuMincho", serif;
+
+// フォントサイズ
+$fz-base: 16;
+
+// 色
+$base: #190708;
+$sub: #968525;
+$bg-base: #fff;
+$white: #fff;
+$primary: #968525;
+$border: #f6f5ec;
+$ourStoryCardBgBox: #f6f5ec;
+$bg-q-a-with-us: #f6f5ec;
+$bg-memories: #f1eddd;
+$bg-footer: #79756f;
+$LINE: #71D077;
+
+// コンテンツサイズ
+$wd-content-max-pc: calc(1026 / $fz-base * 1rem);
+$wd-content-padding-sp: 20;
+
+// viewport height
+$viewport-height-sp: 844;
+$viewport-height-pc: 900;
+$viewport-weight-sp: 390;
+$viewport-weight-pc: 1440;
