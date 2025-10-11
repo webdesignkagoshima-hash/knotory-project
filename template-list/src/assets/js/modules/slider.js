@@ -4,11 +4,11 @@ export default function initSlider() {
   const splide = new Splide('.splide', {
     updateOnMove: true,
     type: 'loop',
-    speed: 600,
+    speed: 1000,
     focus: 'center',
     perMove: 1,
     autoplay: true,
-    interval: 3000,
+    interval: 4500,
     delay: 1000,
     width: '100%',
     fixedWidth: 'calc(1115 / 1920 * 100svw)',
