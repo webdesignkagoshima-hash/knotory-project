@@ -3,7 +3,7 @@
 
 .c-ourStoryCard {
   width: 100%;
-  max-width: calc(406 / $fz-base * 1rem);
+  max-width: calc(342 / $fz-base * 1rem);
   overflow: hidden;
   
   // SP時（デフォルト）は絶対配置で中央重ね
@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: calc(23 / $fz-base * 1rem);
+  gap: calc(16 / $fz-base * 1rem);
 
   &::after {
     content: '';

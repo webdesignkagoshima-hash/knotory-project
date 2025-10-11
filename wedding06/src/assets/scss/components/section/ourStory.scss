@@ -43,7 +43,7 @@
 .p-ourStory__contentItemInner {
   // SP時（デフォルト）は相対配置コンテナとして機能
   position: relative;
-  height: calc(100% - calc(30 / $fz-base * 1rem) - calc(48 / $fz-base * 1rem)); // 親の高さからmargin-topとタイトル高さを引く
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
