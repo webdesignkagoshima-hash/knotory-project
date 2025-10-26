@@ -4,11 +4,11 @@ export default function initSlider() {
   const splide = new Splide('.splide', {
     updateOnMove: true,
     type: 'loop',
-    speed: 600,
+    speed: 1500,
     focus: 'center',
     perMove: 1,
-    autoplay: true,
-    interval: 3000,
+    autoplay: false,
+    interval: 4500,
     delay: 1000,
     width: '100%',
     fixedWidth: 'calc(1115 / 1920 * 100svw)',
@@ -19,6 +19,11 @@ export default function initSlider() {
       768: {
         fixedWidth: 'calc(264 / 390 * 100svw)',
         gap: 'calc(12 / 390 * 100svw)',
+        flickMaxPages: 1,
+        perMove: 1,
+        snap: true,
+        flickPower: 300,
+        dragMinThreshold: 1
       },
     },
   });
