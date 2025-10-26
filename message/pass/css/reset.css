@@ -1,0 +1,88 @@
+/*--------------------------------
+reset
+--------------------------------*/
+html,body,div,p,img,iframe,a,span,blockquote,q,address,cite,
+pre,code,em,small,strong,b,i,
+header,article,section,nav,figure,figcaption,hgroup,menu,aside,footer,time,
+h1,h2,h3,h4,h5,h6,
+ul,ol,li,dl,dt,dd,
+table,tbody,thead,tfoot,th,tr,td,
+form,fieldset,legend,label,select,input,textarea,button{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	vertical-align: baseline;
+}
+header,article,section,nav,figure,figcaption,hgroup,menu,aside,footer{
+	display: block;
+}
+ul li,
+ol li{
+	list-style-type: none;
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight: 500;
+}
+body{
+	line-height: 1;
+	overflow-x: hidden;
+}
+a{
+	text-decoration: none;
+}
+img{
+	vertical-align: middle;
+}
+table{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+select,option,input,textarea,button{
+	font: inherit;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none;
+}
+input[type=radio]{
+	-webkit-appearance: radio;
+	-moz-appearance: radio;
+	appearance: radio;
+}
+input[type=checkbox]{
+	-webkit-appearance: checkbox;
+	-moz-appearance: checkbox;
+	appearance: checkbox;
+}
+blockquote::before,blockquote::after,q::before,q::after{
+	content: '';
+	content: none;
+}
+[type=submit],[type=button],[type=reset],[type=file],button{
+	cursor: pointer;
+}
+:focus{
+	outline: none;
+}
+html{
+	font-size: 62.5%;
+}
+body{
+	font-family: sans-serif;
+	font-size: 1.4rem;
+	font-weight: 500;
+	line-height: 1;
+	color: #333;
+	-webkit-font-feature-settings: "palt";
+	font-feature-settings: "palt";
+}
+a {
+	color: #006d9e;
+	-webkit-tap-highlight-color: rgba(238, 223, 227, 0.2);
+}
+sup,
+sub{
+	font-size: xx-small;
+}
