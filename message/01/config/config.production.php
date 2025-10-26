@@ -27,6 +27,21 @@ define('DB_PATH', __DIR__ . '/../data/messages.db'); // SQLiteデータベース
 define('ENABLE_LOGGING', true);
 define('LOG_FILE', __DIR__ . '/../logs/security.log');
 
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// メール通知設定
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// メール通知の有効/無効
+define('ENABLE_EMAIL_NOTIFICATION', true); // falseにすると通知機能を無効化
+
+// 通知先メールアドレス（案件ごとに変更）
+define('ADMIN_EMAIL', 'XXXX@XXXXXXXX.COM'); // 管理者のメールアドレス
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// SMTP設定を共通ファイルから読み込み
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+require_once __DIR__ . '/../../messages/config/smtp.config.php';
+
 // セキュリティヘッダー設定
 define('SECURITY_HEADERS', [
     'X-Content-Type-Options' => 'nosniff',

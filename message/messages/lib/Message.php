@@ -33,6 +33,9 @@ class Message
             $result = $stmt->execute([$sessionId, $userIp, $userName, $message, $createdAt]);
             
             if ($result) {
+                // メール通知を送信（ログの前に実行）
+                EmailNotifier::notifyNewMessage($userName, $message, $userIp, $createdAt);
+                
                 Logger::info('Message saved successfully from: ' . $userName);
                 error_log("Message saved successfully: user={$userName}, id=" . $db->lastInsertId());
             } else {
