@@ -1,0 +1,108 @@
+@charset "UTF-8";
+.p-password {
+  font-family: serif;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 330px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+.p-password__inner {
+  width: 100%;
+}
+.p-password__title {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 1em;
+  letter-spacing: 3px;
+}
+.p-password__logo {
+  width: 100px;
+  margin-inline: auto;
+}
+.p-password__logo img {
+  width: 100%;
+}
+.p-password__text {
+  margin-block-start: 40px;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+.p-password__input {
+  margin-block-start: 0.5em;
+  position: relative;
+}
+.p-password__input svg {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  translate: 0 -50%;
+  width: 18px;
+}
+.p-password__input [type="password"] + svg {
+  opacity: 0.6;
+}
+.p-password__input__item {
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 18px;
+  padding: 0.5em;
+}
+.p-password__button {
+  position: relative;
+  margin-block-start: 20px;
+  width: 200px;
+  display: block;
+  border-radius: 100vmax;
+  margin-inline: auto;
+  background-color: #a98f4b;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  padding-block: 1em;
+  border: 1px solid #a98f4b;
+  transition: 0.3s;
+  letter-spacing: 2px;
+}
+.p-password__button span {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  translate: 0 -50%;
+  display: grid;
+  place-items: center;
+  width: 15px;
+  aspect-ratio: 1/1;
+  border-radius: 100vmax;
+  border: 1px solid #fff;
+}
+.p-password__button span::before {
+  content: "";
+  display: block;
+  width: 5px;
+  aspect-ratio: 1/1;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  rotate: 45deg;
+  transform-origin: center;
+  translate: -1px 0;
+}
+.p-password__button:hover {
+  background-color: #fff;
+  color: #a98f4b;
+}
+.p-password__button:hover span {
+  border: 1px solid #a98f4b;
+}
+.p-password__button:hover span::before {
+  border-top: 1px solid #a98f4b;
+  border-right: 1px solid #a98f4b;
+}
+.p-password__error {
+  color: red;
+  font-size: 13px;
+  margin-block-start: 1em;
+}

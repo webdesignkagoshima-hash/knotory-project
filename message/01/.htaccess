@@ -1,0 +1,85 @@
+# レンタルサーバー用設定
+
+# PHP設定
+<IfModule mod_php.c>
+    # エラー表示を無効化（本番環境）
+    php_flag display_errors Off
+    php_flag display_startup_errors Off
+    php_value error_reporting 0
+    
+    # エラーログの記録
+    php_flag log_errors On
+    php_value error_log logs/php_errors.log
+    
+    # セキュリティ設定
+    php_flag expose_php Off
+    
+    # メモリとタイムアウト設定
+    php_value memory_limit 128M
+    php_value max_execution_time 30
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    
+    # セッション設定
+    php_value session.cookie_httponly 1
+    php_value session.cookie_secure 0
+    php_value session.use_strict_mode 1
+</IfModule>
+
+# デフォルトのインデックスファイル
+DirectoryIndex index.php index.html
+
+# ディレクトリリスティングを無効化
+Options -Indexes
+
+# ファイルへのアクセス制限
+<FilesMatch "\.(log|db|sqlite|sql|json|md|txt)$">
+    Require all denied
+</FilesMatch>
+
+# 特定のディレクトリへのアクセス制限
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # config, data, logsディレクトリへの直接アクセスを禁止
+    RewriteRule ^(config|data|logs)/ - [F,L]
+</IfModule>
+
+# セキュリティヘッダー
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header unset X-Powered-By
+</IfModule>
+
+# GZip圧縮を有効化
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# ブラウザキャッシュの設定
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType text/x-javascript "access plus 1 month"
+</IfModule>
+
+# 文字エンコーディング
+AddDefaultCharset UTF-8
+
+# HTTPSリダイレクト（SSL証明書がある場合は有効化）
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
