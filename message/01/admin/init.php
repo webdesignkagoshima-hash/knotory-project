@@ -8,7 +8,7 @@
  */
 
 // 設定ファイルの読み込み
-require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../config/config.production.php';
 
 // 管理者認証（Webアクセスの場合）
 if (php_sapi_name() !== 'cli') {
