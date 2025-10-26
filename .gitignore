@@ -19,3 +19,6 @@ Thumbs.db
 
 # E2E tests
 e2e-tests
+
+# Large video files
+**/*.mp4
