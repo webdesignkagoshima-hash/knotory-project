@@ -18,38 +18,73 @@ class Config
         
         $config_loaded = false;
         
-        // 各テンプレート用の設定ファイルパスを動的に決定
-        $template_config_paths = [];
+        // 呼び出し元のスクリプトディレクトリから設定ファイルを探す
+        $script_dir = dirname($_SERVER['SCRIPT_FILENAME']);
         
-        // 現在のファイルパスから適切なテンプレート設定を探す
-        $current_dir = $_SERVER['SCRIPT_FILENAME'] ? dirname($_SERVER['SCRIPT_FILENAME']) : getcwd();
+        // リダイレクト元のパスを取得（管理画面の場合に有効）
+        $redirect_url = $_GET['redirect'] ?? '';
+        $redirect_dir = '';
+        $session_number = '';
         
-        // テンプレート01,02,03のconfig.phpを探す
-        if (preg_match('/\/message\/(\d{2})\b/', $current_dir, $matches)) {
-            $template_num = $matches[1];
-            $template_config_paths[] = dirname($current_dir) . "/{$template_num}/config/config.php";
+        if ($redirect_url) {
+            $redirect_dir = dirname($_SERVER['DOCUMENT_ROOT'] . $redirect_url);
+            
+            // リダイレクトURLからセッション番号を抽出 (例: /message/01/admin/index.php -> 01)
+            if (preg_match('#/message/(\d+)/#', $redirect_url, $matches)) {
+                $session_number = $matches[1];
+            }
         }
         
-        $config_paths = array_merge(
-            $template_config_paths,
-            [
-                '/var/config/config.php',         // コンテナ内の設定ファイルパス（推奨）
-                __DIR__ . '/../../01/config/config.php', // テンプレート01用
-                __DIR__ . '/../../02/config/config.php', // テンプレート02用  
-                __DIR__ . '/../../03/config/config.php', // テンプレート03用
-                __DIR__ . '/../../config/config.php', // 開発環境用
-                dirname(dirname(__DIR__)) . '/config/config.php',  // 一つ上のディレクトリ
-                $_SERVER['DOCUMENT_ROOT'] . '/../config/config.php' // Webルートの外（最も安全）
-            ]
-        );
+        // スクリプトのパスからもセッション番号を抽出（index.phpなど）
+        if (!$session_number) {
+            $script_path = $_SERVER['SCRIPT_FILENAME'] ?? '';
+            if (preg_match('#/message/(\d+)/#', $script_path, $matches)) {
+                $session_number = $matches[1];
+            }
+        }
+        
+        // 設定ファイルのパスリスト（本番環境用を優先）
+        $config_paths = [];
+        
+        // セッション番号が判明している場合は、そのディレクトリを優先
+        if ($session_number) {
+            $session_config_dir = dirname(__DIR__, 2) . '/' . $session_number . '/config';
+            $config_paths[] = $session_config_dir . '/config.production.php';
+            $config_paths[] = $session_config_dir . '/config.php';
+        }
+        
+        // その他の候補パス
+        $config_paths = array_merge($config_paths, array_filter([
+            // リダイレクト元から見た相対パス（管理画面用）
+            $redirect_dir ? $redirect_dir . '/../config/config.production.php' : null,
+            $redirect_dir ? $redirect_dir . '/../config/config.php' : null,
+            // 呼び出し元のスクリプトから見た相対パス（admin/index.phpから ../config/）
+            $script_dir . '/../config/config.production.php',
+            $script_dir . '/../config/config.php',
+            // 直接configディレクトリにいる場合
+            $script_dir . '/config/config.production.php',
+            $script_dir . '/config/config.php',
+            // messagesと同階層のconfig
+            __DIR__ . '/../../config/config.production.php',
+            __DIR__ . '/../../config/config.php',
+            // コンテナ内の設定
+            '/var/config/config.production.php',
+            '/var/config/config.php',
+            // Webルートの外
+            $_SERVER['DOCUMENT_ROOT'] . '/../config/config.production.php',
+            $_SERVER['DOCUMENT_ROOT'] . '/../config/config.php'
+        ]));
         
         foreach ($config_paths as $path) {
-            if (file_exists($path) && is_readable($path)) {
+            // パスを正規化
+            $normalized_path = realpath($path);
+            
+            if ($normalized_path && file_exists($normalized_path) && is_readable($normalized_path)) {
                 // デバッグ: どの設定ファイルが読み込まれたかをログに記録
-                error_log("Config loaded from: {$path}");
+                error_log("Config loaded from: {$normalized_path}");
                 
                 // 設定ファイルを読み込み
-                include_once $path;
+                include_once $normalized_path;
                 $config_loaded = true;
                 // 読み込み完了フラグを設定
                 if (!defined('CONFIG_LOADED')) {
@@ -60,8 +95,8 @@ class Config
         }
         
         // 設定ファイルが読み込まれなかった場合のみデフォルト値を使用
-        if (!$config_loaded && !defined('SITE_PASSWORD')) {
-            error_log("Config not loaded, using defaults");
+        if (!$config_loaded && !defined('ADMIN_PASSWORD')) {
+            error_log("Config not loaded, using defaults. Tried paths: " . implode(', ', array_slice($config_paths, 0, 5)));
             self::setDefaults();
         }
         
@@ -74,7 +109,6 @@ class Config
      */
     private static function setDefaults()
     {
-        define('SITE_PASSWORD', 'default_password_change_me');
         define('MAX_LOGIN_ATTEMPTS', 5);
         define('LOCKOUT_TIME', 300);
         define('SESSION_TIMEOUT', 3600);

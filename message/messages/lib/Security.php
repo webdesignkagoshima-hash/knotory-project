@@ -122,6 +122,29 @@ class Security
             return false;
         }
         
+        // セッションディレクトリの整合性チェック
+        $redirect_url = $_GET['redirect'] ?? '';
+        $current_directory = '';
+        
+        if ($redirect_url && preg_match('#/message/(\d+)/#', $redirect_url, $matches)) {
+            $current_directory = $matches[1];
+        } else {
+            // フォールバック: スクリプトのパスから推測
+            $script_path = $_SERVER['SCRIPT_FILENAME'] ?? '';
+            if (preg_match('#/message/(\d+)/#', $script_path, $matches)) {
+                $current_directory = $matches[1];
+            }
+        }
+        
+        // セッションに保存されたディレクトリと現在のディレクトリが一致するかチェック
+        if ($current_directory && isset($_SESSION['session_directory'])) {
+            if ($_SESSION['session_directory'] !== $current_directory) {
+                Logger::write("Session directory mismatch: session={$_SESSION['session_directory']}, current={$current_directory}", 'WARNING');
+                session_destroy();
+                return false;
+            }
+        }
+        
         // セッションタイムアウト
         if (isset($_SESSION['admin_login_time']) && (time() - $_SESSION['admin_login_time']) > SESSION_TIMEOUT) {
             session_destroy();
@@ -137,9 +160,69 @@ class Security
      */
     public static function init()
     {
-        // セッション開始（ヘッダー送信前に実行）
-        if (session_status() === PHP_SESSION_NONE) {
+        // リダイレクトURLからセッション番号を取得
+        $redirect_url = $_GET['redirect'] ?? '';
+        $session_number = '';
+        
+        if ($redirect_url && preg_match('#/message/(\d+)/#', $redirect_url, $matches)) {
+            $session_number = $matches[1];
+        }
+        
+        // セッション名を設定（ディレクトリごとに異なるセッション名を使用）
+        if ($session_number) {
+            $session_name = 'KNOTORY_MSG_' . $session_number;
+        } else {
+            // フォールバック: スクリプトのパスから推測
+            $script_path = $_SERVER['SCRIPT_FILENAME'] ?? '';
+            if (preg_match('#/message/(\d+)/#', $script_path, $matches)) {
+                $session_number = $matches[1];
+                $session_name = 'KNOTORY_MSG_' . $session_number;
+            } else {
+                $session_name = 'KNOTORY_MSG_DEFAULT';
+            }
+        }
+        
+        // セッション開始処理
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            // 既にセッションが開始されている場合
+            $current_session_name = session_name();
+            
+            // セッション名が異なる場合は切り替え
+            if ($current_session_name !== $session_name) {
+                // 既存のセッションデータを保存
+                $existing_session_data = $_SESSION;
+                
+                // セッションを一旦閉じる
+                session_write_close();
+                
+                // 新しいセッション名でセッション再開
+                session_name($session_name);
+                session_start();
+                
+                // 既存の認証情報を維持（pass/auth.phpの認証）
+                if (isset($existing_session_data['authenticated'])) {
+                    $_SESSION['authenticated'] = $existing_session_data['authenticated'];
+                }
+                
+                // セッションにディレクトリ番号を保存
+                if ($session_number && !isset($_SESSION['session_directory'])) {
+                    $_SESSION['session_directory'] = $session_number;
+                }
+            } else {
+                // セッション名が同じ場合は、ディレクトリ番号だけ確認
+                if ($session_number && !isset($_SESSION['session_directory'])) {
+                    $_SESSION['session_directory'] = $session_number;
+                }
+            }
+        } else {
+            // セッションが開始されていない場合は新規開始
+            session_name($session_name);
             session_start();
+            
+            // セッションにディレクトリ番号を保存
+            if ($session_number && !isset($_SESSION['session_directory'])) {
+                $_SESSION['session_directory'] = $session_number;
+            }
         }
         
         // 設定ファイル読み込み

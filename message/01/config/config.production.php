@@ -36,7 +36,7 @@ define('SECURITY_HEADERS', [
 ]);
 
 // デバッグモード（本番では必ず false にする）
-define('DEBUG_MODE', false); // 本番環境では false に設定
+define('DEBUG_MODE', true); // 一時的にtrueにしてエラー内容を確認
 
 // エラー表示設定（本番環境）
 if (!DEBUG_MODE) {

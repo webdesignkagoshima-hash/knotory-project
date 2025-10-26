@@ -15,6 +15,9 @@ class Database
             try {
                 $db_path = Config::get('DB_PATH', '/tmp/messages.db');
                 
+                // デバッグ: 使用するデータベースパスをログ出力
+                error_log("Database path: {$db_path}");
+                
                 self::$instance = new PDO('sqlite:' . $db_path);
                 self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 self::$instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -24,6 +27,7 @@ class Database
                 
             } catch (PDOException $e) {
                 Logger::error('Database connection failed: ' . $e->getMessage());
+                error_log('Database connection failed: ' . $e->getMessage());
                 return null;
             }
         }

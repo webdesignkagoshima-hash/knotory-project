@@ -67,10 +67,6 @@ function isAdmin(): bool {
 
 // 新しい関数（クラスメソッドのラッパー）
 
-function loginUser(string $password): array {
-    return Auth::login($password);
-}
-
 function loginAdmin(string $password): array {
     return Auth::adminLogin($password);
 }
@@ -115,10 +111,5 @@ function getPaginationInfo(int $totalItems, int $currentPage, int $perPage): arr
         'start_item' => ($currentPage - 1) * $perPage + 1,
         'end_item' => min($currentPage * $perPage, $totalItems)
     ];
-}
-
-// ダミーデータ生成関数
-function generateDummyMessages(int $count = 120): bool {
-    return Message::generateDummyData($count);
 }
 ?>

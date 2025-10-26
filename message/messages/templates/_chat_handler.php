@@ -8,15 +8,9 @@ try {
     // 共通処理の読み込み
     require_once __DIR__ . '/../functions.php';
 
-    // セッションが開始されていない場合のみ初期化
-    if (session_status() === PHP_SESSION_NONE) {
-        initSecurity();
-    }
-
-    // 設定が読み込まれていない場合は読み込み
-    if (!defined('DB_PATH')) {
-        loadConfig();
-    }
+    // セキュリティ初期化（セッションが既に開始されていても実行）
+    // これによりセッション名の切り替えと設定ファイルの読み込みが行われる
+    initSecurity();
 
     // CSRFトークン生成
     $csrf_token = generateCSRFToken();

@@ -10,7 +10,14 @@ class Message
     public static function save(string $sessionId, string $userIp, string $userName, string $message): bool
     {
         $db = Database::getInstance();
-        if (!$db) return false;
+        if (!$db) {
+            error_log("Message save failed: Database instance is null");
+            return false;
+        }
+        
+        // 念のため前後のスペースを削除
+        $userName = trim($userName);
+        $message = trim($message);
         
         try {
             $stmt = $db->prepare("
@@ -21,15 +28,21 @@ class Message
             // 日本時間で現在時刻を取得
             $createdAt = date('Y-m-d H:i:s');
             
+            error_log("Attempting to save message: user={$userName}, session={$sessionId}");
+            
             $result = $stmt->execute([$sessionId, $userIp, $userName, $message, $createdAt]);
             
             if ($result) {
                 Logger::info('Message saved successfully from: ' . $userName);
+                error_log("Message saved successfully: user={$userName}, id=" . $db->lastInsertId());
+            } else {
+                error_log("Message save returned false");
             }
             
             return $result;
         } catch (PDOException $e) {
             Logger::error('Failed to save message: ' . $e->getMessage());
+            error_log('Failed to save message: ' . $e->getMessage());
             return false;
         }
     }
@@ -138,77 +151,5 @@ class Message
         }
         
         return $errors;
-    }
-
-    /**
-     * ダミーデータ生成
-     */
-    public static function generateDummyData(int $count = 120): bool
-    {
-        $db = Database::getInstance();
-        if (!$db) return false;
-        
-        try {
-            $db->beginTransaction();
-            
-            $names = [
-                '田中太郎', '佐藤花子', '鈴木一郎', '高橋美咲', '伊藤健太',
-                '山田あかり', '中村雄大', '小林さくら', '加藤直樹', '吉田みどり',
-                '山本光太', '松本真由', '井上大輔', '木村優子', '林志郎',
-                '森田彩香', '清水誠', '山口恵美', '近藤拓海', '斎藤美穂'
-            ];
-            
-            $messages = [
-                'お疲れ様です。質問があります。',
-                'いつもお世話になっております。',
-                'システムの調子はいかがですか？',
-                '新機能の件でご相談があります。',
-                'バグを発見しましたので報告します。',
-                '改善提案をお送りします。',
-                'お忙しい中恐れ入ります。',
-                'ご確認いただけますでしょうか。',
-                'ありがとうございました。',
-                'よろしくお願いいたします。',
-                'データの更新をお願いします。',
-                '設定変更の件でご連絡します。',
-                'ユーザビリティについて意見があります。',
-                'パフォーマンスが向上しました。',
-                'セキュリティ対策について質問です。',
-                '新しいアイデアを提案します。',
-                'テスト結果をお知らせします。',
-                '問題が解決しました。',
-                '次回のミーティングについて',
-                'プロジェクトの進捗報告です。'
-            ];
-            
-            $stmt = $db->prepare("
-                INSERT INTO messages (user_session_id, user_ip, user_name, message, created_at) 
-                VALUES (?, ?, ?, ?, ?)
-            ");
-            
-            for ($i = 0; $i < $count; $i++) {
-                $sessionId = 'dummy_session_' . str_pad($i % 20, 3, '0', STR_PAD_LEFT);
-                $userIp = '192.168.1.' . (rand(1, 254));
-                $userName = $names[array_rand($names)];
-                $message = $messages[array_rand($messages)];
-                
-                // ランダムな過去の日時を生成（過去30日間）
-                $randomDays = rand(0, 29);
-                $randomHours = rand(0, 23);
-                $randomMinutes = rand(0, 59);
-                $createdAt = date('Y-m-d H:i:s', strtotime("-{$randomDays} days -{$randomHours} hours -{$randomMinutes} minutes"));
-                
-                $stmt->execute([$sessionId, $userIp, $userName, $message, $createdAt]);
-            }
-            
-            $db->commit();
-            Logger::info("Generated {$count} dummy messages");
-            return true;
-            
-        } catch (PDOException $e) {
-            $db->rollBack();
-            Logger::error('Failed to generate dummy data: ' . $e->getMessage());
-            return false;
-        }
     }
 }

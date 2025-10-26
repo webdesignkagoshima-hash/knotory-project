@@ -23,14 +23,15 @@ if ($isProduction && file_exists(__DIR__ . '/config.production.php')) {
 // 以下、開発環境用設定（既存の設定を維持）
 
 // セキュリティ設定
-define('SITE_PASSWORD', 'sakura_secure_2025!'); // 強力なパスワードに変更してください
 define('MAX_LOGIN_ATTEMPTS', 5);
 define('LOCKOUT_TIME', 300); // 5分間のロックアウト
 define('SESSION_TIMEOUT', 3600); // 1時間のセッションタイムアウト
 define('SESSION_REGENERATE_INTERVAL', 300); // 5分ごとのセッション再生成
 
 // 管理者設定
-define('ADMIN_PASSWORD', 'admin_secure_2025!'); // 管理者用パスワード
+define('ADMIN_PASSWORD', 'admin_secure_2025!'); // 必ず変更してください
+
+// 管理者ログインのセキュリティ設定
 
 // SQLite設定（ローカル開発用）
 define('DB_PATH', __DIR__ . '/../data/messages.db'); // SQLiteデータベースファイルパス

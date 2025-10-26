@@ -2,14 +2,8 @@
 // 認証処理（この中でsession_start()が呼ばれる）
 require_once __DIR__ . '/../pass/auth.php';
 
-// 設定ファイルを明示的に読み込む（_chat_handler.phpより前に読み込む）
-require_once __DIR__ . '/config/config.production.php';
-
 // メッセージ送信処理を実行（HTML出力前に処理を完了させる）
 require_once __DIR__ . '/../messages/templates/_chat_handler.php';
-
-// 出力バッファリングを開始（ヘッダー送信前の出力を防ぐ）
-ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="ja">

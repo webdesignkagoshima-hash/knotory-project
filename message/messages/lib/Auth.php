@@ -5,50 +5,22 @@
 class Auth
 {
     /**
-     * ユーザーログイン処理
-     */
-    public static function login(string $password): array
-    {
-        $result = ['success' => false, 'message' => ''];
-        
-        // ロックアウト状態のチェック
-        if (self::isLockedOut()) {
-            $remaining_time = self::getRemainingLockoutTime();
-            $result['message'] = "ログイン試行回数が上限に達しました。{$remaining_time}秒後に再試行してください。";
-            return $result;
-        }
-        
-        // パスワードの確認
-        if (hash_equals(Config::get('SITE_PASSWORD'), $password)) {
-            // ログイン成功
-            $_SESSION['authenticated'] = true;
-            $_SESSION['login_time'] = time();
-            $_SESSION['login_attempts'] = 0; // 成功時にリセット
-            $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'] ?? '';
-            
-            // CSRFトークンを再生成（セッション固定攻撃対策）
-            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-            
-            Logger::info('Successful login');
-            $result['success'] = true;
-        } else {
-            // ログイン失敗
-            self::incrementLoginAttempts();
-            $result['message'] = 'パスワードが正しくありません。';
-            Logger::warning("Failed login attempt #{$_SESSION['login_attempts']}");
-        }
-        
-        return $result;
-    }
-
-    /**
      * 管理者ログイン処理
      */
     public static function adminLogin(string $password): array
     {
         $result = ['success' => false, 'message' => ''];
         
-        if (hash_equals(Config::get('ADMIN_PASSWORD'), $password)) {
+        // デバッグ情報
+        $expected_password = Config::get('ADMIN_PASSWORD');
+        if (Config::isDebugMode()) {
+            error_log("Admin login attempt");
+            error_log("Expected password: " . $expected_password);
+            error_log("Entered password: " . $password);
+            error_log("Password match: " . (hash_equals($expected_password, $password) ? 'true' : 'false'));
+        }
+        
+        if (hash_equals($expected_password, $password)) {
             $_SESSION['admin_authenticated'] = true;
             $_SESSION['admin_login_time'] = time();
             Logger::info('Admin logged in');
