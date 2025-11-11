@@ -1,0 +1,48 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.l-footer {
+  background: $bg-footer;
+  text-align: center;
+  color: $white;
+  padding: calc(30 / $fz-base * 1rem) 0 0;
+}
+
+.l-footer__logoImage {
+  display: block;
+  width: calc(120 / $fz-base * 1rem);
+  margin: calc(20 / $fz-base * 1rem) auto calc(22 / $fz-base * 1rem);
+}
+
+.l-footer__navItem {
+  & + & {
+    margin-top: calc(18 / $fz-base * 1rem);
+  }
+}
+
+.l-footer__navLink {
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: calc(20 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $white;
+  text-decoration: none;
+}
+
+.l-footer__text {
+  background-color: #E8204D;
+  padding: calc(10 / $fz-base * 1rem) 0 calc(8 / $fz-base * 1rem);
+  font-family: $font-family-ja;
+  font-size: calc(12 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: calc(25 / 1000 * 1rem);
+  margin-top: calc(38 / $fz-base * 1rem);
+}
+
+.js {
+  & .l-footer__container.js-fadeIn {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,57 @@
+@use "../../global/variables" as *;
+@use "../../global/mixin" as *;
+
+.c-floating-cta {
+  width: 100%;
+  max-width: calc(390 / $fz-base * 1rem);
+  background-color: $bg-cta;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  
+  // 表示状態
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  // CTAボタンのラッパーをフローティング用にオーバーライド
+  .c-buttonCTA__wrapper {
+    width: 100%;
+    background-color: rgba($color: #fff, $alpha: 0.8);
+    padding: calc(10 / $fz-base * 1rem);
+  }
+  
+  // フローティング時のボタンスタイル調整
+  .c-buttonCTA {
+    max-width: calc(350 / $fz-base * 1rem);
+  }
+  
+  // フローティング時のメッセージを少し小さく
+  .c-buttonCTA__message {
+    font-size: calc(14 / $fz-base * 1rem);
+    margin-bottom: calc(8 / $fz-base * 1rem);
+  }
+  
+  // フローティング時のコンテナパディング調整
+  .c-buttonCTA__container {
+    padding: calc(8 / $fz-base * 1rem) calc(16 / $fz-base * 1rem);
+  }
+  
+  // フローティング時のテキストサイズ調整
+  .c-buttonCTA__text {
+    font-size: calc(18 / $fz-base * 1rem);
+  }
+  
+  // フローティング時の円形アイコン調整
+  .c-buttonCTA__circle {
+    width: calc(40 / $fz-base * 1rem);
+    height: calc(40 / $fz-base * 1rem);
+    font-size: calc(12 / $fz-base * 1rem);
+  }
+}

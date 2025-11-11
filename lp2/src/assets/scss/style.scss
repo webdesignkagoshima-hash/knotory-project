@@ -1,0 +1,36 @@
+@use './global/normalize';
+@use './global/variables' as *;
+@use './global/mixin' as *;
+@use './global/common';
+@use './global/utility';
+@use './global/animation';
+@use './global/layout';
+
+// splide
+@use '@splidejs/splide/dist/css/splide.min.css';
+
+// components
+@use './components/ui/button';
+@use './components/ui/buttonLine';
+@use './components/ui/buttonLineSmall';
+@use './components/ui/buttonCTA';
+@use './components/ui/floatingCTA';
+@use './components/ui/campaignDescription';
+@use './components/ui/floatingScroll';
+
+// sections
+@use './components/section/footer';
+@use './components/section/fv';
+@use './components/section/cta';
+@use './components/section/contact';
+@use './components/section/about';
+@use './components/section/features';
+@use './components/section/challenge';
+@use './components/section/solution';
+@use './components/section/points';
+@use './components/section/scenes';
+@use './components/section/plan';
+@use './components/section/flow';
+@use './components/section/faq';
+@use './components/section/p-reviews-sender';
+@use './components/section/p-reviews-receiver';

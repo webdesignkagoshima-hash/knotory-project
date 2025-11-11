@@ -1,0 +1,115 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-scenes {
+  padding: calc(120 / $fz-base * 1rem) 0 calc(30 / $fz-base * 1rem);
+  background: url('/assets/images/bg-scene.png') no-repeat center top;
+  background-size: 100% auto;
+  margin-top: calc(-100 / $fz-base * 1rem);
+  z-index: -1;
+}
+
+.p-scenes__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(4 / $fz-base * 1rem);
+  margin-bottom: calc(40 / $fz-base * 1rem);
+}
+
+.p-scenes__headingMain {
+  display: block;
+  font-family: $font-family-ja;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 800;
+  line-height: calc(30 / 20);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: #FE6386;
+  margin-top: 1px;
+}
+
+.p-scenes__headingEn {
+  display: block;
+  font-family: $font-family-heading-en;
+  font-size: calc(41 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(62 / 41);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $heading-en;
+  margin-top: calc(4 / $fz-base * 1rem);
+  text-transform: uppercase;
+}
+
+.p-scenes__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(27 / $fz-base * 1rem) calc(14 / $fz-base * 1rem);
+  list-style: none;
+  padding: 0 calc(30 / $fz-base * 1rem);
+  margin: 0;
+}
+
+.p-scenes__card {
+  position: relative;
+  background-color: $white;
+  border-radius: calc(8 / $fz-base * 1rem);
+  padding: calc(20 / $fz-base * 1rem) calc(8 / $fz-base * 1rem) calc(15 / $fz-base * 1rem);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.p-scenes__cardNumber {
+  position: absolute;
+  top: calc(-7 / $fz-base * 1rem);
+  left: calc(4 / $fz-base * 1rem);
+  font-family: $font-family-en;
+  font-size: calc(19 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: 1;
+  color: $white;
+  width: calc(38.25 / $fz-base * 1rem);
+  height: calc(30 / $fz-base * 1rem);
+  background: url('/assets/images/bg-scenes-badge.png') no-repeat center center;
+  background-size: contain;
+  padding: calc(5 / $fz-base * 1rem) calc(2.5 / $fz-base * 1rem);
+  border-radius: calc(4 / $fz-base * 1rem);
+  z-index: 1;
+}
+
+.p-scenes__cardFigure {
+  margin: 0 auto;
+  width: calc(110 / $fz-base * 1rem);
+  height: auto;
+  aspect-ratio: 1/1;
+}
+
+.p-scenes__cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.p-scenes__cardTitle {
+  font-family: $font-family-heading;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: #FE6386;
+  margin: 0 0 calc(8 / $fz-base * 1rem);
+  text-align: center;
+  height: calc(42 / $fz-base * 1rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p-scenes__cardText {
+  font-family: $font-family-ja;
+  font-size: calc(12 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(18 / 12);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+  margin: 0;
+}

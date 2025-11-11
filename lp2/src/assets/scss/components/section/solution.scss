@@ -1,0 +1,89 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-solution {
+  padding: 0;
+}
+
+.p-solution__container {
+  @include container;
+  text-align: center;
+}
+
+.p-solution__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(48 / $fz-base * 1rem);
+  height: calc(48 / $fz-base * 1rem);
+  color: $base;
+  margin-top: calc(-24 / $fz-base * 1rem);
+  margin-bottom: calc(24 / $fz-base * 1rem);
+}
+
+.p-solution__lead {
+  font-family: $font-family-ja;
+  font-size: calc(18 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: calc(28 / 18);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+  margin-bottom: calc(16 / $fz-base * 1rem);
+}
+
+.p-solution__description {
+  font-family: $font-family-ja;
+  font-size: calc(18 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: calc(26 / 18);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+  margin-bottom: calc(32 / $fz-base * 1rem);
+
+}
+
+.p-solution__emphasize {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  color: $white;
+  width: calc(130 / $fz-base * 1rem);
+  
+  &::before {
+    content: attr(data-text);
+    width: calc(128 / $fz-base * 1rem);
+    height: calc(30 / $fz-base * 1rem);
+    position: absolute;
+    left: 1.8px;
+    top: 1.3px;
+    color: #FE6386;
+    z-index: -1;
+    -webkit-text-stroke: calc(2.4 / $fz-base * 1rem) #FE6386;
+    text-stroke: calc(2.4 / $fz-base * 1rem) #FE6386;
+  }
+}
+
+.p-solution__logo {
+  display: block;
+  width: calc(201 / $fz-base * 1rem);
+  margin: 0 auto calc(24 / $fz-base * 1rem);
+  background-color: #fff;
+  border-radius: calc(10 / $fz-base * 1rem);
+  padding: calc(10 / $fz-base * 1rem);
+
+  & img {
+    display: block;
+    margin: 0 auto;
+    width: calc(153 / $fz-base * 1rem);
+    height: auto;
+  }
+}
+
+.p-solution__cta {
+  font-family: $font-family-ja;
+  font-size: calc(18 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: calc(26 / 18);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+}

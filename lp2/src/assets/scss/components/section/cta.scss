@@ -1,0 +1,70 @@
+@use '../../global/variables' as *;
+
+.c-cta {
+  background-color: $bg-cta;
+
+  & .c-buttonCTA__wrapper {
+    padding: 0;
+  }
+}
+
+.c-cta__container {
+  padding: calc(32 / $fz-base * 1rem) calc(31 / $fz-base * 1rem) calc(30 / $fz-base * 1rem);
+}
+
+.c-cta__title {
+  font-family: $font-family-ja;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 700;
+  color: $white;
+  line-height: calc(25 / 20);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  text-align: center;
+}
+
+.c-cta__inner {
+  margin-top: calc(25.5 / $fz-base * 1rem);
+}
+
+.c-cta__okList {
+  margin-top: calc(20 / $fz-base * 1rem);
+}
+
+.c-cta__okListItems {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  max-width: calc(390 / $fz-base * 1rem);
+  margin: 0 auto;
+}
+
+.c-cta__okListItem {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: calc(102 / $fz-base * 1rem);
+  height: calc(102 / $fz-base * 1rem);
+  background-color: $white;
+  border: 2px solid #29B09B;
+  border-radius: 50%;
+  justify-self: center;
+}
+
+.c-cta__okListText {
+  text-align: center;
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(20 / 16);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: $base;
+  margin-bottom: calc(9 / $fz-base * 1rem);
+}
+
+.c-cta__okListAccent {
+  display: block;
+  color: #2EB29C;
+  font-family: $font-family-en;
+  font-size: calc(28 / $fz-base * 1rem);
+  line-height: calc(36 / 28);
+}

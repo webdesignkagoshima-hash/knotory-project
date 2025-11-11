@@ -1,0 +1,168 @@
+@use "../../global/variables" as *;
+
+.c-buttonCTA__wrapper {
+  background-color: $bg-cta;
+  text-align: center;
+}
+
+.c-buttonCTA__message {
+  color: $base;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-family: $font-family-ja;
+  font-weight: 500;
+  line-height: calc(24 / 16);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  display: flex;
+  justify-content: center;
+  margin-bottom: calc(5 / $fz-base * 1rem);
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: calc(8 / $fz-base * 1rem);
+    height: calc(16 / $fz-base * 1rem);
+    background-image: url('/assets/images/decoration-slash-before.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: calc(4.5 / $fz-base * 1rem);
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: calc(8 / $fz-base * 1rem);
+    height: calc(16 / $fz-base * 1rem);
+    background-image: url('/assets/images/decoration-slash-after.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: calc(12 / $fz-base * 1rem);
+  }
+}
+
+.c-buttonCTA {
+  display: block;
+  text-decoration: none;
+  max-width: calc(332 / $fz-base * 1rem);
+  margin: 0 auto;
+  background: linear-gradient(to bottom, #68D4A7 0%, #24AD9A 100%);
+  border-radius: calc(40 / $fz-base * 1rem);
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: scale 0.4s ease;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: calc(25.5 / $fz-base * 1rem);
+    transform: translate(0, -50%);
+    width: calc(100% - 4 / $fz-base * 1rem);
+    height: calc(100% - 4 / $fz-base * 1rem);
+    width: calc(16.57 / $fz-base * 1rem);
+    height: calc(16.57 / $fz-base * 1rem);
+    background-image: url('/assets/images/icon-arrow-dropright-circle.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &:hover {
+    scale: 1.1;
+  }
+}
+
+.c-buttonCTA__container {
+  display: grid;
+  grid-template-columns: calc(40 / $fz-base * 1rem) auto;
+  align-items: center;
+  justify-content: center;
+  gap: calc(10 / $fz-base * 1rem);
+  padding: calc(6 / $fz-base * 1rem) calc(25.4 / $fz-base * 1rem);
+}
+
+.c-buttonCTA__circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(40 / $fz-base * 1rem);
+  height: calc(40 / $fz-base * 1rem);
+  background-color: $highlight;
+  border-radius: 50%;
+  font-size: calc(12 / $fz-base * 1rem);
+  color: $alert;
+  font-family: $font-family-ja;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: calc(50 / 1000 * 1rem);
+}
+
+.c-buttonCTA__text {
+  width: fit-content;
+  color: $white;
+  font-family: $font-family-ja;
+  font-weight: 500;
+  font-size: calc(20 / $fz-base * 1rem);
+  line-height: calc(24 / 20);
+  letter-spacing: calc(50 / 1000 * 1rem);
+}
+
+/* ------------------------------------
+ボタンの外側にボックス作成
+（疑似要素「before」を使う）
+------------------------------------*/
+.c-buttonCTA::before {
+  content: "";
+  /* 文字は表示しないので中身無しを指定 */
+  position: absolute;
+  /* ボタンの位置を基準に絶対値指定する */
+  display: block;
+  /* 形式はblock */
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7));
+  /* 背景色は透明から白になるグラデーション */
+  width: 50px;
+  /* 横幅 */
+  height: 50px;
+  /* 縦幅 */
+  top: -60px;
+  /* ボタン左上を基準に上へ60pxの位置 */
+  left: -60px;
+  /* ボタン左上を基準に左へ60pxの位置 */
+  /* アニメーションの動作指定 */
+  animation-name: shine-run;
+  /* アニメーション名の指定 */
+  animation-delay: 0s;
+  /* アニメーションの開始時間指定 */
+  animation-duration: 3s;
+  /* アニメーション動作時間の指定 */
+  animation-timing-function: ease-in;
+  /* アニメーションの動き指定（徐々に早く）*/
+  animation-iteration-count: infinite;
+  /* アニメーションの無限繰り返しの指定 */
+}
+
+/* ------------------------------------
+アニメーションのタイミングとボックスの
+拡大率、角度、透過率の指定
+------------------------------------*/
+@keyframes shine-run {
+  0% {
+    transform: scale(0) rotate(50deg);
+    /* アニメ開始時は大きさ0、50度の傾き */
+    opacity: 0;
+    /* アニメ開始時は全透過 */
+  }
+
+  60% {
+    transform: scale(1) rotate(50deg);
+    /* 40%まで進む間に大きさを等倍に。傾きは50度のまま*/
+    opacity: 1;
+    /* 透過しない（しっかり表示される）ように1を設定 */
+  }
+
+  100% {
+    transform: scale(250) rotate(50deg);
+    /* 最後は元の大きさの250倍になるようにする。傾きは50度のまま*/
+    opacity: 0;
+    /* 全透過になるようにして、徐々に消えるような変化を付ける */
+  }
+}

@@ -1,0 +1,118 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-points {
+  padding: calc(28 / $fz-base * 1rem) 0 calc(80 / $fz-base * 1rem);
+}
+
+.p-points__heading {
+  text-align: center;
+  display: block;
+  width: calc(329 / $fz-base * 1rem);
+  margin: 0 auto calc(23 / $fz-base * 1rem);
+  padding: calc(10 / $fz-base * 1rem) calc(23 / $fz-base * 1rem);
+  background: linear-gradient(135deg, #FE6386, #F8937A);
+  color: $white;
+}
+
+.p-points__headingMain {
+  display: block;
+  font-family: $font-family-ja;
+  font-size: calc(22 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(36 / 22);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  border-radius: 5px;
+}
+
+.p-points__headingSub {
+  display: block;
+  font-family: $font-family-ja;
+  font-size: calc(24 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(38 / 24);
+  letter-spacing: calc(25 / 1000 * 1rem);
+}
+
+.p-points__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(30 / $fz-base * 1rem);
+}
+
+.p-points__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.p-points__badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(60 / $fz-base * 1rem);
+  height: calc(60 / $fz-base * 1rem);
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid #FE6386;
+  margin-bottom: calc(10 / $fz-base * 1rem);
+}
+
+.p-points__badgeLabel {
+  font-family: $font-family-en;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: #FE6386;
+  text-transform: lowercase;
+  margin-bottom: calc(4 / $fz-base * 1rem);
+}
+
+.p-points__badgeNumber {
+  font-family: $font-family-en;
+  font-size: calc(24 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: #FE6386;
+}
+
+.p-points__itemHeading {
+  font-family: $font-family-ja;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(32 / 20);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: #E8204D;
+  margin-bottom: calc(8 / $fz-base * 1rem);
+}
+
+.p-points__figure {
+  width: 100%;
+  max-width: calc(300 / $fz-base * 1rem);
+  margin: 0 auto calc(16 / $fz-base * 1rem);
+}
+
+.p-points__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(12 / $fz-base * 1rem);
+}
+
+.p-points__text {
+  font-family: $font-family-ja;
+  font-size: calc(15 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(26 / 15);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+  text-align: left;
+  max-width: calc(340 / $fz-base * 1rem);
+}
