@@ -3,6 +3,9 @@
 .p-faq {
   background: url('/assets/images/bg-faq.png') no-repeat center top;
   background-size: cover;
+}
+
+.p-faq__container {
   padding: calc(52 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) calc(35 / $fz-base * 1rem);
 }
 
@@ -22,7 +25,7 @@
   font-weight: 400;
   line-height: calc(18 / 14);
   letter-spacing: calc(100 / 1000 * 1rem);
-  color: #FFCFD2;
+  color: $bg-contact;
   text-align: center;
   margin-bottom: calc(8 / $fz-base * 1rem);
 }
@@ -52,7 +55,7 @@
     height: 0;
     opacity: 0;
     overflow: hidden;
-    background-color: #F8937A;
+    background-color: $secondary;
     will-change: height, opacity; /* GPU最適化 */
     
     /* iOS向けハードウェアアクセラレーション */
@@ -95,7 +98,7 @@
   align-items: center;
   grid-template-columns: calc(45 / $fz-base * 1rem) 1fr calc(13.81 / $fz-base * 1rem);
   gap: calc(10 / $fz-base * 1rem);
-  background-color: #F8937A;
+  background-color: $secondary;
   padding: calc(16 / $fz-base * 1rem) calc(20 / $fz-base * 1rem);
   border-top-left-radius: calc(3 / $fz-base * 1rem);
   border-top-right-radius: calc(3 / $fz-base * 1rem);

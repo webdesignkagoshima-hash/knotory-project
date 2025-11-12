@@ -2,6 +2,7 @@ import { initScrollAnimation } from './modules/scrollAnimation.js';
 import initSlider from './modules/slider.js';
 import initFvSlider from './modules/fvSlider.js';
 import initFeaturesSlider from './modules/featuresSlider.js';
+import { initSmoothScroll } from './modules/smoothScroll.js';
 import { ExampleCardStackAnimation } from './modules/exampleAnimation.js';
 import { PlanDetailToggle } from './modules/planDetailToggle.js';
 import ContactForm from './modules/contactForm.js';
@@ -59,6 +60,10 @@ async function initializeApp() {
     // Featuresスライダー
     initFeaturesSlider();
     console.log('✅ Features Slider initialized');
+
+    // スムーススクロール
+    initSmoothScroll();
+    console.log('✅ SmoothScroll initialized');
 
     // スクロールアニメーション
     initScrollAnimation({

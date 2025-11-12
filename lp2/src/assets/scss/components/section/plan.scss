@@ -2,10 +2,6 @@
 
 $bg-tbody-th: #EEF8FF;
 $bg-tbody-tr-even: #F6FBFE;
-$border-tbody-th: #D1E0EB;
-$border-plan-standard: #FE6386;
-$table-plan-standard-color: #FE6386;
-$table-plan-light-color: #F8937A;
 
 .p-plan__wrapper {
   background: url('/assets/images/bg-plan.png') no-repeat center top;
@@ -51,7 +47,7 @@ $table-plan-light-color: #F8937A;
   font-weight: 400;
   line-height: calc(18 / 14);
   letter-spacing: calc(100 / 1000 * 1rem);
-  color: #FFCFD2;
+  color: $bg-contact;
   text-align: center;
   margin-bottom: calc(8 / $fz-base * 1rem);
 }
@@ -73,7 +69,7 @@ $table-plan-light-color: #F8937A;
   font-weight: 700;
   line-height: calc(20 / 18);
   letter-spacing: calc(25 / 1000 * 1rem);
-  color: $alert;
+  color: $text-alert;
   width: calc(142 / $fz-base * 1rem);
   text-align: center;
   position: absolute;
@@ -111,19 +107,19 @@ $table-plan-light-color: #F8937A;
 .p-plan__tableHead {
   & .p-plan__tableHeaderCell {
     font-family: $font-family-ja;
-    font-size: calc(16 / $fz-base * 1rem);
-    font-weight: 700;
-    line-height: calc(20 / 16);
+    font-size: calc(14 / $fz-base * 1rem);
+    font-weight: 800;
+    line-height: calc(18 / 14);
     letter-spacing: calc(25 / 1000 * 1rem);
     color: $white;
     border-top-right-radius: calc(10 / $fz-base * 1rem);
     border-top-left-radius: calc(10 / $fz-base * 1rem);
 
     &--standard {
-      background-color: $table-plan-standard-color;
+      background-color: $primary;
     }
     &--light {
-      background-color: $table-plan-light-color;
+      background-color: $secondary;
     }
   }
 }
@@ -132,36 +128,36 @@ $table-plan-light-color: #F8937A;
   & .p-plan__tableHeaderCell {
     width: calc(67 / $fz-base * 1rem);
     background-color: $bg-tbody-th;
-    border-top: 1px solid $border-tbody-th;
-    border-left: 2px solid $border-tbody-th;
-    border-right: 2px solid $border-tbody-th;
-    border-bottom: 1px solid $border-tbody-th;
+    border-top: 1px solid $border-light;
+    border-left: 2px solid $border-light;
+    border-right: 2px solid $border-light;
+    border-bottom: 1px solid $border-light;
 
     font-family: $font-family-ja;
-    font-size: calc(12 / $fz-base * 1rem);
+    font-size: calc(10 / $fz-base * 1rem);
     font-weight: 700;
-    line-height: calc(20 / 12);
+    line-height: calc(16 / 10);
     letter-spacing: calc(25 / 1000 * 1rem);
   }
   
   & .p-plan__tableRow {
     & .p-plan__tableDataCell:first-of-type {
-      border-left: 3px solid $border-plan-standard;
-      border-right: 3px solid $border-plan-standard;
+      border-left: 3px solid $border-primary;
+      border-right: 3px solid $border-primary;
     }
 
     & .p-plan__tableDataCell:last-of-type {
-      border-right: 2px solid $border-tbody-th;
-      border-left: 2px solid $border-tbody-th;
+      border-right: 2px solid $border-light;
+      border-left: 2px solid $border-light;
     }
 
     &:last-of-type {
       & .p-plan__tableDataCell:first-of-type {
-        border-bottom: 3px solid $border-plan-standard;
+        border-bottom: 3px solid $border-primary;
       }
 
       & .p-plan__tableDataCell:last-of-type {
-        border-bottom: 2px solid $border-tbody-th;
+        border-bottom: 2px solid $border-light;
       }
     }
   }
@@ -169,14 +165,14 @@ $table-plan-light-color: #F8937A;
   & .p-plan__tableRow:first-of-type {
     & .p-plan__tableHeaderCell {
       border-top-left-radius: 10px;
-      border-top: 2px solid $border-tbody-th;
+      border-top: 2px solid $border-light;
     }
   }
 
   & .p-plan__tableRow:last-of-type {
     & .p-plan__tableHeaderCell {
       border-bottom-left-radius: 10px;
-      border-bottom: 2px solid $border-tbody-th;
+      border-bottom: 2px solid $border-light;
     }
   }
 }
@@ -253,23 +249,57 @@ $table-plan-light-color: #F8937A;
 }
 
 .p-plan__featureLinkWrap {
+  display: flex;
+  justify-content: center;
   margin-top: calc(24 / $fz-base * 1rem);
-  text-align: center;
+  margin-bottom: calc(20 / $fz-base * 1rem);
 }
 
 .p-plan__featureLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: baseline;
+  gap: calc(4 / $fz-base * 1rem);
   font-family: $font-family-ja;
   font-size: calc(14 / $fz-base * 1rem);
   font-weight: 700;
-  line-height: calc(20 / 14);
+  line-height: calc(21 / 14);
   letter-spacing: calc(25 / 1000 * 1rem);
   color: $base;
-  text-decoration: underline;
+  text-decoration: unset;
+  position: relative;
   transition: opacity 0.3s ease;
 
   &:hover {
     opacity: 0.7;
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: calc(1 / $fz-base * 1rem);
+    background-color: currentColor;
+    position: absolute;
+    bottom: -2px;
+  }
+}
+
+.p-plan__featureLinkText {
+  display: inline-block;
+}
+
+.p-plan__featureLinkIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(10.8 / $fz-base * 1rem);
+  height: calc(10.8 / $fz-base * 1rem);
+  flex-shrink: 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -381,7 +411,7 @@ $table-plan-light-color: #F8937A;
   line-height: calc(25 / 20);
   letter-spacing: calc(25 / 1000 * 1rem);
   color: $white;
-  background-color: #B6D3E6;
+  background-color: $bg-plan-info;
   padding: calc(14 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) calc(16 / $fz-base * 1rem);
   border-top-right-radius: calc(10 / $fz-base * 1rem);
   border-top-left-radius: calc(10 / $fz-base * 1rem);
@@ -403,7 +433,7 @@ $table-plan-light-color: #F8937A;
   color: $base;
 
   &--accent {
-    color: $alert;
+    color: $text-alert;
     font-weight: 700;
   }
 }
@@ -467,7 +497,7 @@ $table-plan-light-color: #F8937A;
   letter-spacing: calc(25 / 1000 * 1rem);
   color: $base;
   padding: calc(7 / $fz-base * 1rem) calc(16 / $fz-base * 1rem) calc(6 / $fz-base * 1rem);
-  background-color: #F4F4F4;
+  background-color: $bg-gray-light;
   border-radius: calc(16 / $fz-base * 1rem);
 }
 

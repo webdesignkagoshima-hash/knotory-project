@@ -2,7 +2,7 @@
 @use '../../global/mixin' as *;
 
 .p-points {
-  padding: calc(28 / $fz-base * 1rem) 0 calc(80 / $fz-base * 1rem);
+  padding: calc(28 / $fz-base * 1rem) 0 calc(100 / $fz-base * 1rem);
 }
 
 .p-points__heading {
@@ -13,6 +13,7 @@
   padding: calc(10 / $fz-base * 1rem) calc(23 / $fz-base * 1rem);
   background: linear-gradient(135deg, #FE6386, #F8937A);
   color: $white;
+  border-radius: calc(5 / $fz-base * 1rem);
 }
 
 .p-points__headingMain {
@@ -59,7 +60,7 @@
   height: calc(60 / $fz-base * 1rem);
   border-radius: 50%;
   background-color: transparent;
-  border: 2px solid #FE6386;
+  border: 2px solid #E8204D;
   margin-bottom: calc(10 / $fz-base * 1rem);
 }
 
@@ -69,7 +70,7 @@
   font-weight: 500;
   line-height: 1;
   letter-spacing: calc(50 / 1000 * 1rem);
-  color: #FE6386;
+  color: #E8204D;
   text-transform: lowercase;
   margin-bottom: calc(4 / $fz-base * 1rem);
 }
@@ -80,7 +81,7 @@
   font-weight: 700;
   line-height: 1;
   letter-spacing: calc(50 / 1000 * 1rem);
-  color: #FE6386;
+  color: #E8204D;
 }
 
 .p-points__itemHeading {
@@ -95,7 +96,7 @@
 
 .p-points__figure {
   width: 100%;
-  max-width: calc(300 / $fz-base * 1rem);
+  max-width: calc(340 / $fz-base * 1rem);
   margin: 0 auto calc(16 / $fz-base * 1rem);
 }
 

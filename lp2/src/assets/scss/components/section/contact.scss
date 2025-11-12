@@ -28,7 +28,7 @@
   font-weight: 400;
   line-height: calc(18 / 14);
   letter-spacing: calc(100 / 1000 * 1rem);
-  color: #FFCFD2;
+  color: $bg-contact;
   margin-top: calc(10 / $fz-base * 1rem);
 }
 
@@ -114,7 +114,7 @@
       transform: translate(-50%, -50%);
       width: 10px;
       height: 10px;
-      background-color: #E3556A;
+      background-color: $bg-contact-heading;
       border-radius: 50%;
     }
   }
@@ -186,7 +186,7 @@
 
 .p-contact__submitButton {
   width: calc(268 / $fz-base * 1rem);
-  height: calc(42 / $fz-base * 1rem);
+  height: calc(53 / $fz-base * 1rem);
   background-size: cover;
   background-repeat: no-repeat;
   background: linear-gradient(to bottom, #F8937A, #FE6386);
@@ -205,7 +205,7 @@
     content: "";
     width: calc(16.57 / $fz-base * 1rem);
     height: calc(16.57 / $fz-base * 1rem);
-    background: url('/assets/images/icon-arrow-dropright-circle-pink.svg') no-repeat center;
+    background: url('/assets/images/icon-arrow-dropright-circle.svg') no-repeat center;
     background-size: contain;
     position: absolute;
     top: 50%;

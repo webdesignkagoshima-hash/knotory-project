@@ -8,7 +8,7 @@ class ContactForm {
     this.submitButton = document.querySelector('.p-contact__submitButton');
     this.recaptchaKey = '6LdXrtYrAAAAAOkzUFcWJ21HhNmmgdCiMUQyeW48'; // テスト用のreCAPTCHA v3サイトキー
     
-    // this.init();
+    this.init();
   }
 
   init() {

@@ -3,39 +3,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display:wght@400;500&display=swap');
 
-// フォントファミリーの定義
-$font-family-ja: "Noto Sans JP", serif;
-$font-family-ja-serif: "Noto Serif JP", serif;
-$font-family-en: "Jost", serif;
-$font-family-heading: "Noto Sans JP", serif;
-$font-family-heading-en: "Momo Trust Display", serif;
+// ===================================
+// フォントファミリー
+// ===================================
+$font-family-ja: "Noto Sans JP", sans-serif;
+$font-family-en: "Jost", sans-serif;
+$font-family-heading: "Noto Sans JP", sans-serif;
+$font-family-heading-en: "Momo Trust Display", sans-serif;
 
+// ===================================
 // フォントサイズ
+// ===================================
 $fz-base: 16;
 
-// 色
+// ===================================
+// メインカラー
+// ===================================
 $base: #001738;
-$sub: #FE6386;
-$heading-en: #FFE8E9;
-$alert: #FE667C;
-$highlight: #FFE541;
+$primary: #FE6386;
+$secondary: #F8937A;
+$white: #fff;
+$black: #000;
+
+// ===================================
+// テキストカラー
+// ===================================
+$text-base: $base;
+$text-primary: $primary;
+$text-secondary: $secondary;
+$text-heading-en: #FFE8E9;
+$text-alert: #FE667C;
+$text-highlight: #FFE541;
+$text-line: #2EB29C;
+
+// ===================================
+// 背景色
+// ===================================
 $bg-base: #fff;
-$bg-cta: transparent;
+$bg-transparent: transparent;
 $bg-campaign: #EBD6B4;
+$bg-campaign-accent: #F3C57A;
 $bg-recommend: #FDF7F2;
 $bg-example: #F5F6FB;
 $bg-plan: #FDF7F2;
+$bg-plan-info: #B6D3E6;
 $bg-reviews: #FFD3C8;
 $bg-contact-heading: #E3556A;
 $bg-contact: #FFCFD2;
+$bg-footer-button: #E8204D;
+$bg-gray-light: #F4F4F4;
+$bg-features-accent: #ABC1C6;
+$bg-star-gold: #AF9B4F;
+
+// ===================================
+// グラデーション
+// ===================================
 $bg-plan-option-term: linear-gradient(135deg, #FE6386 0%, #F8937A 100%);
 $bg-footer: linear-gradient(to bottom, #FE6386 0%, #F8937A 100%);
-$white: #fff;
-$primary: #FE6386;
-$border: #f6f5ec;
-$LINE: #71D077;
-$required: #D82020;
 
-// コンテンツサイズ
+// ===================================
+// ボーダーカラー
+// ===================================
+$border-light: #D1E0EB;
+$border-primary: $primary;
+$border-secondary: $secondary;
+
+// ===================================
+// 状態カラー
+// ===================================
+$required: #D82020;
+$LINE: #71D077;
+$button-hover: #D8BFAE;
+
+// ===================================
+// レイアウト
+// ===================================
 $wd-content-max-pc: calc(390 / $fz-base * 1rem);
 $wd-content-padding-sp: 20;

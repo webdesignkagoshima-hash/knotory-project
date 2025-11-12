@@ -14,7 +14,7 @@
 
 .p-fv__headingLabel {
   display: block;
-  font-size: calc(14 / $fz-base * 1rem);
+  font-size: calc(13 / $fz-base * 1rem);
   font-weight: 800;
   color: $base;
   font-family: $font-family-ja;
@@ -23,13 +23,13 @@
   border-radius: calc(50 / $fz-base * 1rem);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   max-width: calc(272 / $fz-base * 1rem);
-  margin: calc(36 / $fz-base * 1rem) auto 0;
+  margin: calc(20 / $fz-base * 1rem) auto 0;
   padding: calc(5 / $fz-base * 1rem) calc(15 / $fz-base * 1rem);
 }
 
 .p-fv__headingTitle {
   display: block;
-  font-size: calc(31 / $fz-base * 1rem);
+  font-size: calc(28 / $fz-base * 1rem);
   font-weight: 900;
   background: linear-gradient(to bottom, #FE6386, #FF7678);
   -webkit-background-clip: text;
@@ -37,18 +37,18 @@
   background-clip: text;
   font-family: $font-family-ja;
   line-height: 1.5;
-  margin-top: calc(14.5 / $fz-base * 1rem);
+  margin-top: calc(4.5 / $fz-base * 1rem);
   margin-bottom: calc(8 / $fz-base * 1rem);
 }
 
 .p-fv__headingSubtitle {
   position: absolute;
-  bottom: calc(-60 / $fz-base * 1rem);
+  bottom: calc(-48 / $fz-base * 1rem);
   display: block;
   font-size: calc(48 / $fz-base * 1rem);
   font-weight: 400;
   line-height: calc(68 / 48);
-  color: $heading-en;
+  color: $text-heading-en;
   font-family: $font-family-heading-en;
   z-index: 10;
 }
@@ -58,8 +58,8 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-top: calc(25.9 / $fz-base * 1rem);
-  margin-bottom: calc(20 / $fz-base * 1rem);
+  margin-top: calc(12.9 / $fz-base * 1rem);
+  margin-bottom: calc(10 / $fz-base * 1rem);
 }
 
 .p-fv__figure {
@@ -69,7 +69,7 @@
 
 .p-fv__image {
   width: 100%;
-  max-width: calc(328 / $fz-base * 1rem);
+  max-width: calc(290 / $fz-base * 1rem);
   height: auto;
   display: block;
   filter: drop-shadow(0 0 calc(15 / $fz-base * 1rem) rgba(0, 0, 0, 0.08));
@@ -82,7 +82,7 @@
   z-index: 2;
   text-align: left;
   padding-left: calc(20 / $fz-base * 1rem);
-  padding-right: calc(50 / $fz-base * 1rem);
+  padding-right: calc(56 / $fz-base * 1rem);
   padding-bottom: calc(18 / $fz-base * 1rem);
 }
 
@@ -156,6 +156,6 @@
 }
 
 .p-fv__ctaArea {
-  margin-top: calc(30 / $fz-base * 1rem);
+  margin-top: calc(12 / $fz-base * 1rem);
   padding-bottom: calc(99 / $fz-base * 1rem);
 }

@@ -1,7 +1,7 @@
 @use '../../global/variables' as *;
 
 .c-cta {
-  background-color: $bg-cta;
+  background-color: $bg-transparent;
 
   & .c-buttonCTA__wrapper {
     padding: 0;
@@ -63,7 +63,7 @@
 
 .c-cta__okListAccent {
   display: block;
-  color: #2EB29C;
+  color: $text-line;
   font-family: $font-family-en;
   font-size: calc(28 / $fz-base * 1rem);
   line-height: calc(36 / 28);

@@ -22,8 +22,8 @@
   &[type="sub"] {
     gap: calc(30.7 / $fz-base * 1rem);
     padding: calc(18 / $fz-base * 1rem) calc(22.5 / $fz-base * 1rem) calc(18 / $fz-base * 1rem) calc(60 / $fz-base * 1rem);
-    background-color: #D8BFAE;
-    border: 1px solid #D8BFAE;
+    background-color: $button-hover;
+    border: 1px solid $button-hover;
     transition: opacity 0.3s ease;
   }
 
@@ -44,14 +44,12 @@
   
   &:hover {
     @include mq(tab) {
-      // 色反転
       background-color: $white;
       color: $primary;
     }
 
     &::after {
       @include mq(tab) {
-        // アイコン色反転
         background-image: url('/assets/images/icon-arrow-inverse.svg');
       }
     }
@@ -59,14 +57,13 @@
     &[type="sub"] {
       @include mq(tab) {
         opacity: 0.8;
-        background-color: #D8BFAE;
+        background-color: $button-hover;
         color: $white;
       }
     }
 
     &[type="sub"]::after {
       @include mq(tab) {
-        // アイコン色反転
         background-image: url('/assets/images/icon-arrow-sub.svg');
       }
     }

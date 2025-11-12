@@ -31,7 +31,7 @@
 }
 
 .l-footer__text {
-  background-color: #E8204D;
+  background-color: $bg-footer-button;
   padding: calc(10 / $fz-base * 1rem) 0 calc(8 / $fz-base * 1rem);
   font-family: $font-family-ja;
   font-size: calc(12 / $fz-base * 1rem);

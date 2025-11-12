@@ -1,7 +1,7 @@
 @use "../../global/variables" as *;
 
 .c-buttonCTA__wrapper {
-  background-color: $bg-cta;
+  background-color: $bg-transparent;
   text-align: center;
 }
 
@@ -25,6 +25,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: calc(4.5 / $fz-base * 1rem);
+    margin-top: 5px;
   }
 
   &::after {
@@ -36,6 +37,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: calc(12 / $fz-base * 1rem);
+    margin-top: 5px;
   }
 }
 
@@ -77,7 +79,7 @@
   align-items: center;
   justify-content: center;
   gap: calc(10 / $fz-base * 1rem);
-  padding: calc(6 / $fz-base * 1rem) calc(25.4 / $fz-base * 1rem);
+  padding: calc(10 / $fz-base * 1rem) calc(25.4 / $fz-base * 1rem);
 }
 
 .c-buttonCTA__circle {
@@ -86,10 +88,10 @@
   align-items: center;
   width: calc(40 / $fz-base * 1rem);
   height: calc(40 / $fz-base * 1rem);
-  background-color: $highlight;
+  background-color: $text-highlight;
   border-radius: 50%;
   font-size: calc(12 / $fz-base * 1rem);
-  color: $alert;
+  color: $text-alert;
   font-family: $font-family-ja;
   font-weight: 700;
   line-height: 1;

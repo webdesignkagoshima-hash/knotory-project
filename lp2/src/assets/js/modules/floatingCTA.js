@@ -1,6 +1,7 @@
 /**
  * Floating CTA Button Controller
  * ファーストビューのCTAが見えなくなったら表示し、フッターに入る前に非表示にする
+ * featuresセクションの途中以降で初めて表示される
  */
 
 class FloatingCTA {
@@ -11,6 +12,7 @@ class FloatingCTA {
     this.contactSection = document.querySelector('.p-contact');
     this.exampleSection = document.querySelector('.p-example');
     this.planSection = document.querySelector('.p-plan');
+    this.featuresSection = document.querySelector('.p-features');
     
     if (!this.floatingCTA || !this.fvCTA || !this.footer) return;
     
@@ -37,6 +39,17 @@ class FloatingCTA {
     // ファーストビューのCTAが完全に画面から消えた場合は表示
     const shouldShow = fvCTABottom < 0;
     
+    // featuresセクションの途中（画面高さの半分）まで到達していない場合は表示しない
+    let hasReachedFeatures = true;
+    if (this.featuresSection) {
+      const featuresTop = this.featuresSection.getBoundingClientRect().top;
+      const featuresHeight = this.featuresSection.getBoundingClientRect().height;
+      const featuresMidPoint = featuresTop + (featuresHeight / 2);
+      
+      // featuresセクションの中間点がまだ画面の上端より下にある場合は未到達
+      hasReachedFeatures = featuresMidPoint < 0;
+    }
+    
     // フッターが画面に入ってきた場合は非表示
     const shouldHideByFooter = footerTop < windowHeight;
     
@@ -58,7 +71,7 @@ class FloatingCTA {
       shouldHideByExample = exampleTop < windowHeight && planTop >= 0;
     }
     
-    if (shouldShow && !shouldHideByFooter && !shouldHideByContact && !shouldHideByExample) {
+    if (shouldShow && hasReachedFeatures && !shouldHideByFooter && !shouldHideByContact && !shouldHideByExample) {
       this.showFloatingCTA();
     } else {
       this.hideFloatingCTA();

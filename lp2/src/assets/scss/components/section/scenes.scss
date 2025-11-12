@@ -24,7 +24,7 @@
   font-weight: 800;
   line-height: calc(30 / 20);
   letter-spacing: calc(25 / 1000 * 1rem);
-  color: #FE6386;
+  color: $primary;
   margin-top: 1px;
 }
 
@@ -35,7 +35,7 @@
   font-weight: 400;
   line-height: calc(62 / 41);
   letter-spacing: calc(25 / 1000 * 1rem);
-  color: $heading-en;
+  color: $text-heading-en;
   margin-top: calc(4 / $fz-base * 1rem);
   text-transform: uppercase;
 }
@@ -95,7 +95,7 @@
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: calc(25 / 1000 * 1rem);
-  color: #FE6386;
+  color: $primary;
   margin: 0 0 calc(8 / $fz-base * 1rem);
   text-align: center;
   height: calc(42 / $fz-base * 1rem);
