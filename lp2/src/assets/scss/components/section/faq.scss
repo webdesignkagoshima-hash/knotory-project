@@ -55,7 +55,6 @@
     height: 0;
     opacity: 0;
     overflow: hidden;
-    background-color: $secondary;
     will-change: height, opacity; /* GPU最適化 */
     
     /* iOS向けハードウェアアクセラレーション */
