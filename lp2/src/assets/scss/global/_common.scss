@@ -1,0 +1,53 @@
+@use './variables' as *;
+@use './mixin' as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: $base;
+  background-color: $bg-base;
+  width: 100%;
+  overflow-x: hidden;
+  /* Webkit系ブラウザ（Chrome, Safariなど） */
+  -webkit-font-smoothing: antialiased;
+  /* Firefox */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+figure {
+  margin: 0;
+}
+
+picture {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
+
+ul,ol {
+  list-style: none;
+}
+
+/* reCAPTCHA Badge Control */
+/* ファーストビューが見えている間だけreCAPTCHAバッジを非表示にする */
+body.is-fv-visible .grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}

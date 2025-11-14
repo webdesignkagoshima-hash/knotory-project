@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  {{> global/head }}
+
+  <!-- css -->
+  <link rel="stylesheet" href="./assets/scss/style.scss">
+</head>
+<body>
+  <div class="l-base__wrapper">
+    <main class="l-main">
+      {{> section/fv }}
+      {{> section/about }}
+      {{> section/features }}
+      <div class="p-challenge-wrapper">
+        {{> section/challenge }}
+        {{> section/solution }}
+        {{> section/points }}
+      </div><!-- /.p-challenge-wrapper -->
+      {{> section/scenes }}
+      {{> section/reviews-sender }}
+      {{> section/reviews-receiver }}
+      {{> section/plan }}
+      {{> section/flow }}
+      {{> section/faq }}
+      {{> section/contact }}
+    </main>
+    {{> section/footer }}
+    
+    <!-- Floating CTA Button -->
+    <div class="c-floating-cta js-floating-cta">
+      {{> ui/buttonCTA }}
+    </div>
+
+    <!-- Floating Scroll Icon -->
+    {{> ui/floatingScroll }}
+  </div>
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+@use '../../global/variables' as *;
+
+.p-faq {
+  background: url('/assets/images/bg-faq.png') no-repeat center top;
+  background-size: cover;
+}
+
+.p-faq__container {
+  padding: calc(52 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) calc(35 / $fz-base * 1rem);
+}
+
+.p-faq__title {
+  font-family: $font-family-heading;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(24 / 20);
+  letter-spacing: calc(50 / 1000 * 1rem);
+  color: $base;
+  text-align: center;
+}
+
+.p-faq__subTitle {
+  font-family: $font-family-heading-en;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(18 / 14);
+  letter-spacing: calc(100 / 1000 * 1rem);
+  color: $bg-contact;
+  text-align: center;
+  margin-bottom: calc(8 / $fz-base * 1rem);
+}
+
+.p-faq__content {
+  margin-top: calc(24 / $fz-base * 1rem);
+}
+
+.p-faq__item {
+  & + & {
+    margin-top: calc(20 / $fz-base * 1rem);
+  }
+}
+
+.p-faq__details {
+  border-top-left-radius: calc(3 / $fz-base * 1rem);
+  border-top-right-radius: calc(3 / $fz-base * 1rem);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+
+  /* 薄い青の背景を非表示にする（iOS特有のハイライトカラーを透明に設定） */
+  -webkit-tap-highlight-color: transparent;
+  
+  /* iOS向けのスムーズなアニメーション最適化 */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+
+    /* --------アコーディオンの中身のスタイル-------- */
+  &::details-content {
+    transition: height 0.4s ease, opacity 0.4s ease;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    will-change: height, opacity; /* GPU最適化 */
+    
+    /* iOS向けハードウェアアクセラレーション */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* --------アコーディオンの中身のスタイル（開いている時）-------- */
+  &[open]::details-content {
+    height: var(--details-content-height, auto);
+    opacity: 1;
+  }
+
+  /* アコーディオンが開いた時のスタイル */
+  &[open] .p-faq__summary::after {
+    transform: rotate(180deg);
+  }
+}
+
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords; /* height:0（数値型） → auto（文字型） のアニメーションを可能にするための指定 */
+  }
+  .p-faq__details[open]::details-content {
+    height: auto;
+  }
+}
+
+/* height:0→autoへのアニメーションが対応していない場合は、固定値にアニメーションさせる */
+@supports not (interpolate-size: allow-keywords) {
+  details[open]::details-content {
+    height: var(--details-content-height, auto);
+    overflow-y: scroll;
+  }
+}
+
+.p-faq__summary {
+  display: grid;
+  align-items: center;
+  grid-template-columns: calc(45 / $fz-base * 1rem) 1fr calc(13.81 / $fz-base * 1rem);
+  gap: calc(10 / $fz-base * 1rem);
+  background-color: $secondary;
+  padding: calc(16 / $fz-base * 1rem) calc(20 / $fz-base * 1rem);
+  border-top-left-radius: calc(3 / $fz-base * 1rem);
+  border-top-right-radius: calc(3 / $fz-base * 1rem);
+
+  &::after {
+    content: "";
+    width: calc(13.81 / $fz-base * 1rem);
+    height: calc(7.9 / $fz-base * 1rem);
+    background: url('/assets/images/icon-arrow-down-white.svg') no-repeat center;
+    background-size: contain;
+    justify-self: center;
+    align-self: center;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.p-faq__qMark {
+  width: calc(45 / $fz-base * 1rem);
+  height: calc(45 / $fz-base * 1rem);
+  border-radius: 50%;
+  background-color: $white;
+  color: $primary;
+  font-family: $font-family-heading-en;
+  font-size: calc(24 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: calc(50 / 1000 * 1rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-faq__question {
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(20 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $white;
+}
+
+.p-faq__answer {
+  background-color: $white;
+  padding: calc(22 / $fz-base * 1rem) calc(11 / $fz-base * 1rem);
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(20 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  border-bottom-left-radius: calc(3 / $fz-base * 1rem);
+  border-bottom-right-radius: calc(3 / $fz-base * 1rem);
+}

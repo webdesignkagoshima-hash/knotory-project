@@ -1,0 +1,64 @@
+@use '../../global/variables' as *;
+@use '../../global/mixin' as *;
+
+.p-campaign__description {
+  background-color: $bg-campaign;
+  margin-top: calc(260 / $fz-base * 1rem);
+  padding: calc(24 / $fz-base * 1rem) calc(20 / $fz-base * 1rem) calc(30 / $fz-base * 1rem);
+}
+
+.p-campaign__descriptionContainer {
+  text-align: center;
+  background-color: $white;
+  border-radius: calc(10 / $fz-base * 1rem);
+  padding: calc(30 / $fz-base * 1rem) calc(15 / $fz-base * 1rem);
+}
+
+.p-campaign__descriptionList {
+  display: flex;
+  flex-direction: column;
+  gap: calc(30 / $fz-base * 1rem);
+}
+
+.p-campaign__descriptionItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(18 / $fz-base * 1rem);
+}
+
+.p-campaign__descriptionTitle {
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(24 / 16);
+  color: $white;
+  background-color: $bg-campaign-accent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(116 / $fz-base * 1rem);
+  height: calc(29 / $fz-base * 1rem);
+  border-radius: calc(3 / $fz-base * 1rem);
+}
+
+.p-campaign__descriptionDetail {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8 / $fz-base * 1rem);
+}
+
+.p-campaign__descriptionText {
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 600;
+  line-height: calc(25 / 14);
+}
+
+.p-campaign__descriptionHighlight {
+  display: inline-block;
+  font-weight: 700;
+  color: #C62525;
+  padding: calc(2 / $fz-base * 1rem) calc(4 / $fz-base * 1rem);
+  border-radius: calc(3 / $fz-base * 1rem);
+}

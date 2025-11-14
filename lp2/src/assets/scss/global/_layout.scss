@@ -1,0 +1,14 @@
+@use './variables' as *;
+
+.l-base__wrapper {
+  width: 100%;
+  max-width: $wd-content-max-pc;
+  margin: 0 auto;
+}
+
+.p-challenge-wrapper {
+  background: url('/assets/images/bg-challenge-wrapper.png') no-repeat center 410px;
+  background-size: 100% auto;
+  margin-top: calc(-60 / $fz-base * 1rem);
+  position: relative;
+}

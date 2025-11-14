@@ -1,0 +1,222 @@
+@use '../../global/variables' as *;
+
+.p-contact__header {
+  background: linear-gradient(135deg, #FE6386, #F8937A);
+  padding: calc(30 / $fz-base * 1rem) 0 calc(27 / $fz-base * 1rem);
+  text-align: center;
+}
+
+.p-contact__title {
+  font-family: $font-family-heading;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(25 / 20);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $white;
+}
+
+.p-contact__iconMail {
+  display: inline-block;
+  width: calc(27 / $fz-base * 1rem);
+  height: calc(28 / $fz-base * 1rem);
+  margin-right: 4px;
+}
+
+.p-contact__subtitle {
+  font-family: $font-family-heading-en;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(18 / 14);
+  letter-spacing: calc(100 / 1000 * 1rem);
+  color: $bg-contact;
+  margin-top: calc(10 / $fz-base * 1rem);
+}
+
+.p-contact__content {
+  background-color: $bg-contact;
+  padding: calc(34 / $fz-base * 1rem) calc(30 / $fz-base * 1rem) calc(122 / $fz-base * 1rem);
+}
+
+.p-contact__description {
+  text-align: center;
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: calc(20 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+}
+
+.p-contact__note {
+  text-align: center;
+  font-family: $font-family-ja;
+  font-size: calc(12 / $fz-base * 1rem);
+  font-weight: 500;
+  line-height: calc(20 / 12);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  margin-top: calc(13 / $fz-base * 1rem);
+  color: $base;
+}
+
+.p-contact__required {
+  display: inline-block;
+  color: $required;
+  position: relative;
+  top: 2px;
+  margin-right: 3px;
+  margin-left: 1px;
+}
+
+.p-contact__formWrapper {
+  margin-top: calc(22 / $fz-base * 1rem);
+}
+
+.p-contact__fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.p-contact__legend {
+  margin-bottom: 1rem;
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(20 / 16);
+  letter-spacing: calc(25 / 1000 * 1rem);
+}
+
+.p-contact__radioGroup {
+  margin-bottom: calc(16 / $fz-base * 1rem);
+  display: flex;
+  align-items: center;
+}
+
+.p-contact__radioInput {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 1px solid $white;
+  border-radius: 50%;
+  background-color: $white;
+  margin: 0;
+  margin-right: calc(8 / $fz-base * 1rem);
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  
+  &:checked {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      background-color: $bg-contact-heading;
+      border-radius: 50%;
+    }
+  }
+}
+
+.p-contact__radioLabel {
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(20 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+  cursor: pointer;
+  user-select: none;
+}
+
+.p-contact__inputGroup {
+  & + & {
+    margin-top: calc(17 / $fz-base * 1rem);
+  }
+}
+
+.p-contact__label {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-family: $font-family-ja;
+  font-size: calc(16 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(20 / 16);
+  letter-spacing: calc(25 / 1000 * 1rem);
+}
+
+.p-contact__input {
+  width: 100%;
+  height: calc(45 / $fz-base * 1rem);
+  border: unset;
+  padding: calc(0  / $fz-base * 1rem) calc(14 / $fz-base * 1rem);
+}
+
+.p-contact__textarea {
+  width: 100%;
+  min-height: calc(150 / $fz-base * 1rem);
+  border: unset;
+  padding: calc(14 / $fz-base * 1rem);
+}
+
+.p-contact__privacyNote {
+  margin-top: calc(22 / $fz-base * 1rem);
+}
+
+.p-contact__privacyText {
+  font-family: $font-family-ja;
+  font-size: calc(14 / $fz-base * 1rem);
+  font-weight: 400;
+  line-height: calc(20 / 14);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $base;
+}
+
+.p-contact__privacyLink {
+  color: $base;
+  line-height: 1.5;
+}
+
+.p-contact__buttonWrapper {
+  margin-top: calc(37 / $fz-base * 1rem);
+  text-align: center;
+}
+
+.p-contact__submitButton {
+  width: calc(268 / $fz-base * 1rem);
+  height: calc(53 / $fz-base * 1rem);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: linear-gradient(to bottom, #F8937A, #FE6386);
+  border: none;
+  border-radius: calc(24 / $fz-base * 1rem);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
+  font-family: $font-family-heading;
+  font-size: calc(20 / $fz-base * 1rem);
+  font-weight: 700;
+  line-height: calc(25 / 20);
+  letter-spacing: calc(25 / 1000 * 1rem);
+  color: $white;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: calc(16.57 / $fz-base * 1rem);
+    height: calc(16.57 / $fz-base * 1rem);
+    background: url('/assets/images/icon-arrow-dropright-circle.svg') no-repeat center;
+    background-size: contain;
+    position: absolute;
+    top: 50%;
+    right: calc(20 / $fz-base * 1rem);
+    transform: translateY(-50%);
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
