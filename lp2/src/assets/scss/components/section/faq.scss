@@ -41,13 +41,17 @@
 }
 
 .p-faq__details {
-    /* 薄い青の背景を非表示にする（iOS特有のハイライトカラーを透明に設定） */
-    -webkit-tap-highlight-color: transparent;
-    
-    /* iOS向けのスムーズなアニメーション最適化 */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    backface-visibility: hidden;
+  border-top-left-radius: calc(3 / $fz-base * 1rem);
+  border-top-right-radius: calc(3 / $fz-base * 1rem);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+
+  /* 薄い青の背景を非表示にする（iOS特有のハイライトカラーを透明に設定） */
+  -webkit-tap-highlight-color: transparent;
+  
+  /* iOS向けのスムーズなアニメーション最適化 */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 
     /* --------アコーディオンの中身のスタイル-------- */
   &::details-content {
@@ -132,7 +136,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: calc(8 / $fz-base * 1rem);
 }
 
 .p-faq__question {
