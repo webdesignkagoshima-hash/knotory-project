@@ -1,9 +1,7 @@
 import Splide from '@splidejs/splide';
-import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
 export default function initSlider() {
   const splideElement = document.querySelector('.splide');
-  const splideReverseElement = document.querySelector('.splide.reverseSplide');
 
   const isPCDevice = () => window.innerWidth > 768;
 
@@ -12,59 +10,24 @@ export default function initSlider() {
       const splide = new Splide('.splide.autoSplide', {
         updateOnMove: true,
         type: 'loop',
+        perPage: 1,
         speed: 600,
         perMove: 1,
-        autoplay: false,
+        autoplay: true,
         interval: 3000,
         delay: 1000,
-        pagination: false,    
-        width: '100%',
-        fixedWidth: '294px',
-        fixedHeight: '387px',
-        arrows: false,
-        mediaQuery: 'min',
-        breakpoints: {
-          768: {
-            fixedWidth: '295.5px',
-            fixedHeight: '294px',
-          }
-        }
+        gap: '24px',
+        pagination: true,
+        paginationType: 'bullets',
+        paginationClickable: true,
+        
+        width: '1108px',
+        arrows: false
       });
   
-      splide.mount({ AutoScroll });
+      splide.mount();
     } catch (error) {
       console.error('Error initializing splide:', error);
-    }
-  }
-
-  if(splideReverseElement) {
-    try {
-      const splideReverse = new Splide('.splide.reverseSplide', {
-        updateOnMove: true,
-        type: 'loop',
-        speed: 600,
-        perMove: 1,
-        autoplay: false,
-        interval: 3000,
-        delay: 1000,
-        pagination: false,    
-        width: '100%',
-        fixedWidth: '294px',
-        fixedHeight: '387px',
-        arrows: false,
-        direction: 'rtl',
-        mediaQuery: 'min',
-        breakpoints: {
-          768: {
-            fixedWidth: '295.5px',
-            fixedHeight: '294px',
-          }
-        }
-      });
-    
-      splideReverse.mount({ AutoScroll });
-    } catch (error) {
-      console.error('Error initializing splideReverse:', error);
     }
   }
 
