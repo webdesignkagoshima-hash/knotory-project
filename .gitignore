@@ -16,6 +16,8 @@ Thumbs.db
 */.serena
 */.vscode
 */.docs
+*/.backup
+*/.github
 message/messages/config/smtp.config.php
 
 # E2E tests

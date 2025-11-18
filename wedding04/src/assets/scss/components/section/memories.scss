@@ -10,48 +10,57 @@
 
   &__content {
     margin: calc(96 / $fz-base * 1rem) auto 0;
+    width: 100%;
+    max-width: calc(890 / $fz-base * 1rem);
 
     @include mq(tab) {
       margin: calc(120 / $fz-base * 1rem) auto 0;
     }
   }
 
-  &__slider {
-    margin-top: calc(70 / $fz-base * 1rem);
-    height: calc(387 / $fz-base * 1rem);
+  &__slideCaption {
+    font-family: $font-family-ja;
+    font-size: calc(14 / $fz-base * 1rem);
+    line-height: calc(25 / 14);
+    letter-spacing: calc(50 / 1000 * 1rem);
+    color: $fc-base;
+    text-align: center;
+    margin-top: calc(22 / $fz-base * 1rem);
 
     @include mq(tab) {
-      margin: calc(100 / $fz-base * 1rem) auto 0;
-      height: calc(294 / $fz-base * 1rem);
+      font-size: calc(20 / $fz-base * 1rem);
+      line-height: calc(36 / 20);
+      margin-top: calc(32 / $fz-base * 1rem);
     }
   }
 
-  .p-memories__slideFigure {
-    width: calc(294 / $fz-base * 1rem);
-    height: calc(387 / $fz-base * 1rem);
+  & .splide {
+    padding: 0 0 calc(32.5 / $fz-base * 1rem);
 
     @include mq(tab) {
-      width: calc(295.5 / $fz-base * 1rem);
-      height: calc(294 / $fz-base * 1rem);
-    }
-
-    & img {
-      height: 100%;
-      display: block;
-      object-fit: cover;
+      padding: 0 0 calc(53 / $fz-base * 1rem);
     }
   }
 
-  & .splide, .reverseSplide {
-    padding: 0;
-    margin: 0;
+  & .splide__pagination__page {
+    border-radius: 1px;
+    height: 2px;
+    margin: 0 calc(6 / $fz-base * 1rem);
+    background-color: #ccc;
+    
+    &.is-active {
+      border-radius: 1px;
+      height: 2px;
+      transform: scale(1);
+      background-color: $primary;
+    }
   }
 
   &__video {
     margin-top: calc(98 / $fz-base * 1rem);
 
     @include mq(tab) {
-      margin-top: calc(356 / $fz-base * 1rem);
+      margin-top: calc(80 / $fz-base * 1rem);
     }
   }
 

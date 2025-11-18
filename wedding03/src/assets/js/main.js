@@ -17,7 +17,7 @@ async function initializeApp() {
 
   try {
     // オープニングアニメーション
-    initOpeningAnimation();
+    // initOpeningAnimation();
     console.log('✅ OpeningAnimation initialized');
 
     // ハンバーガーメニュー
@@ -37,14 +37,12 @@ async function initializeApp() {
     console.log('✅ Slider initialized');
     
     // スクロールアニメーション
-    setTimeout(() => {
-      initScrollAnimation({
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px',
-        once: true
-      });
-      console.log('✅ ScrollAnimation initialized');
-    }, 2900); // 3秒待ってから発火
+    initScrollAnimation({
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+      once: true
+    });
+    console.log('✅ ScrollAnimation initialized');
     
     // Our Story Card Animation
     new OurStoryCardAnimation();
