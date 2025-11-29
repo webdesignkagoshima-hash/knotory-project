@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+h2{
+    font-size: 1.3em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h3{
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.sub_sec{
+    width: 90%;
+    margin: 50px auto 50px;
+    letter-spacing: 1.5px;
+}
+
+.sub_sec p{
+    margin-bottom: 20px;
+}
+
+.sub_button a {
+    background: #D8BFAE;
+    border-radius: 9999px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto 100px;
+    max-width: 250px;
+    padding: 10px 25px;
+    font-family: "Noto Sans Japanese";
+    color: #fff;
+    line-height: 1.8;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+}
+.sub_button a:hover {
+    background: #fff;
+    color: #D8BFAE;
+    outline: 2px solid #D8BFAE;
+}
+.sub_button a:after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-top: 3px solid #fff;
+    border-right: 3px solid #fff;
+    transform: rotate(45deg) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    border-radius: 1px;
+    transition: 0.3s ease-in-out;
+}
+.sub_button a:hover:after {
+    border-color: #D8BFAE;
+}
+
+.sub_border{
+    border-bottom: 1px solid #F4F4F4;
+    padding-bottom: 15px;
+}
+/*-------- LP追加内容 --------*/
+.function{
+    width: 100%;
+    padding: 50px 0;
+    background-color: #fdf7f2;
+}
+.function h3{
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    font-family: Noto Sans JP, serif;
+}
+.f_box{
+    width: 90%;
+    margin: 0 auto 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px 0;
+}
+.f_box img{
+    width: 90%;
+    display: block;
+    margin: 0 auto 20px;
+    border: 1px solid #F4F4F4;
+}
+.f_box p{
+    width: 90%;
+    margin: auto;
+    color: #333;
+    font-weight: 400;
+    font-size: .875rem;
+    line-height: 1.4285714286;
+    font-family: Noto Sans JP, serif;
+    letter-spacing: .025rem;
+}
+.settlement{
+    width: 100%;
+    padding: 0px 0 30px;
+    background-color: #fdf7f2;
+}
